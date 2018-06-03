@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/chessportal">
+    <ResourceLink name="jdbc/chessportal"
+             global="jdbc/chessportal"
+              type="javax.sql.DataSource"/>
+</Context>
