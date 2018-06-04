@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	t:type="Layout" t:title="title" t:showTitleInBody="false">
+	
+   
+    
+
+        
+        <div class="w3-sidebar w3-bar-block" style="width:25%">
+            <a href="#" t:type="PageLink" t:page="user/users">${message:users}</a>  
+        </div>
+        
+        <t:body/>
+        
+        
+   
+</html>
+
+

@@ -17,10 +17,9 @@ import evv.chessportal.web.pages.Index;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.UserSession;
-import org.apache.tapestry5.beaneditor.Validate;
 
 @AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
-public class Register {
+public class CreateUser {
 
     @Property
     private String loginName;
