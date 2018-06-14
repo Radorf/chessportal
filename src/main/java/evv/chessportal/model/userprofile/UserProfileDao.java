@@ -7,6 +7,7 @@ package evv.chessportal.model.userprofile;
 
 import evv.chessportal.model.util.dao.GenericDao;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import java.util.ArrayList;
 
 
 public interface UserProfileDao extends GenericDao<UserProfile, Long>{
@@ -18,4 +19,6 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @return the UserProfile
      */
     public UserProfile findByLoginName(String loginName) throws InstanceNotFoundException;
+
+    public ArrayList<UserProfile> searchByGeneralKey(String searchKey);
 }

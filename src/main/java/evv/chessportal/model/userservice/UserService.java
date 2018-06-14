@@ -3,6 +3,7 @@ package evv.chessportal.model.userservice;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import java.util.ArrayList;
 
 public interface UserService {
 
@@ -24,5 +25,7 @@ public interface UserService {
     public void changePassword(Long userProfileId, String oldClearPassword,
             String newClearPassword) throws IncorrectPasswordException,
             InstanceNotFoundException;
+
+    public ArrayList<UserProfile> searchByGeneralKey(String searchKey);
 
 }

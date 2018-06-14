@@ -125,7 +125,7 @@ public class UserServiceTest {
         UserProfile userProfile = registerUser("user", clearPassword);
 
         PersonDetails newPersonDetails = new PersonDetails(
-                'X' + userProfile.getPerson().getFirstName(), 'X' + userProfile.getPerson().getSurName(),
+                'X' + userProfile.getPerson().getFirstName(), 'X' + userProfile.getPerson().getSurname(),
                 'X' + userProfile.getPerson().getEmail(), userProfile.getPerson().getPhoneNumber());
 
         userService.updateUserProfileDetails(userProfile.getId(),
@@ -139,7 +139,7 @@ public class UserServiceTest {
         assertEquals(newPersonDetails.getFirstName(),
                 userProfile2.getPerson().getFirstName());
         assertEquals(newPersonDetails.getSurName(),
-                userProfile2.getPerson().getSurName());
+                userProfile2.getPerson().getSurname());
         assertEquals(newPersonDetails.getEmail(),
                 userProfile2.getPerson().getEmail());
         assertEquals(newPersonDetails.getPhoneNumber(),

@@ -65,7 +65,7 @@ public class UserProfile {
         this.loginName = loginName;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.REMOVE})
     @JoinColumn(name = "idPerson")
     public Person getPerson() {

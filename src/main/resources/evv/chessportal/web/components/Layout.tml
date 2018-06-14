@@ -69,13 +69,6 @@
             </t:if>
 
             <t:body/>
-
-            <hr/>
-
-            <footer>
-                <p class="text-center">${message:footer}</p>
-            </footer>
-
         </div>
 
     </body>

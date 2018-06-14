@@ -21,16 +21,16 @@ public class Person {
     public Person() {
     }
 
-    public Person(String firstName, String surName, String email, String phoneNumber) {
+    public Person(String firstName, String surname, String email, String phoneNumber) {
         this.firstName = firstName;
-        this.surName = surName;
+        this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
     private Long id;
     private String firstName;
-    private String surName;
+    private String surname;
     private String email;
     private String phoneNumber;
 
@@ -42,12 +42,12 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surName) {
+        this.surname = surName;
     }
 
     public String getEmail() {

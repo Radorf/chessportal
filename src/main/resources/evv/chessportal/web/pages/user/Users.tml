@@ -1,8 +1,14 @@
 
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="MenuBarLayout" t:title="title">
-	
-	<p class="text-center">
-		<a href="#" t:type="PageLink" t:page="user/createUser">${message:create}</a>	       
-	</p>	
+      t:type="MenuBarLayout" t:title="title">
+    
+    <p class="text-center">
+        <a href="#" t:type="PageLink" t:page="user/createUser">${message:create}</a>	  
+    </p>
+    <p class="text-center">
+        <a href="#" t:type="PageLink" t:page="user/updateUser">${message:update}</a>	  
+    </p>
+    <p class="text-center">
+        <a href="#" t:type="PageLink" t:page="user/searchUsers">${message:search}</a>
+    </p>	
 </html>

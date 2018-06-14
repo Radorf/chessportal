@@ -3,13 +3,13 @@ package evv.chessportal.model.userservice;
 import evv.chessportal.model.person.Person;
 import evv.chessportal.model.userprofile.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import evv.chessportal.model.userprofile.UserProfileDao;
 import evv.chessportal.model.userservice.util.PasswordEncrypter;
 import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import java.util.ArrayList;
 
 
 @Transactional
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
         UserProfile userProfile = userProfileDao.find(userProfileId);
         Person person = userProfile.getPerson();
         person.setFirstName(personDetails.getFirstName());
-        person.setSurName(personDetails.getSurName());
+        person.setSurname(personDetails.getSurName());
         person.setEmail(personDetails.getEmail());
         person.setPhoneNumber(personDetails.getPhoneNumber());
         userProfile.setPerson(person);
@@ -107,6 +107,11 @@ public class UserServiceImpl implements UserService {
         userProfile.setEncryptedPassword(PasswordEncrypter
                 .crypt(newClearPassword));
 
+    }
+
+    @Override
+    public ArrayList<UserProfile> searchByGeneralKey(String searchKey) {
+        return userProfileDao.searchByGeneralKey(searchKey);
     }
 
 }
