@@ -28,4 +28,6 @@ public interface UserService {
 
     public ArrayList<UserProfile> searchByGeneralKey(String searchKey);
 
+    public void deleteUser(Long userProfileId) throws InstanceNotFoundException;
+
 }

@@ -5,9 +5,7 @@
     <p class="text-center">
         <a href="#" t:type="PageLink" t:page="user/createUser">${message:create}</a>	  
     </p>
-    <p class="text-center">
-        <a href="#" t:type="PageLink" t:page="user/updateUser">${message:update}</a>	  
-    </p>
+   
     <p class="text-center">
         <a href="#" t:type="PageLink" t:page="user/searchUsers">${message:search}</a>
     </p>	

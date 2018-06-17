@@ -1,0 +1,20 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      t:type="Layout" t:title="title">
+    <div>
+        <h1>
+            ${message:firstName}: <small>${user.person.firstName}</small>     
+        </h1>
+        <h1>
+            ${message:surname}: <small>${user.person.surname}</small>   
+        </h1>
+        <h1>
+            ${message:loginName}: <small>${user.loginName}</small>            
+        </h1>
+        <h1>
+            ${message:email}: <small>${user.person.email}</small>            
+        </h1>
+
+
+    </div>
+
+</html>

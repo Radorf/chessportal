@@ -114,4 +114,10 @@ public class UserServiceImpl implements UserService {
         return userProfileDao.searchByGeneralKey(searchKey);
     }
 
+    @Override
+    public void deleteUser(Long userProfileId) throws InstanceNotFoundException {
+         userProfileDao.find(userProfileId);
+         userProfileDao.remove(userProfileId);
+    }
+
 }

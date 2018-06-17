@@ -7,9 +7,12 @@ package evv.chessportal.web.pages.user;
 
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
+import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.tapestry5.PersistenceConstants;
-import org.apache.tapestry5.annotations.Import;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -37,6 +40,16 @@ public class SearchUsers {
     Object onSuccess() {
 //        userList =  new ArrayList<UserProfile>();
         userList = userService.searchByGeneralKey(searchKey);
+        return this;
+    }
+    
+    @OnEvent(component="delete")
+    Object deleteUser(Long id){           
+        try {
+            userService.deleteUser(id);
+        } catch (InstanceNotFoundException ex) {
+            Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return this;
     }
 }
