@@ -3,7 +3,7 @@
 	
 	<p class="text-center">
 		<a href="#" t:type="PageLink" t:page="user/register">${message:register}</a>	       
-	</p>
+	</p>    
 	
 	<br/>
 

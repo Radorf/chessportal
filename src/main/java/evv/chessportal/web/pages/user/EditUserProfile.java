@@ -9,16 +9,16 @@ import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.PersonDetails;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
-import evv.chessportal.web.util.UserSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
  * @author E_Villodas
  */
-public class UpdateUser {
+public class EditUserProfile {
 
     @Property
     private String firstName;
@@ -32,30 +32,35 @@ public class UpdateUser {
     @Property
     private String phoneNumber;
 
-    @SessionState(create = false)
-    private UserSession userSession;
-
     @Inject
     private UserService userService;
 
+    @Property
+    private UserProfile user;
+
+    void onActivate(long userId) {
+        try {
+            user = userService.findUserProfile(userId);
+        } catch (InstanceNotFoundException ex) {
+            //TODO error page
+            Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     void onPrepareForRender() throws InstanceNotFoundException {
-
-        UserProfile userProfile;
-
-        userProfile = userService.findUserProfile(userSession
-                .getUserProfileId());
-        firstName = userProfile.getPerson().getFirstName();
-        surName = userProfile.getPerson().getSurname();
-        email = userProfile.getPerson().getEmail();
-        phoneNumber = userProfile.getPerson().getPhoneNumber();
+        
+        firstName = user.getPerson().getFirstName();
+        surName = user.getPerson().getSurname();
+        email = user.getPerson().getEmail();
+        phoneNumber = user.getPerson().getPhoneNumber();
     }
 
     Object onSuccess() throws InstanceNotFoundException {
 
-        userService.updateUserProfileDetails(userSession.getUserProfileId(), new PersonDetails(
+        userService.updateUserProfileDetails(user
+                .getId(), new PersonDetails(
                 firstName, surName, email, phoneNumber));
-        userSession.setFirstName(firstName);
-        return Users.class;
+        return ShowUserProfile.class;
 
     }
 }

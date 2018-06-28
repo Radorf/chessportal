@@ -43,8 +43,7 @@ public class SearchUsers {
         return this;
     }
     
-    @OnEvent(component="delete")
-    Object deleteUser(Long id){           
+    Object onActionFromDeleteUser(Long id){           
         try {
             userService.deleteUser(id);
         } catch (InstanceNotFoundException ex) {
