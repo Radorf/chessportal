@@ -45,6 +45,7 @@ public class SearchUsers {
     
     Object onActionFromDeleteUser(Long id){           
         try {
+            //TODO logged user should not be deleted
             userService.deleteUser(id);
         } catch (InstanceNotFoundException ex) {
             Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);

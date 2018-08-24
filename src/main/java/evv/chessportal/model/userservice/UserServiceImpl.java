@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long userProfileId) throws InstanceNotFoundException {
+    public void deleteUser(Long userProfileId) throws InstanceNotFoundException {        
          userProfileDao.find(userProfileId);
          userProfileDao.remove(userProfileId);
     }
