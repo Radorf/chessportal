@@ -42,11 +42,24 @@ public class UserProfile {
     private String loginName;
 
     private Person person;
+    
+    private Integer elo;
+    
+    private String licenseNumber;
 
     public UserProfile(String loginName, String password, Person person) {
         this.loginName = loginName;
         this.encryptedPassword = password;
         this.person = person;
+    }
+    
+     public UserProfile(String loginName, String password, Person person, Integer elo,            
+            String licenseNumber) {
+        this.loginName = loginName;
+        this.encryptedPassword = password;
+        this.person = person;
+        this.elo = elo;
+        this.licenseNumber = licenseNumber;
     }
 
     public String getEncryptedPassword() {
@@ -76,6 +89,23 @@ public class UserProfile {
         this.person = person;
     }
 
+    public Integer getElo() {
+        return elo;
+    }
+
+    public void setElo(Integer elo) {
+        this.elo = elo;
+    }
+
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
+
+    
     @SequenceGenerator( // It only takes effect for
             name = "idUserProfileGenerator", // databases providing identifier
             sequenceName = "UserProfileGeneratorSeq") // generators.

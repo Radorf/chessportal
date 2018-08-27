@@ -13,7 +13,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import evv.chessportal.model.userservice.PersonDetails;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
-import evv.chessportal.web.pages.Index;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.UserSession;
@@ -38,11 +37,17 @@ public class CreateUser {
 
     @Property
     private String email;
-    
+
     @Property
     private String phoneNumber;
+    
+    @Property
+    private Integer elo;
+    
+    @Property
+    private String licenseNumber;
 
-    @SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
 
     @Inject
@@ -74,8 +79,8 @@ public class CreateUser {
         } else {
 
             try {
-                UserProfile userProfile = userService.registerUser(loginName, password,
-                    new PersonDetails(firstName, surName, email,phoneNumber));
+                UserProfile userProfile = userService.registerUser(loginName, password, elo, licenseNumber,
+                        new PersonDetails(firstName, surName, email, phoneNumber));
                 userProfileId = userProfile.getId();
             } catch (DuplicateInstanceException e) {
                 registrationForm.recordError(loginNameField, messages
@@ -88,10 +93,7 @@ public class CreateUser {
 
     Object onSuccess() {
 
-        userSession = new UserSession();
-        userSession.setUserProfileId(userProfileId);
-        userSession.setFirstName(firstName);
-        return Index.class;
+        return Users.class;
 
     }
 

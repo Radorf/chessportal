@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evv.chessportal.web.components;
+package evv.chessportal.model.individualtournament;
 
-import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Property;
+import evv.chessportal.model.util.dao.GenericDao;
 
 /**
  *
  * @author E_Villodas
  */
-public class MenuBarLayout {
-
+public interface IndividualTournamentDao extends GenericDao<IndividualTournament, Long> {
     
 }

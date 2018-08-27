@@ -1,0 +1,23 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      t:type="MenuBarLayout">
+    
+    <div class="container">
+        <h1>
+            ${message:Tournament}: <small>${tournament.name_}</small>     
+        </h1>
+        <h1>
+            ${message:startDate}: <small>${startDate}</small>   
+        </h1>
+        <h1>
+            ${message:endDate}: <small>${endDate}</small>            
+        </h1>
+        <h1>
+            ${message:startEnrolmentDate}: <small>${startEnrolmentDate}</small>            
+        </h1>
+        <h1>
+            ${message:endEnrolmentDate}: <small>${endEnrolmentDate}</small>            
+        </h1>
+            <a href="#" t:type="PageLink" t:page="tournament/editTournament" context="tournament.id">${message:editTournament}</a>
+    </div>
+
+</html>

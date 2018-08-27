@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evv.chessportal.web.components;
-
-import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Property;
+package evv.chessportal.web.pages.tournament;
 
 /**
  *
  * @author E_Villodas
  */
-public class MenuBarLayout {
-
+public class Tournaments {
     
 }

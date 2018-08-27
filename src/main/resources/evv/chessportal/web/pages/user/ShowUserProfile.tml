@@ -1,5 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout" t:title="title">
+      t:type="MenuBarLayout">
     
     <div class="container">
         <h1>
@@ -10,6 +10,12 @@
         </h1>
         <h1>
             ${message:loginName}: <small>${user.loginName}</small>            
+        </h1>
+        <h1>
+            ${message:elo}: <small>${user.elo}</small> 
+        </h1>
+        <h1>
+            ${message:licenseNumber}: <small>${user.licenseNumber}</small> 
         </h1>
         <h1>
             ${message:email}: <small>${user.person.email}</small>            

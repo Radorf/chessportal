@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
     
 
     @Override
-    public UserProfile registerUser(String loginName, String clearPassword,
-            PersonDetails personDetails)
+    public UserProfile registerUser(String loginName, String clearPassword,Integer elo,            
+            String licenseNumber, PersonDetails personDetails)
             throws DuplicateInstanceException {
 
         try {
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             Person person = new Person(personDetails.getFirstName(), personDetails.getSurName(), personDetails.getEmail(),
                     personDetails.getPhoneNumber());
             UserProfile userProfile = new UserProfile(loginName,
-                    encryptedPassword, person);
+                    encryptedPassword, person,elo,licenseNumber);
 
             userProfileDao.save(userProfile);
             return userProfile;
@@ -77,10 +77,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserProfileDetails(Long userProfileId,
-            PersonDetails personDetails)
+    public void updateUserProfileDetails(Long userProfileId,Integer elo,            
+            String licenseNumber,PersonDetails personDetails)
             throws InstanceNotFoundException {
         UserProfile userProfile = userProfileDao.find(userProfileId);
+        userProfile.setElo(elo);
+        userProfile.setLicenseNumber(licenseNumber);
         Person person = userProfile.getPerson();
         person.setFirstName(personDetails.getFirstName());
         person.setSurname(personDetails.getSurName());
@@ -118,6 +120,11 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long userProfileId) throws InstanceNotFoundException {        
          userProfileDao.find(userProfileId);
          userProfileDao.remove(userProfileId);
+    }
+
+    @Override
+    public ArrayList<UserProfile> searchAll() {
+        return userProfileDao.searchAll();
     }
 
 }

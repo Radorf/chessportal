@@ -1,0 +1,53 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      t:type="MenuBarLayout">
+    <title></title>
+    <div>
+        <form t:type="Form" class="form-horizontal" t:id="searchForm">
+
+            <t:errors/>                    
+
+
+            <div class="w3-padding w3-white notranslate">
+                <h1>
+                    ${message:Tournament}: <small>${tournament.name_}</small>     
+                </h1>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Login</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t:loop source="userList" value="user" >
+                            <tr>
+                                <td>
+                                    <t:checkbox  value="user.id"/>
+                                </td>
+                                <td>
+                                    ${user.loginName}
+                                </td>
+                                <td>
+                                    ${user.person.firstName} ${user.person.surname}
+                                </td>
+                                <td>
+                                    ${user.person.email}
+                                </td>                            
+                            </tr>
+                        </t:loop>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-1">
+                    <button type="submit" class="btn btn-primary">${message:selectPlayers}</button>
+                </div>
+            </div> 
+        </form>
+    </div>
+
+</html>
+

@@ -4,7 +4,7 @@
       xmlns:p="tapestry:parameter">
     <head>
         <meta charset="utf-8" />
-        <title>${title} - MiniPortal</title>
+        <title>Chess Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <style type="text/css">
@@ -63,10 +63,10 @@
 
         <div class="container">
 
-            <t:if test="showTitleInBody">
+<!--            <t:if test="showTitleInBody">
                 <h3 class="text-center">${title}</h3>
                 <br/>
-            </t:if>
+            </t:if>-->
 
             <t:body/>
         </div>

@@ -24,33 +24,35 @@
         </form>
 
 
-        <div class="w3-padding w3-white notranslate">
+       <div class="w3-padding w3-white notranslate">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Login</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>${message:Tournament}</th>
+                        <th>${message:startDate}</th>
+                        <th>${message:endDate}</th>
+                        <th>${message:startEnrolmentDate}</th>
+                        <th>${message:endEnrolmentDate}</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <t:loop source="userList" value="user" >
+                    <t:loop source="tournamentList" value="tournament" >
                         <tr>
                             <td>
-                                <a href="#" t:type="PageLink" t:page="user/showUserProfile" context="user.id">${user.loginName}</a> 
+                                <a href="#" t:type="PageLink" t:page="tournament/tournamentDetails" context="tournament.id">${tournament.name_}</a> 
                             </td>
                             <td>
-                                ${user.person.firstName} ${user.person.surname}
+                                ${startDate}
                             </td>
                             <td>
-                                ${user.person.email}
+                                ${endDate}
                             </td>
                             <td>
-                                <a href="#" t:type="PageLink" t:page="user/editUserProfile" context="user.id">${message:editProfile}</a>
+                                ${startEnrolmentDate}
                             </td>
                             <td>
-                                <a href="#" t:type="ActionLink" t:id="deleteUser" context="user.id">${message:delete}</a>                    
+                                ${endEnrolmentDate}
                             </td>
                         </tr>
                     </t:loop>
@@ -60,3 +62,4 @@
     </div>
 
 </html>
+

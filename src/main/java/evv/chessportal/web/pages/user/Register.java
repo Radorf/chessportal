@@ -75,7 +75,7 @@ public class Register {
         } else {
 
             try {
-                UserProfile userProfile = userService.registerUser(loginName, password,
+                UserProfile userProfile = userService.registerUser(loginName, password,0,null,
                     new PersonDetails(firstName, surName, email,phoneNumber));
                 userProfileId = userProfile.getId();
             } catch (DuplicateInstanceException e) {

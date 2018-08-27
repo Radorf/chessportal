@@ -21,4 +21,6 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
     public UserProfile findByLoginName(String loginName) throws InstanceNotFoundException;
 
     public ArrayList<UserProfile> searchByGeneralKey(String searchKey);
+
+    public ArrayList<UserProfile> searchAll();
 }

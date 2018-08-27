@@ -34,26 +34,32 @@ public class EditUserProfile {
     @Property
     private String phoneNumber;
 
+    @Property
+    private Integer elo;
+
+    @Property
+    private String licenseNumber;
+
     @Inject
     private UserService userService;
 
     @Property
     private UserProfile user;
-    
+
     @Property
     private Long userId;
-    
+
     @Inject
     private PageRenderLinkSource pageRenderLinkSource;
-    
+
     void onActivate(long userId) {
-        this.userId=userId;
+        this.userId = userId;
     }
-    
+
     Long onPassivate() {
         return userId;
     }
-    
+
     void setupRender() {
         try {
             user = userService.findUserProfile(userId);
@@ -78,12 +84,12 @@ public class EditUserProfile {
             Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     Object onSuccess() throws InstanceNotFoundException {
 
         userService.updateUserProfileDetails(user
-                .getId(), new PersonDetails(
-                firstName, surName, email, phoneNumber));
+                .getId(),elo,licenseNumber, new PersonDetails(
+                        firstName, surName, email, phoneNumber));
         return pageRenderLinkSource.createPageRenderLinkWithContext(ShowUserProfile.class, user.getId());
     }
 }

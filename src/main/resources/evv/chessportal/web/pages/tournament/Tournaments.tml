@@ -1,0 +1,10 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      t:type="MenuBarLayout">
+    <title>Tournaments Managing page</title>
+    <p class="text-center">
+        <a href="#" t:type="PageLink" t:page="tournament/createTournament">${message:create}</a>	  
+    </p>
+     <p class="text-center">
+        <a href="#" t:type="PageLink" t:page="tournament/searchTournaments">${message:search}</a>	  
+    </p>
+</html>

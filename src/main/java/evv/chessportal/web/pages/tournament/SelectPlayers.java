@@ -1,29 +1,30 @@
+package evv.chessportal.web.pages.tournament;
+
+import evv.chessportal.model.tournament.Tournament;
+import evv.chessportal.model.tournamentservice.TournamentService;
+import evv.chessportal.model.userprofile.UserProfile;
+import evv.chessportal.model.userservice.UserService;
+import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import evv.chessportal.web.pages.user.SearchUsers;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evv.chessportal.web.pages.user;
-
-import evv.chessportal.model.userprofile.UserProfile;
-import evv.chessportal.model.userservice.UserService;
-import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.tapestry5.PersistenceConstants;
-import org.apache.tapestry5.annotations.OnEvent;
-import org.apache.tapestry5.annotations.Persist;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
  * @author E_Villodas
  */
-
-public class SearchUsers {
-
+public class SelectPlayers {
     @Inject
     private UserService userService;
 
@@ -36,6 +37,21 @@ public class SearchUsers {
 
     @Property
     UserProfile user;
+    
+    @Property
+    private Tournament tournament;
+    
+    @Inject
+    private TournamentService tournamentService;
+    
+    void onActivate(Long tournamentId){
+        try {
+            tournament = tournamentService.findTournament(tournamentId);
+        } catch (InstanceNotFoundException ex) {
+            //TODO error page
+            Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
      void onPrepareForRender() {
         if (userList==null || userList.isEmpty()){
@@ -49,13 +65,5 @@ public class SearchUsers {
         return this;
     }
     
-    Object onActionFromDeleteUser(Long id){           
-        try {
-            //TODO logged user should not be deleted
-            userService.deleteUser(id);
-        } catch (InstanceNotFoundException ex) {
-            Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return this;
-    }
+    
 }

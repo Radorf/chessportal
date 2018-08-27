@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public interface UserService {
 
-    public UserProfile registerUser(String loginName, String clearPassword,
-            PersonDetails userProfileDetails)
+    public UserProfile registerUser(String loginName, String clearPassword,Integer elo,            
+            String licenseNumber, PersonDetails userProfileDetails)
             throws DuplicateInstanceException;
 
     public UserProfile login(String loginName, String password,
@@ -18,8 +18,8 @@ public interface UserService {
     public UserProfile findUserProfile(Long userProfileId)
             throws InstanceNotFoundException;
 
-    public void updateUserProfileDetails(Long userProfileId,
-            PersonDetails userProfileDetails)
+    public void updateUserProfileDetails(Long userProfileId,Integer elo,            
+            String licenseNumber, PersonDetails userProfileDetails)
             throws InstanceNotFoundException;
 
     public void changePassword(Long userProfileId, String oldClearPassword,
@@ -29,5 +29,7 @@ public interface UserService {
     public ArrayList<UserProfile> searchByGeneralKey(String searchKey);
 
     public void deleteUser(Long userProfileId) throws InstanceNotFoundException;
+
+    public ArrayList<UserProfile> searchAll();
 
 }

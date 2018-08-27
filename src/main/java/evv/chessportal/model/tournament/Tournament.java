@@ -9,6 +9,8 @@ import java.util.Calendar;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,6 +32,10 @@ public class Tournament {
     public final static String TEAM_TOURNAMENT_TYPE_STRING = "teamTournament";
     public final static String INDIVIDUAL_TOURNAMENT_TYPE_STRING = "individualTournament";
 
+    public enum TournamentPairingsType {
+        ROUND_ROBIN, SWISS
+    }
+
     public Tournament() {
     }
 
@@ -39,6 +45,16 @@ public class Tournament {
     private Calendar endDate;
     private Calendar startEnrolmentDate;
     private Calendar endEnrolmentDate;
+    private TournamentPairingsType pairingsType;
+
+    @Enumerated(EnumType.STRING)
+    public TournamentPairingsType getPairingsType() {
+        return pairingsType;
+    }
+
+    public void setPairingsType(TournamentPairingsType pairingsType) {
+        this.pairingsType = pairingsType;
+    }
 
     public String getName_() {
         return name_;
@@ -84,7 +100,7 @@ public class Tournament {
         this.endEnrolmentDate = endEnrolmentDate;
     }
 
-    @SequenceGenerator( // It only takes effect for
+     @SequenceGenerator( // It only takes effect for
             name = "idTournamentGenerator", // databases providing identifier
             sequenceName = "iTournamentGeneratorSeq") // generators.
     @Id

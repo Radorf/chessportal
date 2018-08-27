@@ -17,9 +17,9 @@ import evv.chessportal.web.util.UserSession;
         stylesheet="tapestry5/bootstrap/css/bootstrap-theme.css")
 public class Layout {
 
-    @Property
-    @Parameter(required = true, defaultPrefix = "message")
-    private String title;
+//    @Property
+//    @Parameter(required = true, defaultPrefix = "message")
+//    private String title;
     
     @Parameter(defaultPrefix = "literal")
     private Boolean showTitleInBody;

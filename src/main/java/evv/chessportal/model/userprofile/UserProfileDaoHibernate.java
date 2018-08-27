@@ -56,4 +56,13 @@ public class UserProfileDaoHibernate extends
         return list;
     }
 
+    @Override
+    public ArrayList<UserProfile> searchAll() {
+        ArrayList<UserProfile> list;
+        list = (ArrayList<UserProfile>) getSession().createQuery(
+                "SELECT u FROM UserProfile u ").list();
+
+        return list;
+    }
+
 }

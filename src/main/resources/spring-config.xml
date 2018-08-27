@@ -21,9 +21,9 @@
 
     <!--  Data source. -->
     <bean id="dataSource"
-              class="org.springframework.jndi.JndiObjectFactoryBean"
-              p:jndiName="jdbc/chessportal"
-              p:resourceRef="true" />        
+          class="org.springframework.jndi.JndiObjectFactoryBean"
+          p:jndiName="jdbc/chessportal"
+          p:resourceRef="true" />        
 
     <!-- ***********************************************************************
          To avoid requesting unnecessary connections (not necessary for
@@ -52,9 +52,20 @@
           class="evv.chessportal.model.userservice.UserServiceImpl"
           p:userProfileDao-ref="userProfileDao"
     />
+    
+    <bean id="tournamentDao"
+          class="evv.chessportal.model.tournament.TournamentDaoHibernate" />
+    
+    <bean id="individualTournamentDao" 
+          class="evv.chessportal.model.individualtournament.IndividualTournamentDaoHibernate"      />
+          
+    <bean id="tournamentService" 
+          class="evv.chessportal.model.tournamentservice.TournamentServiceImpl"  
+          p:individualTournamentDao-ref="individualTournamentDao"
+          p:tournamentDao-ref="tournamentDao"/>
 
-    <!-- Enable the configuration of transactional behavior based on
-    annotations. -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+<!-- Enable the configuration of transactional behavior based on
+annotations. -->
+<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
