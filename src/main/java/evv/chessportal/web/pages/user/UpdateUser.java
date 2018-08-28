@@ -32,6 +32,12 @@ public class UpdateUser {
     @Property
     private String phoneNumber;
 
+    @Property
+    private Integer elo;
+
+    @Property
+    private String licenseNumber;
+
     @SessionState(create = false)
     private UserSession userSession;
 
@@ -52,7 +58,7 @@ public class UpdateUser {
 
     Object onSuccess() throws InstanceNotFoundException {
 
-        userService.updateUserProfileDetails(userSession.getUserProfileId(), new PersonDetails(
+        userService.updateUserProfileDetails(userSession.getUserProfileId(),elo,licenseNumber, new PersonDetails(
                 firstName, surName, email, phoneNumber));
         userSession.setFirstName(firstName);
         return Users.class;
