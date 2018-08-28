@@ -24,6 +24,7 @@ import javax.persistence.InheritanceType;
 public class Administrator extends UserProfile{
 
     public Administrator() {
+    	
     }
     
 }
