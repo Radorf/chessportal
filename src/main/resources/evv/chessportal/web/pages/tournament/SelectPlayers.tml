@@ -21,14 +21,13 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <t:checklist handling="idList" enconder="encoder" selected="selected"    value="user.id"/>
-<!--                    <tbody>
-                        <t:loop source="userList" value="user" >
+                    <tbody>
+                        <t:loop source="userList" value="user" encoder="encoder">
                             <tr>
                                 <td>
-                                    <t:checklist handling="idList" enconder="encoder" selected="selected"    value="user.id"/>
-                                </td>-->
-<!--                                <td>
+                                    <t:checkbox selected="selected" value="selected"/>
+                                </td>
+                                <td>
                                     ${user.loginName}
                                 </td>
                                 <td>
@@ -39,7 +38,7 @@
                                 </td>                            
                             </tr>
                         </t:loop>
-                   </tbody>-->
+                   </tbody>
                 </table>
             </div>
             <div class="form-group">
