@@ -5,8 +5,9 @@ import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
-import evv.chessportal.web.pages.user.SearchUsers;
+import evv.chessportal.web.pages.Index;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.tapestry5.PersistenceConstants;
@@ -19,32 +20,36 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author E_Villodas
  */
 public class SelectPlayers {
+
     @Inject
     private UserService userService;
 
     @Property
     private String searchKey;
 
-    @Property    
+    @Property
     @Persist(PersistenceConstants.FLASH)
     private ArrayList<UserProfile> userList;
 
     @Property
     UserProfile user;
-    
+
     @Property
     private Tournament tournament;
-    
+
+    @Property
+    @Persist
+    private List<Long> idList;
+
     @Inject
     private TournamentService tournamentService;
-    
-    void onActivate(Long tournamentId){
+
+    void onActivate(Long tournamentId) {
         try {
             tournament = tournamentService.findTournament(tournamentId);
         } catch (InstanceNotFoundException ex) {
@@ -53,17 +58,18 @@ public class SelectPlayers {
         }
     }
 
-     void onPrepareForRender() {
-        if (userList==null || userList.isEmpty()){
+    void onPrepareForRender() {
+        if (userList == null || userList.isEmpty()) {
             userList = userService.searchAll();
         }
     }
-     
+
     Object onSuccess() {
 //        userList =  new ArrayList<UserProfile>();
-        userList = userService.searchByGeneralKey(searchKey);
+        if (idList.isEmpty()) {
+           return Index.class;
+        }
         return this;
     }
-    
-    
+
 }

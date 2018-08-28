@@ -17,7 +17,9 @@
         <h1>
             ${message:endEnrolmentDate}: <small>${endEnrolmentDate}</small>            
         </h1>
-            <a href="#" t:type="PageLink" t:page="tournament/editTournament" context="tournament.id">${message:editTournament}</a>
-    </div>
+        <p> <a href="#" t:type="PageLink" t:page="tournament/editTournament" context="tournament.id">${message:editTournament}</a></p>
+        <p> <a href="#" t:type="PageLink" t:page="tournament/selectPlayers" context="tournament.id">${message:selectPlayers}</a> </p>
 
+    </div>
+            
 </html>

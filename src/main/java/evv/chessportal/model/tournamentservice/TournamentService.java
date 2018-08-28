@@ -17,11 +17,14 @@ import java.util.Calendar;
  * @author E_Villodas
  */
 public interface TournamentService {
-    
-    public IndividualTournament createRRIndividualTournament(String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
-            Calendar endEnrolmentDate, Tournament.TournamentPairingsType type) throws DatesInconsistenceException;
+
+    public IndividualTournament createRRIndividualTournament(String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate, Calendar endEnrolmentDate) throws DatesInconsistenceException;
+
+    public Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
+            Calendar endEnrolmentDate) throws DatesInconsistenceException, InstanceNotFoundException;
 
     public ArrayList<Tournament> searchAll();
 
-    public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException;;
+    public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException;
+;
 }

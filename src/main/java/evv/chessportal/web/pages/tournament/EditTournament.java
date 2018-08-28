@@ -6,10 +6,12 @@
 package evv.chessportal.web.pages.tournament;
 
 import evv.chessportal.model.tournament.Tournament;
-import evv.chessportal.model.tournament.Tournament.TournamentPairingsType;
 import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
+import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
@@ -22,12 +24,11 @@ import org.apache.tapestry5.services.PageRenderLinkSource;
  *
  * @author E_Villodas
  */
-public class CreateTournament {
+public class EditTournament {
 
     @Property
     private Tournament tournament;
-    @Property
-    private TournamentPairingsType type;
+   
     @Property
     private String name_;
     @Property
@@ -38,6 +39,8 @@ public class CreateTournament {
     private Calendar startEnrolmentDate;
     @Property
     private Calendar endEnrolmentDate;
+    @Property
+    private Long tournamentId;
     @Component
     private Form tournamentForm;
     @Component(id = "name")
@@ -48,7 +51,21 @@ public class CreateTournament {
     private Messages messages;
     @Inject
     private PageRenderLinkSource pageRenderLinkSource;
+    
 
+    
+    void onActivate(long tournamentId) {
+        this.tournamentId =  tournamentId;
+    }
+    
+    void setupRender(){
+        try {
+            tournament = tournamentService.findTournament(tournamentId);
+        } catch (InstanceNotFoundException ex) {
+            Logger.getLogger(EditTournament.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     void onValidateFromTournamentForm() {
         if (!tournamentForm.isValid()) {
             return;
@@ -65,8 +82,12 @@ public class CreateTournament {
     }
 
     Object onSuccess() throws DatesInconsistenceException {
-        tournament = tournamentService.createRRIndividualTournament(name_, startDate, endDate, startEnrolmentDate, endEnrolmentDate);
+        try {
+            tournament = tournamentService.updateTournament(tournamentId,name_, startDate, endDate, startEnrolmentDate, endEnrolmentDate);
+        } catch (InstanceNotFoundException ex) {
+            Logger.getLogger(EditTournament.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        return pageRenderLinkSource.createPageRenderLinkWithContext(SelectPlayers.class, tournament.getId());
+        return pageRenderLinkSource.createPageRenderLinkWithContext(TournamentDetails.class, tournament.getId());
     }
 }
