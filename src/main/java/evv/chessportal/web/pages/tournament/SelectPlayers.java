@@ -121,6 +121,12 @@ public class SelectPlayers {
         if (idList.isEmpty()) {
             return Index.class;
         }
+        try {
+            tournamentService.enrolPlayers(tournamentId, idList);
+        } catch (InstanceNotFoundException ex) {
+            // TODO error page
+            Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return this;
     }
 

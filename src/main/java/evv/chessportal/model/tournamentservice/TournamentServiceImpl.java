@@ -7,6 +7,8 @@ package evv.chessportal.model.tournamentservice;
 
 import evv.chessportal.model.individualtournament.IndividualTournament;
 import evv.chessportal.model.individualtournament.IndividualTournamentDao;
+import evv.chessportal.model.player.Player;
+import evv.chessportal.model.player.PlayerDao;
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournament.Tournament.TournamentPairingsType;
 import evv.chessportal.model.tournament.TournamentDao;
@@ -14,6 +16,10 @@ import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -26,6 +32,8 @@ public class TournamentServiceImpl implements TournamentService {
     private IndividualTournamentDao individualTournamentDao;
     @Autowired
     private TournamentDao tournamentDao;
+    @Autowired
+    private PlayerDao playerDao;
 
     public void setIndividualTournamentDao(IndividualTournamentDao individualTournamentDao) {
         this.individualTournamentDao = individualTournamentDao;
@@ -34,8 +42,10 @@ public class TournamentServiceImpl implements TournamentService {
     public void setTournamentDao(TournamentDao tournamentDao) {
         this.tournamentDao = tournamentDao;
     }
-    
-    
+
+    public void setPlayerDao(PlayerDao playerDao) {
+        this.playerDao = playerDao;
+    }
 
     @Override
     public IndividualTournament createRRIndividualTournament(String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate, Calendar endEnrolmentDate) throws DatesInconsistenceException{
@@ -92,6 +102,21 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException {
         return tournamentDao.find(tournamentId);
+    }
+
+    @Override
+    public void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException {
+        IndividualTournament tournament = individualTournamentDao.find(tournamentId);
+        Set<Player> playerList = new HashSet<Player>();
+        for (Long playerId : playerIds) {
+            playerList.add(playerDao.find(playerId));
+        }
+        if (tournament.getPlayerList()==null) {
+            tournament.setPlayerList(playerList);
+        } else {
+            tournament.getPlayerList().addAll(playerList);
+        }
+        individualTournamentDao.save(tournament);
     }
 
 }

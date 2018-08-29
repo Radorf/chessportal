@@ -11,6 +11,7 @@ import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
 /**
  *
@@ -26,5 +27,6 @@ public interface TournamentService {
     public ArrayList<Tournament> searchAll();
 
     public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException;
-;
+    
+    void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException;
 }
