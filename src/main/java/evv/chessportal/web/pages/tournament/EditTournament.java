@@ -10,6 +10,7 @@ import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.tapestry5.annotations.Component;
@@ -32,13 +33,13 @@ public class EditTournament {
     @Property
     private String name_;
     @Property
-    private Calendar startDate;
+    private Date startDate;
     @Property
-    private Calendar endDate;
+    private Date endDate;
     @Property
-    private Calendar startEnrolmentDate;
+    private Date startEnrolmentDate;
     @Property
-    private Calendar endEnrolmentDate;
+    private Date endEnrolmentDate;
     @Property
     private Long tournamentId;
     @Component
@@ -52,18 +53,28 @@ public class EditTournament {
     @Inject
     private PageRenderLinkSource pageRenderLinkSource;
     
-
-    
     void onActivate(long tournamentId) {
         this.tournamentId =  tournamentId;
     }
-    
+
+    Long onPassivate() {
+        return tournamentId;
+    }
     void setupRender(){
         try {
             tournament = tournamentService.findTournament(tournamentId);
+            name_ = tournament.getName_();
+            startDate = calendarToDate(tournament.getStartDate());
+            endDate = calendarToDate(tournament.getEndDate());
+            startEnrolmentDate = calendarToDate(tournament.getStartEnrolmentDate());
+            endEnrolmentDate = calendarToDate(tournament.getEndEnrolmentDate());
         } catch (InstanceNotFoundException ex) {
             Logger.getLogger(EditTournament.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private Date calendarToDate(Calendar c) {
+        return c!=null?c.getTime():null;
     }
     
     void onValidateFromTournamentForm() {
@@ -81,13 +92,23 @@ public class EditTournament {
 
     }
 
+    private Calendar dateToCalendar(Date date) {
+        if (date==null) {
+            return null;
+        }
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c;
+    }
+    
     Object onSuccess() throws DatesInconsistenceException {
         try {
-            tournament = tournamentService.updateTournament(tournamentId,name_, startDate, endDate, startEnrolmentDate, endEnrolmentDate);
+            tournament = tournamentService.updateTournament(tournamentId,name_, dateToCalendar(startDate), 
+                    dateToCalendar(endDate), dateToCalendar(startEnrolmentDate), dateToCalendar(endEnrolmentDate));
         } catch (InstanceNotFoundException ex) {
             Logger.getLogger(EditTournament.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return pageRenderLinkSource.createPageRenderLinkWithContext(TournamentDetails.class, tournament.getId());
+        return pageRenderLinkSource.createPageRenderLinkWithContext(TournamentDetails.class, tournamentId);
     }
 }
