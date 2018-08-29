@@ -1,26 +1,62 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout">
-    
-    <div class="container">
-        <h1>
-            ${message:firstName}: <small>${user.person.firstName}</small>     
-        </h1>
-        <h1>
-            ${message:surname}: <small>${user.person.surname}</small>   
-        </h1>
-        <h1>
-            ${message:loginName}: <small>${user.loginName}</small>            
-        </h1>
-        <h1>
-            ${message:elo}: <small>${user.elo}</small> 
-        </h1>
-        <h1>
-            ${message:licenseNumber}: <small>${user.licenseNumber}</small> 
-        </h1>
-        <h1>
-            ${message:email}: <small>${user.person.email}</small>            
-        </h1>
-            <a href="#" t:type="PageLink" t:page="user/editUserProfile" context="user.id">${message:editProfile}</a>
-    </div>
+	t:type="Layout">
+
+
+
+<div class="container">
+	<div class="btn-group">
+		<a class="btn btn-default" href="#" t:type="PageLink"
+			t:page="user/editUserProfile">${message:editProfile}</a>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:firstName}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.person.firstName}</p>
+		</div>
+	</div>
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:surname}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.person.surname}</p>
+		</div>
+	</div>
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:loginName}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.loginName}</p>
+		</div>
+	</div>
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:elo}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.elo}</p>
+		</div>
+	</div>
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:licenseNumber}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.licenseNumber}</p>
+		</div>
+	</div>
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:email}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${user.person.email}</p>
+		</div>
+	</div>
+</div>
 
 </html>
