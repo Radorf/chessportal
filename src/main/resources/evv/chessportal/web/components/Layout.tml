@@ -14,9 +14,9 @@ body {
 }
 
 .navbar, .dropdown-menu {
-	background: #70c2c2;
+	background: #b8e0e0;
 	border: none;
-	height: 75px;
+	height: 70px;
 }
 
 .nav>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,
@@ -35,8 +35,11 @@ body {
 	box-shadow: none;
 }
 
-.nav>li>a:hover {
-background: #70c2c2;
+.navbar-brand, .navbar-nav>li>a {
+	height: 66px;
+	color: black !important;
+	padding-top: 24px;
+	background: #70c2c2 !important;
 }
 
 .nav li:hover:nth-child(8n+1), .nav li.active:nth-child(8n+1) {
@@ -55,10 +58,23 @@ background: #70c2c2;
 	border-bottom: #F0776C 3px solid;
 }
 
-
 .navbar-toggle .icon-bar {
 	color: #fff;
 	background: #fff;
+}
+
+.footer {
+	height: 25px !important;
+	min-height: 25px !important;
+	font-size: 12px;
+	background: #eef7f7;
+	color: #777;
+	padding-top: 5px;
+}
+
+.body-container {
+	margin-top: 15px;
+	margin-bottom: 30px;
 }
 </style>
 
@@ -84,18 +100,20 @@ background: #70c2c2;
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a class="navbar-brand" href="#" t:type="PageLink" t:page="index">Home</a></li>
-<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
-<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 								aria-expanded="false">Departments <span class="caret"></span></a> -->
-<!-- 								<ul class="dropdown-menu"> -->
-<!-- 									<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
-<!-- 										data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 										aria-expanded="false">View Departments</a></li> -->
-<!-- 									<li><a href="#">Add New</a></li> -->
-<!-- 								</ul></li> -->
+							<li class="active"><a href="#" t:type="PageLink"
+								t:page="index">Home</a></li>
+							<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
+							<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
+							<!-- 								aria-expanded="false">Departments <span class="caret"></span></a> -->
+							<!-- 								<ul class="dropdown-menu"> -->
+							<!-- 									<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
+							<!-- 										data-toggle="dropdown" role="button" aria-haspopup="true" -->
+							<!-- 										aria-expanded="false">View Departments</a></li> -->
+							<!-- 									<li><a href="#">Add New</a></li> -->
+							<!-- 								</ul></li> -->
 							<li><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
-							<li><a href="#" t:type="PageLink" t:page="tournament/tournaments">${message:tournaments}</a></li>
+							<li><a href="#" t:type="PageLink"
+								t:page="tournament/tournaments">${message:tournaments}</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right">
 							<li class=" dropdown"><a href="#"
@@ -108,6 +126,22 @@ background: #70c2c2;
 									<li><a href="#">My Profile</a></li>
 								</ul></li>
 							<li class=""><a href="#">Logout</a></li>
+							<t:if test="userSession">
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown">${userSession.firstName} <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#" t:type="PageLink"
+											t:page="user/updateprofile">${message:updateProfile}</a></li>
+										<li><a href="#" t:type="PageLink"
+											t:page="user/changepassword">${message:changePassword}</a></li>
+										<li class="divider"></li>
+										<li><a href="#" t:type="ActionLink" t:id="logout">${message:logout}</a></li>
+									</ul></li>
+								<p:else> 
+									<li><a href="#" t:type="PageLink" t:page="user/login">${message:authenticate}</a></li>
+								</p:else>
+							</t:if>
 						</ul>
 					</div>
 				</div>
@@ -115,44 +149,16 @@ background: #70c2c2;
 		</div>
 	</div>
 
-	<div class="container">
 
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<t:if test="userSession">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">${userSession.firstName} <span
-							class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" t:type="PageLink"
-								t:page="user/updateprofile">${message:updateProfile}</a></li>
-							<li><a href="#" t:type="PageLink"
-								t:page="user/changepassword">${message:changePassword}</a></li>
-							<li class="divider"></li>
-							<li><a href="#" t:type="ActionLink" t:id="logout">${message:logout}</a></li>
-						</ul></li>
-					<p:else>
-						<li><a href="#" t:type="PageLink" t:page="user/login">${message:authenticate}</a></li>
-					</p:else>
-				</t:if>
-			</ul>
-
-		</div>
-
-	</div>
-
-
-	<div class="container">
+	<div class="container body-container">
 		<t:body />
 	</div>
 
-	<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-      <p class="navbar-text pull-left">© 2018 - Site Built By E. Villodas
-           <a href="http://tinyurl.com/tbvalid" target="_blank" >Chess Portal</a>
-      </p>
-    </div>
-    </div>
+	<div class="navbar navbar-default navbar-fixed-bottom footer">
+		<div class="container">
+			<p class="pull-left">© 2018 - Site Built By E. Villodas</p>
+		</div>
+	</div>
 
 </body>
 
