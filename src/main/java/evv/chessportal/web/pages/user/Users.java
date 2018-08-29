@@ -28,25 +28,17 @@ public class Users {
     private UserService userService;
 
     @Property
+    @Persist(PersistenceConstants.FLASH)
     private String searchKey;
 
-    @Property    
-    @Persist(PersistenceConstants.FLASH)
+    @Property
     private ArrayList<UserProfile> userList;
 
     @Property
     UserProfile user;
 
-     void onPrepareForRender() {
-        if (userList==null || userList.isEmpty()){
-            userList = userService.searchAll();
-        }
-    }
-     
-    Object onSuccess() {
-//        userList =  new ArrayList<UserProfile>();
+     void setupRender() {
         userList = userService.searchByGeneralKey(searchKey);
-        return this;
     }
     
     Object onActionFromDeleteUser(Long id){           

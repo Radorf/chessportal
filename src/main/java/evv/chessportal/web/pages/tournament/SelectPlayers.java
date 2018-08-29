@@ -7,7 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -34,11 +36,12 @@ public class SelectPlayers {
     @Inject
     private UserService userService;
 
+    @Persist(PersistenceConstants.FLASH)
     @Property
     private String searchKey;
 
     @Property
-    private ArrayList<UserProfile> userList;
+    private ArrayList<Player> userList;
 
     @Property
     UserProfile user;
@@ -94,7 +97,7 @@ public class SelectPlayers {
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (userList == null || userList.isEmpty()) {
-            userList = userService.searchAll();
+            userList = tournamentService.searchPlayerByKeyword(searchKey);
         }
     }
 
@@ -118,10 +121,10 @@ public class SelectPlayers {
             // TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
-        userList = userService.searchAll();
+        userList = tournamentService.searchPlayerByKeyword("");
     }
 
-    Object onSuccess() {
+    Object onSuccessSelectForm() {
 //        userList =  new ArrayList<UserProfile>();
         if (idList.isEmpty()) {
             return Index.class;
@@ -134,5 +137,4 @@ public class SelectPlayers {
         }
         return this;
     }
-
 }

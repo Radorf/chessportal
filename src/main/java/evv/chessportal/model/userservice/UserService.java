@@ -1,5 +1,6 @@
 package evv.chessportal.model.userservice;
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -31,5 +32,5 @@ public interface UserService {
     public void deleteUser(Long userProfileId) throws InstanceNotFoundException;
 
     public ArrayList<UserProfile> searchAll();
-
+    
 }

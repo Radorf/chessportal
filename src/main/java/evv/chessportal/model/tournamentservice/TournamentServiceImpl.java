@@ -93,11 +93,14 @@ public class TournamentServiceImpl implements TournamentService {
         return tournament;
     }
 
-
+    @Override
+    public ArrayList<Tournament> searchTournamentByKeyword(String keyword) {
+        return tournamentDao.searchTournamentByKeyword(keyword);
+    }
+    
     @Override
     public ArrayList<Tournament> searchAll() {
         return tournamentDao.searchAll();
-        
     }
 
     @Override
@@ -120,5 +123,8 @@ public class TournamentServiceImpl implements TournamentService {
         }
         individualTournamentDao.save(tournament);
     }
-
+    
+    public ArrayList<Player> searchPlayerByKeyword(String keyword) {
+        return playerDao.searchByKeyword(keyword);
+    }
 }

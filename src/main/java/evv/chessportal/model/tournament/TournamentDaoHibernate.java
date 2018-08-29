@@ -5,8 +5,11 @@
  */
 package evv.chessportal.model.tournament;
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.util.dao.GenericDaoHibernate;
 import java.util.ArrayList;
+
+import org.hibernate.query.Query;
 
 /**
  *
@@ -22,6 +25,25 @@ public class TournamentDaoHibernate extends GenericDaoHibernate<Tournament,Long>
                 + "ORDER BY t.startDate DESC"
         ).list();
         
+        return list;
+    }
+
+    @Override
+    public ArrayList<Tournament> searchTournamentByKeyword(String searchKey) {
+        boolean hasKeyword = searchKey!=null && !"".equals(searchKey);
+        StringBuilder sb = new StringBuilder(64);
+        sb.append("SELECT t FROM Tournament t ");
+        if (hasKeyword) {
+            sb.append("WHERE t.name_ LIKE :searchKey ");
+        }
+        sb.append("ORDER BY t.startDate DESC ");
+        
+        Query query = getSession().createQuery(sb.toString());
+        if (hasKeyword) {
+            query.setParameter("searchKey", "%"+searchKey+"%");
+        }
+        ArrayList<Tournament> list = (ArrayList<Tournament>) query.list();
+
         return list;
     }
     

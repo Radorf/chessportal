@@ -6,6 +6,7 @@
 package evv.chessportal.model.tournamentservice;
 
 import evv.chessportal.model.individualtournament.IndividualTournament;
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -23,10 +24,14 @@ public interface TournamentService {
 
     public Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
             Calendar endEnrolmentDate) throws DatesInconsistenceException, InstanceNotFoundException;
-
+    
+    ArrayList<Tournament> searchTournamentByKeyword(String keyword);
+    
     public ArrayList<Tournament> searchAll();
 
     public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException;
     
     void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException;
+    
+    ArrayList<Player> searchPlayerByKeyword(String keyword);
 }

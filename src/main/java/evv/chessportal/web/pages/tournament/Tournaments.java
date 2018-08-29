@@ -23,20 +23,18 @@ public class Tournaments {
     @Inject
     TournamentService tournamentService;
     
+    @Persist(PersistenceConstants.FLASH)
     @Property
     private String searchKey;
     
     @Property    
-    @Persist(PersistenceConstants.FLASH)
     private ArrayList<Tournament> tournamentList;
     
     @Property
     private Tournament tournament;
     
-    void onPrepareForRender() {
-        if (tournamentList==null || tournamentList.isEmpty()){
-            tournamentList = tournamentService.searchAll();
-        }
+    void setupRender() {
+        tournamentList = tournamentService.searchTournamentByKeyword(searchKey);
     }
     
     public String getStartDate(){

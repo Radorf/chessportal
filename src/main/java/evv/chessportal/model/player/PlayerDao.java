@@ -5,6 +5,8 @@
  */
 package evv.chessportal.model.player;
 
+import java.util.ArrayList;
+
 import evv.chessportal.model.util.dao.GenericDao;
 
 /**
@@ -12,5 +14,5 @@ import evv.chessportal.model.util.dao.GenericDao;
  * @author E_Villodas
  */
 public interface PlayerDao extends GenericDao<Player,Long>{
-    
+    ArrayList<Player> searchByKeyword(String keyword);
 }
