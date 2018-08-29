@@ -37,7 +37,7 @@ public class Layout {
     		return true;
     	} else {
     		return showTitleInBody;
-    	}
+    	} 
     	
     }
     

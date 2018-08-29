@@ -65,7 +65,7 @@ public class EditUserProfile {
             user = userService.findUserProfile(userId);
         } catch (InstanceNotFoundException ex) {
             //TODO error page
-            Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,7 +81,7 @@ public class EditUserProfile {
             user = userService.findUserProfile(userId);
         } catch (InstanceNotFoundException ex) {
             //TODO error page
-            Logger.getLogger(SearchUsers.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

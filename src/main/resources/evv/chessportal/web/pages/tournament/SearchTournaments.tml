@@ -1,5 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="MenuBarLayout">
+      t:type="Layout">
 
     <div>
         <form t:type="Form" class="form-horizontal" t:id="searchForm">
