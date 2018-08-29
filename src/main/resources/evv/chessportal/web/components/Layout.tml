@@ -11,6 +11,7 @@
 body {
 	background: none;
 	margin-top: 80px;
+	padding-bottom: 50px;
 }
 
 .navbar, .dropdown-menu {
@@ -35,27 +36,16 @@ body {
 	box-shadow: none;
 }
 
-.navbar-brand, .navbar-nav>li>a {
-	height: 66px;
-	color: black !important;
+.navbar-nav li a {
+	height: 64px;
+	color: #1D5A5A !important;
 	padding-top: 24px;
-	background: #70c2c2 !important;
+	background: #b8e0e0 !important;
+	font-size: 17px;
 }
 
-.nav li:hover:nth-child(8n+1), .nav li.active:nth-child(8n+1) {
-	border-bottom: #C4E17F 3px solid;
-}
-
-.nav li:hover:nth-child(8n+2), .nav li.active:nth-child(8n+2) {
-	border-bottom: #F7FDCA 3px solid;
-}
-
-.nav li:hover:nth-child(8n+3), .nav li.active:nth-child(8n+3) {
-	border-bottom: #FECF71 3px solid;
-}
-
-.nav li:hover:nth-child(8n+4), .nav li.active:nth-child(8n+4) {
-	border-bottom: #F0776C 3px solid;
+.nav li:hover, .nav li.active {
+	border-bottom: #FECF71 6px solid;
 }
 
 .navbar-toggle .icon-bar {
@@ -64,12 +54,12 @@ body {
 }
 
 .footer {
-	height: 25px !important;
-	min-height: 25px !important;
+	height: 35px !important;
+	min-height: 35px !important;
 	font-size: 12px;
 	background: #eef7f7;
 	color: #777;
-	padding-top: 5px;
+	padding-top: 11px;
 }
 
 .body-container {
@@ -84,6 +74,15 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.row.line p { 
+	margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+.btn-container {
+	margin-bottom: 25px;
+}
+
 </style>
 
 </head>
@@ -96,19 +95,19 @@ body {
 		<div class="container-fluid">
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed"
-							data-toggle="collapse" data-target="#navbar"
-							aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">Logo</a>
-					</div>
+<!-- 					<div class="navbar-header"> -->
+<!-- 						<button type="button" class="navbar-toggle collapsed" -->
+<!-- 							data-toggle="collapse" data-target="#navbar" -->
+<!-- 							aria-expanded="false" aria-controls="navbar"> -->
+<!-- 							<span class="sr-only">Toggle navigation</span> <span -->
+<!-- 								class="icon-bar"></span> <span class="icon-bar"></span> <span -->
+<!-- 								class="icon-bar"></span> -->
+<!-- 						</button> -->
+<!-- 						<a class="navbar-brand" href="#">Logo</a> -->
+<!-- 					</div> -->
 					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="#" t:type="PageLink"
+						<ul class="nav navbar-nav"> 
+							<li id="homeSection"><a href="#" t:type="PageLink"
 								t:page="index">Home</a></li>
 							<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
 							<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
@@ -119,21 +118,21 @@ body {
 							<!-- 										aria-expanded="false">View Departments</a></li> -->
 							<!-- 									<li><a href="#">Add New</a></li> -->
 							<!-- 								</ul></li> -->
-							<li><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
-							<li><a href="#" t:type="PageLink"
+							<li id="usersSection"><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
+							<li id="tournamentsSection"><a href="#" t:type="PageLink"
 								t:page="tournament/tournaments">${message:tournaments}</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right">
-							<li class=" dropdown"><a href="#"
-								class="dropdown-toggle active" data-toggle="dropdown"
-								role="button" aria-haspopup="true" aria-expanded="false">Signed
-									in as <span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Change Password</a></li>
-									<li><a href="#">My Profile</a></li>
-								</ul></li>
-							<li class=""><a href="#">Logout</a></li>
+<!-- 							<li class=" dropdown"><a href="#" -->
+<!-- 								class="dropdown-toggle active" data-toggle="dropdown" -->
+<!-- 								role="button" aria-haspopup="true" aria-expanded="false">Signed -->
+<!-- 									in as <span class="caret"></span> -->
+<!-- 							</a> -->
+<!-- 								<ul class="dropdown-menu"> -->
+<!-- 									<li><a href="#">Change Password</a></li> -->
+<!-- 									<li><a href="#">My Profile</a></li> -->
+<!-- 								</ul></li> -->
+<!-- 							<li class=""><a href="#">Logout</a></li> -->
 							<t:if test="userSession">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown">${userSession.firstName} <span
@@ -169,5 +168,23 @@ body {
 	</div>
 
 </body>
+
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    if(window.location.href.indexOf("user/") != -1) {
+    	jQuery("#homeSection").removeClass("active");
+    	jQuery("#usersSection").addClass("active");
+    	jQuery("#tournamentsSection").removeClass("active");
+    } else if(window.location.href.indexOf("tournament/") != -1) {
+    	jQuery("#homeSection").removeClass("active");
+    	jQuery("#usersSection").removeClass("active");
+    	jQuery("#tournamentsSection").addClass("active");
+    } else {
+    	jQuery("#homeSection").addClass("active");
+    	jQuery("#usersSection").removeClass("active");
+    	jQuery("#tournamentsSection").removeClass("active");
+    }
+});
+</script>
 
 </html>
