@@ -2,15 +2,17 @@ package evv.chessportal.web.pages.tournament;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.ValueEncoder;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import evv.chessportal.model.individualtournament.IndividualTournament;
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.userprofile.UserProfile;
@@ -36,7 +38,6 @@ public class SelectPlayers {
     private String searchKey;
 
     @Property
-    @Persist(PersistenceConstants.FLASH)
     private ArrayList<UserProfile> userList;
 
     @Property
@@ -46,7 +47,6 @@ public class SelectPlayers {
     private Tournament tournament;
 
     @Property
-    @Persist
     private List<Long> idList;
 
     @Property
@@ -84,6 +84,11 @@ public class SelectPlayers {
         }
         try {
             tournament = tournamentService.findTournament(tournamentId);
+            if (tournament instanceof IndividualTournament) {
+                Set<Player> playerList = ((IndividualTournament) tournament).getPlayerList();
+                // Lambda to get playerIds
+                idList = playerList.stream().map(Player::getId).collect(Collectors.toList());
+            }
         } catch (InstanceNotFoundException ex) {
             // TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
