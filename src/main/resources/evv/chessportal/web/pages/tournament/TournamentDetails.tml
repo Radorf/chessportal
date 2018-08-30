@@ -1,5 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout">
+      t:type="Layout" t:activeTournaments="true">
     
     <div class="container">
         <h1>

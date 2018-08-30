@@ -17,9 +17,15 @@ import evv.chessportal.web.util.UserSession;
         stylesheet="tapestry5/bootstrap/css/bootstrap-theme.css")
 public class Layout {
 
-//    @Property
-//    @Parameter(required = true, defaultPrefix = "message")
-//    private String title;
+	@Property
+    @Parameter(required = false)
+    private boolean activeHome;
+	@Property
+    @Parameter(required = false)
+    private boolean activeUsers;
+	@Property
+    @Parameter(required = false)
+    private boolean activeTournaments;
     
     @Parameter(defaultPrefix = "literal")
     private Boolean showTitleInBody;
@@ -46,6 +52,18 @@ public class Layout {
         userSession = null;
         CookiesManager.removeCookies(cookies);
         return Index.class;
+    }
+    
+    public String getActiveHomeClass() {
+    	return activeHome ? "active" : "";
+    }
+    
+    public String getActiveUsersClass() {
+    	return activeUsers ? "active" : "";
+    }
+    
+    public String getActiveTournamentsClass() {
+    	return activeTournaments ? "active" : "";
     }
 
 }

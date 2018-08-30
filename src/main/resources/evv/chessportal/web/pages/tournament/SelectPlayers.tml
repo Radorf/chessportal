@@ -1,6 +1,6 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout">
-    <title></title>
+      t:type="Layout" t:activeTournaments="true">
+   
     <div>           
         <div class="w3-padding w3-white notranslate">
             <h1>

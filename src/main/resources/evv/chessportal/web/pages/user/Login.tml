@@ -1,5 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:title="title">
+	t:type="Layout">
 	
 	<p class="text-center">
 		<a href="#" t:type="PageLink" t:page="user/register">${message:register}</a>	       

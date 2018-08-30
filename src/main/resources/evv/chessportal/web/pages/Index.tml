@@ -1,5 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout"  >
+	t:type="Layout" t:activeHome="true">
 
 <h1 class="text-center">${message:welcome}</h1>
    

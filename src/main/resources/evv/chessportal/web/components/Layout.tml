@@ -107,7 +107,7 @@ body {
 <!-- 					</div> -->
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav"> 
-							<li id="homeSection"><a href="#" t:type="PageLink"
+							<li class="${getActiveHomeClass()}"><a href="#" t:type="PageLink"
 								t:page="index">Home</a></li>
 							<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
 							<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
@@ -118,8 +118,8 @@ body {
 							<!-- 										aria-expanded="false">View Departments</a></li> -->
 							<!-- 									<li><a href="#">Add New</a></li> -->
 							<!-- 								</ul></li> -->
-							<li id="usersSection"><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
-							<li id="tournamentsSection"><a href="#" t:type="PageLink"
+							<li class="${getActiveUsersClass()}"><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
+							<li class="${getActiveTournamentsClass()}"><a href="#" t:type="PageLink"
 								t:page="tournament/tournaments">${message:tournaments}</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right">
@@ -168,23 +168,5 @@ body {
 	</div>
 
 </body>
-
-<script type="text/javascript">
-jQuery(document).ready(function () {
-    if(window.location.href.indexOf("user/") != -1) {
-    	jQuery("#homeSection").removeClass("active");
-    	jQuery("#usersSection").addClass("active");
-    	jQuery("#tournamentsSection").removeClass("active");
-    } else if(window.location.href.indexOf("tournament/") != -1) {
-    	jQuery("#homeSection").removeClass("active");
-    	jQuery("#usersSection").removeClass("active");
-    	jQuery("#tournamentsSection").addClass("active");
-    } else {
-    	jQuery("#homeSection").addClass("active");
-    	jQuery("#usersSection").removeClass("active");
-    	jQuery("#tournamentsSection").removeClass("active");
-    }
-});
-</script>
 
 </html>
