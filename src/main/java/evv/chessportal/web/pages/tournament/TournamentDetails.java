@@ -35,6 +35,11 @@ public class TournamentDetails {
         }
     }
     
+    Object onActionFromStartTournament(Long id){
+        tournamentService.generateRRIndividualTournamentRounds(id);
+        return this;
+    }
+    
     public String getStartDate(){
         return DateManagerUtil.printCalendarDate(tournament.getStartDate());
     }

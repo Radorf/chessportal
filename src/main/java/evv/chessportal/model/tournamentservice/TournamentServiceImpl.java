@@ -10,7 +10,6 @@ import evv.chessportal.model.individualtournament.IndividualTournamentDao;
 import evv.chessportal.model.player.Player;
 import evv.chessportal.model.player.PlayerDao;
 import evv.chessportal.model.tournament.Tournament;
-import evv.chessportal.model.tournament.Tournament.TournamentPairingsType;
 import evv.chessportal.model.tournament.TournamentDao;
 import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -27,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author E_Villodas
  */
+@Transactional
 public class TournamentServiceImpl implements TournamentService {
     
     @Autowired
@@ -93,22 +93,24 @@ public class TournamentServiceImpl implements TournamentService {
         return tournament;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ArrayList<Tournament> searchTournamentByKeyword(String keyword) {
         return tournamentDao.searchTournamentByKeyword(keyword);
     }
     
+    @Transactional(readOnly = true)
     @Override
     public ArrayList<Tournament> searchAll() {
         return tournamentDao.searchAll();
     }
 
-    @Override
+    @Transactional(readOnly = true)
+    @Override    
     public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException {
         return tournamentDao.find(tournamentId);
     }
 
-    @Transactional
     @Override
     public void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException {
         IndividualTournament tournament = individualTournamentDao.find(tournamentId);
@@ -126,5 +128,11 @@ public class TournamentServiceImpl implements TournamentService {
     
     public ArrayList<Player> searchPlayerByKeyword(String keyword) {
         return playerDao.searchByKeyword(keyword);
+    }
+
+    @Override
+    public void generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException {
+        IndividualTournament individualTournament = individualTournamentDao.find(id);
+        //individualTournamentDao.countEnrolledPlayers(individualTournament);
     }
 }

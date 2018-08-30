@@ -19,6 +19,7 @@
         </h1>
         <p> <a href="#" t:type="PageLink" t:page="tournament/editTournament" context="tournament.id">${message:editTournament}</a></p>
         <p> <a href="#" t:type="PageLink" t:page="tournament/selectPlayers" context="tournament.id">${message:selectPlayers}</a> </p>
+        <p> <a href="#" t:type="ActionLink" t:id="startTournament" context="tournament.id">${message:startTournament}</a></p>
 
     </div>
             
