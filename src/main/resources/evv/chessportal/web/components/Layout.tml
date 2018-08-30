@@ -68,21 +68,20 @@ body {
 }
 
 .line {
-    margin-top: 3px;
-    margin-bottom: 3px;
-    border: 0;
-    border-bottom: 1px solid #eee;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	border: 0;
+	border-bottom: 1px solid #eee;
 }
 
-.row.line p { 
+.row.line p {
 	margin-top: 10px;
-    margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 
 .btn-container {
 	margin-bottom: 25px;
 }
-
 </style>
 
 </head>
@@ -95,57 +94,50 @@ body {
 		<div class="container-fluid">
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
-<!-- 					<div class="navbar-header"> -->
-<!-- 						<button type="button" class="navbar-toggle collapsed" -->
-<!-- 							data-toggle="collapse" data-target="#navbar" -->
-<!-- 							aria-expanded="false" aria-controls="navbar"> -->
-<!-- 							<span class="sr-only">Toggle navigation</span> <span -->
-<!-- 								class="icon-bar"></span> <span class="icon-bar"></span> <span -->
-<!-- 								class="icon-bar"></span> -->
-<!-- 						</button> -->
-<!-- 						<a class="navbar-brand" href="#">Logo</a> -->
-<!-- 					</div> -->
+					<!-- 					<div class="navbar-header"> -->
+					<!-- 						<button type="button" class="navbar-toggle collapsed" -->
+					<!-- 							data-toggle="collapse" data-target="#navbar" -->
+					<!-- 							aria-expanded="false" aria-controls="navbar"> -->
+					<!-- 							<span class="sr-only">Toggle navigation</span> <span -->
+					<!-- 								class="icon-bar"></span> <span class="icon-bar"></span> <span -->
+					<!-- 								class="icon-bar"></span> -->
+					<!-- 						</button> -->
+					<!-- 						<a class="navbar-brand" href="#">Logo</a> -->
+					<!-- 					</div> -->
 					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav"> 
-							<li class="${getActiveHomeClass()}"><a href="#" t:type="PageLink"
-								t:page="index">Home</a></li>
+						<ul class="nav navbar-nav">
+							<li class="${getActiveHomeClass()}"><a href="#"
+								t:type="PageLink" t:page="index"><span
+										class="glyphicon glyphicon-home"/></a></li>
 							<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
 							<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
 							<!-- 								aria-expanded="false">Departments <span class="caret"></span></a> -->
 							<!-- 								<ul class="dropdown-menu"> -->
-							<!-- 									<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
+							<!-- 							 		<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
 							<!-- 										data-toggle="dropdown" role="button" aria-haspopup="true" -->
 							<!-- 										aria-expanded="false">View Departments</a></li> -->
 							<!-- 									<li><a href="#">Add New</a></li> -->
 							<!-- 								</ul></li> -->
-							<li class="${getActiveUsersClass()}"><a href="#" t:type="PageLink" t:page="user/users">${message:users}</a></li>
-							<li class="${getActiveTournamentsClass()}"><a href="#" t:type="PageLink"
-								t:page="tournament/tournaments">${message:tournaments}</a></li>
+							<li class="${getActiveUsersClass()}"><a href="#"
+								t:type="PageLink" t:page="user/users">${message:users}</a></li>
+							<li class="${getActiveTournamentsClass()}"><a href="#"
+								t:type="PageLink" t:page="tournament/tournaments">${message:tournaments}</a></li>
 						</ul>
 						<ul class="nav navbar-nav pull-right">
-<!-- 							<li class=" dropdown"><a href="#" -->
-<!-- 								class="dropdown-toggle active" data-toggle="dropdown" -->
-<!-- 								role="button" aria-haspopup="true" aria-expanded="false">Signed -->
-<!-- 									in as <span class="caret"></span> -->
-<!-- 							</a> -->
-<!-- 								<ul class="dropdown-menu"> -->
-<!-- 									<li><a href="#">Change Password</a></li> -->
-<!-- 									<li><a href="#">My Profile</a></li> -->
-<!-- 								</ul></li> -->
-<!-- 							<li class=""><a href="#">Logout</a></li> -->
 							<t:if test="userSession">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown">${userSession.firstName} <span
-										class="caret"></span></a>
+									data-toggle="dropdown"><span
+										class="glyphicon glyphicon-user" style="padding-right: 10px"></span>${userSession.firstName}
+										<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#" t:type="PageLink"
-											t:page="user/updateprofile">${message:updateProfile}</a></li>
+											t:page="user/updateprofile">${message:myProfile}</a></li>
 										<li><a href="#" t:type="PageLink"
 											t:page="user/changepassword">${message:changePassword}</a></li>
-										<li class="divider"></li>
-										<li><a href="#" t:type="ActionLink" t:id="logout">${message:logout}</a></li>
+										<li><a href="#" t:type="ActionLink" t:id="logout"><span
+										class="glyphicon glyphicon-log-out" style="padding-right: 10px"></span>${message:logout}</a></li>
 									</ul></li>
-								<p:else> 
+								<p:else>
 									<li><a href="#" t:type="PageLink" t:page="user/login">${message:authenticate}</a></li>
 								</p:else>
 							</t:if>
