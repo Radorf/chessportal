@@ -1,14 +1,15 @@
 package evv.chessportal.web.pages.user;
 
 
+import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
 import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.ioc.annotations.Inject;
+import evv.chessportal.web.services.AuthenticationPolicy;
+import evv.chessportal.web.services.AuthenticationPolicyType;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,6 +20,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  *
  * @author E_Villodas
  */
+@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class ShowUserProfile {
 
     @Property

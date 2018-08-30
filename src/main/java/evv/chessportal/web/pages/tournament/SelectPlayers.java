@@ -21,6 +21,8 @@ import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import evv.chessportal.web.pages.Index;
+import evv.chessportal.web.services.AuthenticationPolicy;
+import evv.chessportal.web.services.AuthenticationPolicyType;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,6 +33,7 @@ import evv.chessportal.web.pages.Index;
  *
  * @author E_Villodas
  */
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class SelectPlayers {
 
     @Inject

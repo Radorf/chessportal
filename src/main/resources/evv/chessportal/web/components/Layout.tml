@@ -137,14 +137,15 @@ body {
 										<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#" t:type="PageLink"
-											t:page="user/updateprofile">${message:myProfile}</a></li>
+											t:page="user/updateprofile">${message:editProfile}</a></li>
 										<li><a href="#" t:type="PageLink"
 											t:page="user/changepassword">${message:changePassword}</a></li>
 										<li><a href="#" t:type="ActionLink" t:id="logout"><span
 										class="glyphicon glyphicon-log-out" style="padding-right: 10px"></span>${message:logout}</a></li>
 									</ul></li>
 								<p:else>
-									<li><a href="#" t:type="PageLink" t:page="user/login">${message:authenticate}</a></li>
+									<li><a href="#" t:type="PageLink" t:page="user/login"><span
+										class="glyphicon glyphicon-log-out" style="padding-right: 10px"></span>${message:authenticate}</a></li>
 								</p:else>
 							</t:if>
 						</ul>
