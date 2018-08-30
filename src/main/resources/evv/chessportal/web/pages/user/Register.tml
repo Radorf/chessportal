@@ -40,7 +40,7 @@
 	   <div class="form-group">        
 	        <t:label for="surname" class="col-md-offset-3 col-md-2"/>
 	        <div class="col-md-3">
-	            <input t:id="surn   ame" t:type="TextField"
+	            <input t:id="surname" t:type="TextField"
 				       t:validate="required" maxlength="30" />
 	        </div>
 	   </div>

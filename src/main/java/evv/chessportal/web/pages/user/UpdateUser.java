@@ -9,6 +9,8 @@ import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.PersonDetails;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import evv.chessportal.web.services.AuthenticationPolicy;
+import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.UserSession;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;

@@ -6,12 +6,15 @@ import org.apache.tapestry5.services.ComponentSource;
 import org.apache.tapestry5.services.MetaDataLocator;
 
 import evv.chessportal.web.util.UserSession;
+import evv.chessportal.web.util.UserSession.Role;
 
 public class AuthenticationValidator {
 
 	private final static String LOGIN_PAGE = "user/Login";
 
 	private final static String INIT_PAGE = "Index";
+	
+    private final static String FORBIDDEN_PAGE = "Error403";
 
 	public static final String PAGE_AUTHENTICATION_TYPE = "page-authentication-type";
 	public static final String EVENT_HANDLER_AUTHENTICATION_TYPE = "event-handler-authentication-type";
@@ -89,22 +92,27 @@ public class AuthenticationValidator {
 		switch (policyType) {
 
 		case AUTHENTICATED_USERS:
-
 			if (!userAuthenticated) {
 				redirectPage = LOGIN_PAGE;
 			}
 			break;
-
 		case NON_AUTHENTICATED_USERS:
-
 			if (userAuthenticated) {
 				redirectPage = INIT_PAGE;
 			}
 			break;
-
-		default:
+		case ADMIN_USERS:
+            if (!userAuthenticated || !Role.ADMIN.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
+                redirectPage = FORBIDDEN_PAGE;
+            }
+            break;
+		case PLAYER_USERS:
+		    if (!userAuthenticated || !Role.PLAYER.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
+                redirectPage = FORBIDDEN_PAGE;
+            }
+            break;
+        default:
 			break;
-
 		}
 
 		return redirectPage;

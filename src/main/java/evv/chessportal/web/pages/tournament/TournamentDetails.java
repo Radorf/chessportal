@@ -35,7 +35,7 @@ public class TournamentDetails {
         }
     }
     
-    Object onActionFromStartTournament(Long id){
+    Object onActionFromStartTournament(Long id) throws InstanceNotFoundException{
         tournamentService.generateRRIndividualTournamentRounds(id);
         return this;
     }

@@ -1,5 +1,7 @@
 package evv.chessportal.web.pages.user;
 
+import evv.chessportal.model.administrator.Administrator;
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -18,6 +20,7 @@ import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.CookiesManager;
 import evv.chessportal.web.util.UserSession;
+import evv.chessportal.web.util.UserSession.Role;
 
 @AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
 public class Login {
@@ -70,7 +73,12 @@ public class Login {
     	userSession = new UserSession();
         userSession.setUserProfileId(userProfile.getId());
         userSession.setFirstName(userProfile.getPerson().getFirstName());
-
+        if (userProfile instanceof Player) {
+            userSession.setRole(Role.PLAYER);
+        } else if (userProfile instanceof Administrator) {
+            userSession.setRole(Role.ADMIN);
+        }
+        
         if (rememberMyPassword) {
             CookiesManager.leaveCookies(cookies, loginName, userProfile
                     .getEncryptedPassword());
