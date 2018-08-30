@@ -79,7 +79,6 @@ public class TournamentServiceImpl implements TournamentService {
        if (name_ == null) return null;
         if (startDate == null) return null; 
         Tournament tournament = individualTournamentDao.find(tournamentId);
-        tournament = new IndividualTournament();
          if  (startDate.after(endDate) )  {
              throw new DatesInconsistenceException(startDate + " later than "+ endDate,Tournament.class.getName()) ;
          }

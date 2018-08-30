@@ -81,13 +81,12 @@ public class EditTournament {
         if (!tournamentForm.isValid()) {
             return;
         }
-        if (startDate.after(endDate)) {
+        if (endDate!=null && startDate.after(endDate)) {
             tournamentForm.recordError(messages.get("error-startDateLate"));
 
         }
-        if (startEnrolmentDate != null && startEnrolmentDate.after(endEnrolmentDate)) {
+        if (startEnrolmentDate != null && endEnrolmentDate!=null && startEnrolmentDate.after(endEnrolmentDate)) {
             tournamentForm.recordError(messages.get("error-startDateLate"));
-
         }
 
     }

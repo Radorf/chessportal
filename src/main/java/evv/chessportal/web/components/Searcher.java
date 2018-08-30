@@ -9,6 +9,7 @@ public class Searcher {
     private String searchKey;
     
     Object onSuccessFromSearchForm() {
+        searchKey=searchKey!=null?searchKey.trim():null;
         return this;
     }
 }
