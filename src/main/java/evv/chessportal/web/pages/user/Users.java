@@ -5,23 +5,27 @@
  */
 package evv.chessportal.web.pages.user;
 
-import evv.chessportal.model.userprofile.UserProfile;
-import evv.chessportal.model.userservice.UserService;
-import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.tapestry5.PersistenceConstants;
-import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
+
+import evv.chessportal.model.userprofile.UserProfile;
+import evv.chessportal.model.userservice.UserService;
+import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import evv.chessportal.web.services.AuthenticationPolicy;
+import evv.chessportal.web.services.AuthenticationPolicyType;
 
 /**
  *
  * @author E_Villodas
  */
 
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class Users {
 
     @Inject

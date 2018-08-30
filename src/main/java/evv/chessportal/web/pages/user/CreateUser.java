@@ -18,7 +18,7 @@ import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.UserSession;
 
-@AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class CreateUser {
 
     @Property

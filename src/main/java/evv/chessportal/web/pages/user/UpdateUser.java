@@ -20,6 +20,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  *
  * @author E_Villodas
  */
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class UpdateUser {
 
     @Property

@@ -5,11 +5,8 @@
  */
 package evv.chessportal.web.pages.tournament;
 
-import evv.chessportal.model.tournament.Tournament;
-import evv.chessportal.model.tournament.Tournament.TournamentPairingsType;
-import evv.chessportal.model.tournamentservice.TournamentService;
-import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import java.util.Calendar;
+
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
@@ -18,10 +15,18 @@ import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
+import evv.chessportal.model.tournament.Tournament;
+import evv.chessportal.model.tournament.Tournament.TournamentPairingsType;
+import evv.chessportal.model.tournamentservice.TournamentService;
+import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
+import evv.chessportal.web.services.AuthenticationPolicy;
+import evv.chessportal.web.services.AuthenticationPolicyType;
+
 /**
  *
  * @author E_Villodas
  */
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class CreateTournament {
 
     @Property
