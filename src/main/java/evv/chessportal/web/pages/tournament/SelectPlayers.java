@@ -124,7 +124,7 @@ public class SelectPlayers {
         userList = tournamentService.searchPlayerByKeyword("");
     }
 
-    Object onSuccessSelectForm() {
+    Object onSuccessFromSelectForm() {
 //        userList =  new ArrayList<UserProfile>();
         if (idList.isEmpty()) {
             return Index.class;

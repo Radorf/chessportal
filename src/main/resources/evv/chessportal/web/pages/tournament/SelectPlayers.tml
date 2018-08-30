@@ -40,13 +40,13 @@
                         </t:loop>
                    </tbody>
                 </table>
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-1">
+                        <button type="submit" class="btn btn-primary">${message:selectPlayers}</button>
+                    </div>
+                </div> 
             </form>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-1">
-                <button type="submit" class="btn btn-primary">${message:selectPlayers}</button>
-            </div>
-        </div> 
     </div>
 
 </html>
