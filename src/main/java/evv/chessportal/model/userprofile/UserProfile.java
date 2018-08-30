@@ -33,7 +33,11 @@ public class UserProfile {
     public final static String ADMIN_TYPE_STRING = "admin";
     public final static String PLAYER_TYPE_STRING = "player";
 
-    public UserProfile() {
+    public enum PlayerType {
+        ADMIN,PLAYER
+    }
+
+public UserProfile() {
     }
 
     private Long id;
@@ -66,9 +70,9 @@ public class UserProfile {
     }
 
     @OneToOne(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.REMOVE})
-    @JoinColumn(name = "idPerson")
-    public Person getPerson() {
+        @Cascade({CascadeType.SAVE_UPDATE, CascadeType.REMOVE})
+        @JoinColumn(name = "idPerson")
+        public Person getPerson() {
         return person;
     }
 
@@ -77,11 +81,11 @@ public class UserProfile {
     }
     
     @SequenceGenerator( // It only takes effect for
-            name = "idUserProfileGenerator", // databases providing identifier
-            sequenceName = "UserProfileGeneratorSeq") // generators.
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "idUserProfileGenerator")
-    public Long getId() {
+                name = "idUserProfileGenerator", // databases providing identifier
+                sequenceName = "UserProfileGeneratorSeq") // generators.
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO, generator = "idUserProfileGenerator")
+        public Long getId() {
         return id;
     }
 

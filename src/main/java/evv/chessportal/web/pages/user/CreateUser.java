@@ -1,6 +1,7 @@
 package evv.chessportal.web.pages.user;
 
 import evv.chessportal.model.userprofile.UserProfile;
+import evv.chessportal.model.userprofile.UserProfile.PlayerType;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -66,6 +67,9 @@ public class CreateUser {
     private Messages messages;
 
     private Long userProfileId;
+    
+    @Property
+    private PlayerType type;;
 
     void onValidateFromRegistrationForm() {
 
@@ -79,8 +83,8 @@ public class CreateUser {
         } else {
 
             try {
-                UserProfile userProfile = userService.registerPlayer(loginName, password, elo, licenseNumber,
-                        new PersonDetails(firstName, surName, email, phoneNumber));
+                UserProfile userProfile = userService.createUser(loginName, password, elo, licenseNumber,
+                        new PersonDetails(firstName, surName, email, phoneNumber),type==PlayerType.ADMIN);
                 userProfileId = userProfile.getId();
             } catch (DuplicateInstanceException e) {
                 registrationForm.recordError(loginNameField, messages

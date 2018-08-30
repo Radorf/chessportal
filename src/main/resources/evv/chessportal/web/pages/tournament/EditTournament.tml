@@ -1,7 +1,7 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       t:type="Layout" t:title="title">
 
-    <form t:type="Form" class="form-horizontal" t:id="tournamentForm
+    <form t:type="Form" class="form-horizontal" t:id="tournamentForm">
 
 
         <div class="form-group">        

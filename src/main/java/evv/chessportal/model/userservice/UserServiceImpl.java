@@ -15,19 +15,17 @@ import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 
-
 @Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserProfileDao userProfileDao;
-    
+
     @Autowired
     private AdministratorDao administratorDao;
-    
+
     @Autowired
     private PlayerDao playerDao;
-    
 
     public void setUserProfileDao(UserProfileDao userProfileDao) {
         this.userProfileDao = userProfileDao;
@@ -40,8 +38,6 @@ public class UserServiceImpl implements UserService {
     public void setPlayerDao(PlayerDao playerDao) {
         this.playerDao = playerDao;
     }
-
-    
 
     @Override
     public Player registerPlayer(String loginName, String clearPassword, Integer elo, String licenseNumber, PersonDetails personDetails)
@@ -56,17 +52,17 @@ public class UserServiceImpl implements UserService {
             Person person = new Person(personDetails.getFirstName(), personDetails.getSurName(), personDetails.getEmail(),
                     personDetails.getPhoneNumber());
             Player player = new Player(loginName,
-                    encryptedPassword, person,elo,licenseNumber);
+                    encryptedPassword, person, elo, licenseNumber);
 
             userProfileDao.save(player);
             return player;
         }
 
     }
-    
+
     @Override
-    public UserProfile createUser(String loginName, String clearPassword,Integer elo,            
-            String licenseNumber, PersonDetails personDetails,boolean isAdmin)
+    public UserProfile createUser(String loginName, String clearPassword, Integer elo,
+            String licenseNumber, PersonDetails personDetails, boolean isAdmin)
             throws DuplicateInstanceException {
 
         try {
@@ -78,14 +74,14 @@ public class UserServiceImpl implements UserService {
             Person person = new Person(personDetails.getFirstName(), personDetails.getSurName(), personDetails.getEmail(),
                     personDetails.getPhoneNumber());
             if (isAdmin) {
-                Administrator userProfile = new Administrator(loginName,
-                        encryptedPassword, person);
-                
+                Administrator userProfile = new Administrator(loginName,encryptedPassword, person);
+                administratorDao.save(userProfile);
                 return userProfile;
             } else {
                 Player userProfile = new Player(loginName, clearPassword, person, elo, licenseNumber);
+                playerDao.save(userProfile);
                 return userProfile;
-            }            
+            }
         }
 
     }
@@ -121,13 +117,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserProfileDetails(Long userProfileId,Integer elo,            
-            String licenseNumber,PersonDetails personDetails)
+    public void updateUserProfileDetails(Long userProfileId, Integer elo,
+            String licenseNumber, PersonDetails personDetails)
             throws InstanceNotFoundException {
         UserProfile userProfile = userProfileDao.find(userProfileId);
-        if (userProfile instanceof Player){
-            ((Player)userProfile).setElo(elo);
-            ((Player)userProfile).setLicenseNumber(licenseNumber);
+        if (userProfile instanceof Player) {
+            ((Player) userProfile).setElo(elo);
+            ((Player) userProfile).setLicenseNumber(licenseNumber);
         }
         Person person = userProfile.getPerson();
         person.setFirstName(personDetails.getFirstName());
@@ -163,9 +159,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long userProfileId) throws InstanceNotFoundException {        
-         userProfileDao.find(userProfileId);
-         userProfileDao.remove(userProfileId);
+    public void deleteUser(Long userProfileId) throws InstanceNotFoundException {
+        userProfileDao.find(userProfileId);
+        userProfileDao.remove(userProfileId);
     }
 
     @Override
