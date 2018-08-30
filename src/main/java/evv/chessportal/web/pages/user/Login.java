@@ -70,14 +70,7 @@ public class Login {
 
     Object onSuccess() {
 
-    	userSession = new UserSession();
-        userSession.setUserProfileId(userProfile.getId());
-        userSession.setFirstName(userProfile.getPerson().getFirstName());
-        if (userProfile instanceof Player) {
-            userSession.setRole(Role.PLAYER);
-        } else if (userProfile instanceof Administrator) {
-            userSession.setRole(Role.ADMIN);
-        }
+    	userSession = new UserSession(userProfile);
         
         if (rememberMyPassword) {
             CookiesManager.leaveCookies(cookies, loginName, userProfile

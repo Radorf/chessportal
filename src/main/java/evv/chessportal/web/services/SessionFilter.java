@@ -47,10 +47,7 @@ public class SessionFilter implements RequestFilter {
 
 						UserProfile userProfile = userService.login(loginName,
 								encryptedPassword, true);
-						UserSession userSession = new UserSession();
-						userSession.setUserProfileId(userProfile
-								.getId());
-						userSession.setFirstName(userProfile.getPerson().getFirstName());
+						UserSession userSession = new UserSession(userProfile);
 						applicationStateManager.set(UserSession.class,
 								userSession);
 

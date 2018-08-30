@@ -12,6 +12,7 @@ import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.CookiesManager;
 import evv.chessportal.web.util.UserSession;
+import evv.chessportal.web.util.UserSession.Role;
 
 @Import(library = {"tapestry5/bootstrap/js/collapse.js", "tapestry5/bootstrap/js/dropdown.js"},
         stylesheet="tapestry5/bootstrap/css/bootstrap-theme.css")
@@ -26,6 +27,12 @@ public class Layout {
 	@Property
     @Parameter(required = false)
     private boolean activeTournaments;
+    @Property
+    @Parameter(required = false)
+    private boolean activeMyTournaments;
+    @Property
+    @Parameter(required = false)
+    private boolean activeOpenTournaments;
     
     @Parameter(defaultPrefix = "literal")
     private Boolean showTitleInBody;
@@ -63,7 +70,18 @@ public class Layout {
     }
     
     public String getActiveTournamentsClass() {
-    	return activeTournaments ? "active" : "";
+        return activeTournaments ? "active" : "";
+    }
+    
+    public String getActiveOpenTournamentsClass() {
+        return activeOpenTournaments ? "active" : "";
+    }
+    
+    public String getActiveMyTournamentsClass() {
+        return activeMyTournaments ? "active" : "";
     }
 
+    public boolean isPlayer() {
+        return userSession!=null && Role.PLAYER.equals(userSession.getRole());
+    }
 }

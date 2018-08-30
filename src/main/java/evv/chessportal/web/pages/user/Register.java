@@ -72,26 +72,21 @@ public class Register {
         if (!password.equals(retypePassword)) {
             registrationForm.recordError(passwordField, messages
                     .get("error-passwordsDontMatch"));
-        } else {
-
-            try {
-                UserProfile userProfile = userService.registerPlayer(loginName, password,0,null,
-                    new PersonDetails(firstName, surName, email,phoneNumber));
-                userProfileId = userProfile.getId();
-            } catch (DuplicateInstanceException e) {
-                registrationForm.recordError(loginNameField, messages
-                        .get("error-loginNameAlreadyExists"));
-            }
-
         }
 
     }
 
     Object onSuccess() {
-
-        userSession = new UserSession();
-        userSession.setUserProfileId(userProfileId);
-        userSession.setFirstName(firstName);
+        try {
+            UserProfile userProfile = userService.registerPlayer(loginName, password,0,null,
+                new PersonDetails(firstName, surName, email,phoneNumber));
+            userProfileId = userProfile.getId();
+            userSession = new UserSession(userProfile);
+        } catch (DuplicateInstanceException e) {
+            registrationForm.recordError(loginNameField, messages
+                    .get("error-loginNameAlreadyExists"));
+            return this;
+        }
         return Index.class;
 
     }

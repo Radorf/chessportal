@@ -122,6 +122,12 @@ body {
 								t:type="PageLink" t:page="user/users">${message:users}</a></li>
 							<li class="${getActiveTournamentsClass()}"><a href="#"
 								t:type="PageLink" t:page="tournament/tournaments">${message:tournaments}</a></li>
+							<t:if test="player">
+                                <li class="${getActiveMyTournamentsClass()}"><a href="#"
+                                    t:type="PageLink" t:page="tournament/mytournaments">${message:mytournaments}</a></li>
+                                <li class="${getActiveOpenTournamentsClass()}"><a href="#"
+                                    t:type="PageLink" t:page="tournament/opentournaments">${message:opentournaments}</a></li>
+                            </t:if>
 						</ul>
 						<ul class="nav navbar-nav pull-right">
 							<t:if test="userSession">

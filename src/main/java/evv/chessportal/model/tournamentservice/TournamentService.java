@@ -13,6 +13,7 @@ import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -36,4 +37,8 @@ public interface TournamentService {
     ArrayList<Player> searchPlayerByKeyword(String keyword);
 
     public void generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;
+    
+    List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey);
+    
+    List<Tournament> findOpenTournamentsOfPlayer(Long playerId, String searchKey);
 }

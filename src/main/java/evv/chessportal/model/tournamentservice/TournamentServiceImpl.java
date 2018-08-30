@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,5 +136,15 @@ public class TournamentServiceImpl implements TournamentService {
     public void generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException {
         IndividualTournament individualTournament = individualTournamentDao.find(id);
         //individualTournamentDao.countEnrolledPlayers(individualTournament);
+    }
+    
+    @Override
+    public List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey) {
+        return individualTournamentDao.findTournamentsOfPlayer(playerId, searchKey);
+    }
+
+    @Override
+    public List<Tournament> findOpenTournamentsOfPlayer(Long playerId, String searchKey) {
+        return individualTournamentDao.findOpenTournamentsOfPlayer(playerId, searchKey);
     }
 }
