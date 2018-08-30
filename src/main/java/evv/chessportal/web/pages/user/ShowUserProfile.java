@@ -1,6 +1,7 @@
 package evv.chessportal.web.pages.user;
 
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -21,18 +22,29 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 public class ShowUserProfile {
 
     @Property
-    UserProfile user;
+    private UserProfile user;
+    
+    @Property
+    private Long userId;
     
     @Inject
-    UserService userService;
+    private UserService userService;
 
-    void onActivate(long userId) {
-        try {
-            user = userService.findUserProfile(userId);
-        } catch (InstanceNotFoundException ex) {
-           //TODO error page
-            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    void onActivate(long userId)throws InstanceNotFoundException {
+        this.userId = userId;
+        user = userService.findUserProfile(userId);
+    }
+    
+    public boolean getIsPlayer ()  {
+        return user instanceof Player; 
+    }
+
+    public Integer getElo() {
+        return ((Player) user).getElo();
+    }
+    
+    public String getLicenseNumber(){
+        return ((Player) user).getLicenseNumber();
     }
 
 }

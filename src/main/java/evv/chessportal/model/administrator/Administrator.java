@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.administrator;
 
+import evv.chessportal.model.person.Person;
 import evv.chessportal.model.userprofile.UserProfile;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -25,6 +26,10 @@ public class Administrator extends UserProfile{
 
     public Administrator() {
     	
+    }
+
+    public Administrator(String loginName, String encryptedPassword, Person person) {
+        super(loginName, encryptedPassword, person);
     }
     
 }

@@ -50,10 +50,15 @@
     
     <bean id="playerDao"
           class="evv.chessportal.model.player.PlayerDaoHibernate" />
-          
+    
+    <bean id="administratorDao"
+          class="evv.chessportal.model.administrator.AdministratorDaoHibernate"/>
+   
     <bean id="userService"
           class="evv.chessportal.model.userservice.UserServiceImpl"
           p:userProfileDao-ref="userProfileDao"
+          p:playerDao-ref="playerDao"
+          p:administratorDao-ref="administratorDao"
     />
     
     <bean id="tournamentDao"

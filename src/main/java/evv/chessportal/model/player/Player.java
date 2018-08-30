@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.player;
 
+import evv.chessportal.model.person.Person;
 import evv.chessportal.model.userprofile.UserProfile;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -24,6 +25,12 @@ import javax.persistence.InheritanceType;
 public class Player extends UserProfile {
 
     public Player() {
+    }
+
+    public Player(String loginName, String password, Person person, Integer elo,
+            String licenseNumber) {
+        super(loginName, password, person);
+        this.licenseNumber = licenseNumber;
     }
 
     private Integer elo;

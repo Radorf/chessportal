@@ -5,6 +5,7 @@
  */
 package evv.chessportal.web.pages.user;
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.PersonDetails;
 import evv.chessportal.model.userservice.UserService;
@@ -12,7 +13,6 @@ import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.corelib.components.PageLink;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
@@ -69,7 +69,7 @@ public class EditUserProfile {
         }
     }
 
-    void onPrepareForRender() throws InstanceNotFoundException {
+    void onPrepareForRender()  {
         firstName = user.getPerson().getFirstName();
         surName = user.getPerson().getSurname();
         email = user.getPerson().getEmail();
@@ -84,6 +84,10 @@ public class EditUserProfile {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public boolean getIsPlayer ()  {
+        return user instanceof Player; 
+    }
+
 
     Object onSuccess() throws InstanceNotFoundException {
 

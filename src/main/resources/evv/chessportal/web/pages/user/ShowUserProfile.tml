@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="btn-group">
 		<a class="btn btn-default" href="#" t:type="PageLink"
-			t:page="user/editUserProfile">${message:editProfile}</a>
+			t:page="user/editUserProfile" context="user.id">${message:editProfile}</a>
 	</div>
 
 	<div class="row line">
@@ -33,12 +33,13 @@
 			<p>${user.loginName}</p>
 		</div>
 	</div>
+    <t:if test="isPlayer" >
 	<div class="row line">
 		<div class="col-sm-4">
 			<h5>${message:elo}</h5>
 		</div>
 		<div class="col-sm-8">
-			<p>${user.elo}</p>
+			<p>${getElo()}</p>
 		</div>
 	</div>
 	<div class="row line">
@@ -46,9 +47,10 @@
 			<h5>${message:licenseNumber}</h5>
 		</div>
 		<div class="col-sm-8">
-			<p>${user.licenseNumber}</p>
+			<p>${getLicenseNumber()}</p>
 		</div>
 	</div>
+    </t:if>
 	<div class="row line">
 		<div class="col-sm-4">
 			<h5>${message:email}</h5>

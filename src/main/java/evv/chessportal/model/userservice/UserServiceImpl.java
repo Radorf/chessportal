@@ -1,6 +1,10 @@
 package evv.chessportal.model.userservice;
 
+import evv.chessportal.model.administrator.Administrator;
+import evv.chessportal.model.administrator.AdministratorDao;
 import evv.chessportal.model.person.Person;
+import evv.chessportal.model.player.Player;
+import evv.chessportal.model.player.PlayerDao;
 import evv.chessportal.model.userprofile.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +21,30 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserProfileDao userProfileDao;
+    
+    @Autowired
+    private AdministratorDao administratorDao;
+    
+    @Autowired
+    private PlayerDao playerDao;
+    
 
     public void setUserProfileDao(UserProfileDao userProfileDao) {
         this.userProfileDao = userProfileDao;
     }
 
+    public void setAdministratorDao(AdministratorDao administratorDao) {
+        this.administratorDao = administratorDao;
+    }
+
+    public void setPlayerDao(PlayerDao playerDao) {
+        this.playerDao = playerDao;
+    }
+
     
 
     @Override
-    public UserProfile registerUser(String loginName, String clearPassword,Integer elo,            
-            String licenseNumber, PersonDetails personDetails)
+    public Player registerPlayer(String loginName, String clearPassword, Integer elo, String licenseNumber, PersonDetails personDetails)
             throws DuplicateInstanceException {
 
         try {
@@ -37,11 +55,37 @@ public class UserServiceImpl implements UserService {
             String encryptedPassword = PasswordEncrypter.crypt(clearPassword);
             Person person = new Person(personDetails.getFirstName(), personDetails.getSurName(), personDetails.getEmail(),
                     personDetails.getPhoneNumber());
-            UserProfile userProfile = new UserProfile(loginName,
+            Player player = new Player(loginName,
                     encryptedPassword, person,elo,licenseNumber);
 
-            userProfileDao.save(userProfile);
-            return userProfile;
+            userProfileDao.save(player);
+            return player;
+        }
+
+    }
+    
+    @Override
+    public UserProfile createUser(String loginName, String clearPassword,Integer elo,            
+            String licenseNumber, PersonDetails personDetails,boolean isAdmin)
+            throws DuplicateInstanceException {
+
+        try {
+            userProfileDao.findByLoginName(loginName);
+            throw new DuplicateInstanceException(loginName,
+                    UserProfile.class.getName());
+        } catch (InstanceNotFoundException e) {
+            String encryptedPassword = PasswordEncrypter.crypt(clearPassword);
+            Person person = new Person(personDetails.getFirstName(), personDetails.getSurName(), personDetails.getEmail(),
+                    personDetails.getPhoneNumber());
+            if (isAdmin) {
+                Administrator userProfile = new Administrator(loginName,
+                        encryptedPassword, person);
+                
+                return userProfile;
+            } else {
+                Player userProfile = new Player(loginName, clearPassword, person, elo, licenseNumber);
+                return userProfile;
+            }            
         }
 
     }
@@ -81,8 +125,10 @@ public class UserServiceImpl implements UserService {
             String licenseNumber,PersonDetails personDetails)
             throws InstanceNotFoundException {
         UserProfile userProfile = userProfileDao.find(userProfileId);
-        userProfile.setElo(elo);
-        userProfile.setLicenseNumber(licenseNumber);
+        if (userProfile instanceof Player){
+            ((Player)userProfile).setElo(elo);
+            ((Player)userProfile).setLicenseNumber(licenseNumber);
+        }
         Person person = userProfile.getPerson();
         person.setFirstName(personDetails.getFirstName());
         person.setSurname(personDetails.getSurName());

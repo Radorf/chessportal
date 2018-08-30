@@ -1,5 +1,6 @@
 package evv.chessportal.web.pages.user;
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -32,6 +33,9 @@ public class UpdateProfile {
     private Integer elo;
     
     @Property
+    private UserProfile userProfile;
+    
+    @Property
     private String licenseNumber;
 
     @SessionState(create = false)
@@ -42,14 +46,15 @@ public class UpdateProfile {
 
     void onPrepareForRender() throws InstanceNotFoundException {
 
-        UserProfile userProfile;
-
         userProfile = userService.findUserProfile(userSession
                 .getUserProfileId());
         firstName = userProfile.getPerson().getFirstName();
         surName = userProfile.getPerson().getSurname();
         email = userProfile.getPerson().getEmail();
         phoneNumber = userProfile.getPerson().getPhoneNumber();
+    }
+    public boolean getIsPlayer ()  {
+        return userProfile instanceof Player; 
     }
 
     Object onSuccess() throws InstanceNotFoundException {

@@ -79,7 +79,7 @@ public class CreateUser {
         } else {
 
             try {
-                UserProfile userProfile = userService.registerUser(loginName, password, elo, licenseNumber,
+                UserProfile userProfile = userService.registerPlayer(loginName, password, elo, licenseNumber,
                         new PersonDetails(firstName, surName, email, phoneNumber));
                 userProfileId = userProfile.getId();
             } catch (DuplicateInstanceException e) {

@@ -8,10 +8,25 @@ import java.util.ArrayList;
 
 public interface UserService {
 
-    public UserProfile registerUser(String loginName, String clearPassword,Integer elo,            
-            String licenseNumber, PersonDetails userProfileDetails)
+    /**
+     * Registers a Player in the application
+     * @throws DuplicateInstanceException Username already exists.
+     */
+    public Player registerPlayer(String loginName, String clearPassword, Integer elo, String licenseNumber, PersonDetails userProfileDetails)
             throws DuplicateInstanceException;
 
+    
+    public UserProfile createUser(String loginName, String clearPassword,Integer elo,            
+            String licenseNumber, PersonDetails personDetails,boolean isAdmin)
+            throws DuplicateInstanceException;
+    
+    /**
+     * Look for the loginName in the application and compares the password with the one stored.
+
+     * @return
+     * @throws InstanceNotFoundException
+     * @throws IncorrectPasswordException 
+     */
     public UserProfile login(String loginName, String password,
             boolean passwordIsEncrypted) throws InstanceNotFoundException,
             IncorrectPasswordException;
