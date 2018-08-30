@@ -72,13 +72,13 @@ public class TournamentServiceImpl implements TournamentService {
         
     }
     
+    @Transactional
     @Override
     public Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
             Calendar endEnrolmentDate) throws DatesInconsistenceException, InstanceNotFoundException {
        if (name_ == null) return null;
         if (startDate == null) return null; 
         Tournament tournament = individualTournamentDao.find(tournamentId);
-        tournament = new IndividualTournament();
          if  (startDate.after(endDate) )  {
              throw new DatesInconsistenceException(startDate + " later than "+ endDate,Tournament.class.getName()) ;
          }
@@ -90,6 +90,7 @@ public class TournamentServiceImpl implements TournamentService {
         tournament.setEndDate(endDate);
         tournament.setStartEnrolmentDate(startEnrolmentDate);
         tournament.setEndEnrolmentDate(endEnrolmentDate);
+        tournamentDao.save(tournament);
         return tournament;
     }
 

@@ -2,7 +2,7 @@
 	t:type="Layout">
 
 <div>
-    <div class="btn-group col-lg-6" style="margin-bottom:25px;">
+    <div class="btn-group btn-container col-lg-6">
         <a class="btn btn-default" href="#" t:type="PageLink"
             t:page="user/createUser">${message:create}</a>
 	   <t:Searcher t:searchKey="searchKey"/>

@@ -2,13 +2,12 @@
       t:type="Layout">
     <title></title>
     <div>           
-
-            <t:Searcher t:searchKey="searchKey"/>
-
         <div class="w3-padding w3-white notranslate">
             <h1>
                 ${message:Tournament}: <small>${tournament.name_}</small>     
             </h1>
+            
+            <t:Searcher t:searchKey="searchKey"/>
             
             <form t:type="Form" class="form-horizontal" t:id="selectForm">
                 <t:errors/>         

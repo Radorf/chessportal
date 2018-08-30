@@ -3,7 +3,7 @@
 
 <div>
 
-	<div class="btn-group col-lg-6" style="margin-bottom: 25px;">
+	<div class="btn-group btn-container col-lg-6">
 		<a class="btn btn-default" href="#" t:type="PageLink"
 			t:page="tournament/createTournament">${message:create}</a>
 		<t:Searcher t:searchKey="searchKey"/>
