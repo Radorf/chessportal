@@ -84,4 +84,16 @@ public class Layout {
     public boolean isPlayer() {
         return userSession!=null && Role.PLAYER.equals(userSession.getRole());
     }
+    
+    public boolean isAdmin() {
+        return userSession!=null && Role.ADMIN.equals(userSession.getRole());
+    }
+    
+    public boolean canShowHome() {
+    	return userSession != null;
+    }
+    
+    public Long getUserId() {
+    	return userSession != null ? userSession.getUserProfileId() : null;
+    }
 }

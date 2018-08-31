@@ -1,26 +1,64 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout" t:activeTournaments="true">
-    
-    <div class="container">
-        <h1>
-            ${message:Tournament}: <small>${tournament.name_}</small>     
-        </h1>
-        <h1>
-            ${message:startDate}: <small>${startDate}</small>   
-        </h1>
-        <h1>
-            ${message:endDate}: <small>${endDate}</small>            
-        </h1>
-        <h1>
-            ${message:startEnrolmentDate}: <small>${startEnrolmentDate}</small>            
-        </h1>
-        <h1>
-            ${message:endEnrolmentDate}: <small>${endEnrolmentDate}</small>            
-        </h1>
-        <p> <a href="#" t:type="PageLink" t:page="tournament/editTournament" context="tournament.id">${message:editTournament}</a></p>
-        <p> <a href="#" t:type="PageLink" t:page="tournament/selectPlayers" context="tournament.id">${message:selectPlayers}</a> </p>
-        <p> <a href="#" t:type="ActionLink" t:id="startTournament" context="tournament.id">${message:startTournament}</a></p>
+	t:type="Layout" t:activeTournaments="true">
 
-    </div>
-            
+<div class="container">
+	<div class="btn-group btn-container">
+		<a class="btn btn-default" href="#" t:type="PageLink"
+			t:page="tournament/editTournament" context="tournament.id"><span
+			class="glyphicon glyphicon-edit icon-padding"></span>${message:editTournament}</a>
+		<a class="btn btn-default" href="#" t:type="PageLink"
+			t:page="tournament/selectPlayers" context="tournament.id"><span
+			class="glyphicon glyphicon-th-list icon-padding"></span>${message:selectPlayers}</a>
+		<a class="btn btn-default" href="#" t:type="ActionLink"
+			t:id="startTournament" context="tournament.id"><span
+			class="glyphicon glyphicon-play icon-padding"></span>${message:startTournament}</a>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:Tournament}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${tournament.name_}</p>
+		</div>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:startDate}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${startDate}</p>
+		</div>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:endDate}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${endDate}</p>
+		</div>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:startEnrolmentDate}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${startEnrolmentDate}</p>
+		</div>
+	</div>
+
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:endEnrolmentDate}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${endEnrolmentDate}</p>
+		</div>
+	</div>
+
+</div>
+
 </html>

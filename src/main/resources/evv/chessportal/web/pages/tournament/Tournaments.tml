@@ -5,8 +5,9 @@
 
 	<div class="btn-group btn-container col-lg-6">
 		<a class="btn btn-default" href="#" t:type="PageLink"
-			t:page="tournament/createTournament">${message:create}</a>
-		<t:Searcher t:searchKey="searchKey"/>
+			t:page="tournament/createTournament"><span
+			class="glyphicon glyphicon-plus-sign icon-padding"></span>${message:create}</a>
+		<t:Searcher t:searchKey="searchKey" />
 	</div>
 
 

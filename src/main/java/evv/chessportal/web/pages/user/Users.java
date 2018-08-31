@@ -12,8 +12,10 @@ import java.util.logging.Logger;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import evv.chessportal.model.player.Player;
 import evv.chessportal.model.userprofile.UserProfile;
 import evv.chessportal.model.userservice.UserService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -40,6 +42,9 @@ public class Users {
 
     @Property
     UserProfile user;
+    
+    @Inject
+    private Messages messages;
 
      void setupRender() {
         userList = userService.searchByGeneralKey(searchKey);
@@ -53,5 +58,9 @@ public class Users {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this;
+    }
+    
+    public String getRoleName() {
+    	return (user instanceof Player) ? messages.get("label.player") : messages.get("label.administrator");
     }
 }

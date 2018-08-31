@@ -1,12 +1,11 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	t:type="Layout" t:activeUsers="true">
 
-
-
 <div class="container">
 	<div class="btn-group btn-container">
 		<a class="btn btn-default" href="#" t:type="PageLink"
-			t:page="user/editUserProfile" context="user.id">${message:editProfile}</a>
+			t:page="user/editUserProfile" context="user.id"><span
+			class="glyphicon glyphicon-edit icon-padding"></span>${message:editProfile}</a>
 	</div>
 
 	<div class="row line">
@@ -33,24 +32,24 @@
 			<p>${user.loginName}</p>
 		</div>
 	</div>
-    <t:if test="isPlayer" >
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:elo}</h5>
+	<t:if test="isPlayer">
+		<div class="row line">
+			<div class="col-sm-4">
+				<h5>${message:elo}</h5>
+			</div>
+			<div class="col-sm-8">
+				<p>${getElo()}</p>
+			</div>
 		</div>
-		<div class="col-sm-8">
-			<p>${getElo()}</p>
+		<div class="row line">
+			<div class="col-sm-4">
+				<h5>${message:licenseNumber}</h5>
+			</div>
+			<div class="col-sm-8">
+				<p>${getLicenseNumber()}</p>
+			</div>
 		</div>
-	</div>
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:licenseNumber}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${getLicenseNumber()}</p>
-		</div>
-	</div>
-    </t:if>
+	</t:if>
 	<div class="row line">
 		<div class="col-sm-4">
 			<h5>${message:email}</h5>

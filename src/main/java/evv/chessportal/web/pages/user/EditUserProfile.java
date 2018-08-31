@@ -23,7 +23,7 @@ import org.apache.tapestry5.services.PageRenderLinkSource;
  *
  * @author E_Villodas
  */
-@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
+@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class EditUserProfile {
 
     @Property

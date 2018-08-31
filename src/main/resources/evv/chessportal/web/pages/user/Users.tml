@@ -2,20 +2,22 @@
 	t:type="Layout" t:activeUsers="true">
 
 <div>
-    <div class="btn-group btn-container col-lg-6">
-        <a class="btn btn-default" href="#" t:type="PageLink"
-            t:page="user/createUser">${message:create}</a>
-	   <t:Searcher t:searchKey="searchKey"/>
-    </div>
+	<div class="btn-group btn-container col-lg-6">
+		<a class="btn btn-default" href="#" t:type="PageLink"
+			t:page="user/createUser"><span
+			class="glyphicon glyphicon-plus-sign icon-padding" />${message:create}</a>
+		<t:Searcher t:searchKey="searchKey" />
+	</div>
 
 
 	<div class="w3-padding w3-white notranslate">
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Login</th>
-					<th>Name</th>
-					<th>Email</th>
+					<th>${message:loginName}</th>
+					<th>${message:label.name}</th>
+					<th>${message:email}</th>
+					<th>${message:label.role}</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -27,6 +29,7 @@
 						</td>
 						<td>${user.person.firstName} ${user.person.surname}</td>
 						<td>${user.person.email}</td>
+						<td>${getRoleName()}</td>
 						<td><a href="#" t:type="PageLink"
 							t:page="user/editUserProfile" context="user.id">${message:editProfile}</a>
 						</td>
