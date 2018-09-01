@@ -24,14 +24,25 @@ import evv.chessportal.web.util.DateManagerUtil;
  */
 @AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class TournamentDetails {
-    
+
     @Property
     private Tournament tournament;
+    
+    @Property
+    private Long tournamentId;
     
     @Inject
     private TournamentService tournamentService;
     
     void onActivate(Long tournamentId){
+        this.tournamentId=tournamentId;
+    }
+
+    Long onPassivate() {
+        return tournamentId;
+    }
+    
+    void setupRender() {
         try {
             tournament = tournamentService.findTournament(tournamentId);
         } catch (InstanceNotFoundException ex) {
