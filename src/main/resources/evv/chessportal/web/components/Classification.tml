@@ -1,0 +1,30 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+    <div>
+        <div class="w3-padding w3-white notranslate">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>${message:label.player}</th>
+                        <th>${message:games}</th>
+                        <th>${message:win}</th>
+                        <th>${message:lost}</th>
+                        <th>${message:draw}</th>
+                        <th>${message:points}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t:loop source="classification" value="stats">
+                        <tr>
+                            <td>${stats.player.loginName}</td>
+                            <td>${stats.games}</td>
+                            <td>${stats.won}</td>
+                            <td>${stats.lost}</td>
+                            <td>${stats.draw}</td>
+                            <td>${stats.score}</td>
+                        </tr>
+                    </t:loop>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</html>

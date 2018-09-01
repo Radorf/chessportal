@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.tournamentservice;
 
+import evv.chessportal.model.custom.CustomPlayerTournamentStats;
 import evv.chessportal.model.game.Game;
 import evv.chessportal.model.game.GameDao;
 import evv.chessportal.model.individualround.IndividualRound;
@@ -20,8 +21,12 @@ import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -258,5 +263,44 @@ public class TournamentServiceImpl implements TournamentService {
     public Game updateGame(Game game) {
         gameDao.save(game);
         return game;
+    }
+
+    @Override
+    public List<CustomPlayerTournamentStats> getClassification(Long tournamentId) throws InstanceNotFoundException {
+        IndividualTournament tournament = findIndividualTournament(tournamentId);
+        Map<Long, CustomPlayerTournamentStats> playerStats = new HashMap<>();
+        for (Player player : tournament.getPlayerList()) {
+            playerStats.put(player.getId(), new CustomPlayerTournamentStats(player));
+        }
+        for (IndividualRound round : tournament.getRoundList()) {
+            for (Game game : round.getGameList()){ 
+                if (game.getScore()!=null) {
+                    Player whitePiecesPlayer = game.getWhitePiecesPlayer();
+                    Player blackPiecesPlayer = game.getBlackPiecesPlayer();
+                    switch (game.getScore()) {
+                    case WHITE:
+                        playerStats.get(whitePiecesPlayer.getId()).addWin(true);
+                        playerStats.get(blackPiecesPlayer.getId()).addLost(false);
+                        break;
+                    case BLACK:
+                        playerStats.get(whitePiecesPlayer.getId()).addLost(true);
+                        playerStats.get(blackPiecesPlayer.getId()).addWin(false);
+                        break;
+                    case DRAW:
+                        playerStats.get(whitePiecesPlayer.getId()).addDraw(true);
+                        playerStats.get(blackPiecesPlayer.getId()).addDraw(false);
+                        break;
+                    }
+                }
+            }
+        }
+        List<CustomPlayerTournamentStats> values = new ArrayList<>(playerStats.values());
+        Collections.sort(values, new Comparator<CustomPlayerTournamentStats>() {
+            @Override
+            public int compare(CustomPlayerTournamentStats o1, CustomPlayerTournamentStats o2) {
+                return Math.round((o2.getScore()-o1.getScore())*2);
+            }
+        });
+        return values;
     }      
 }

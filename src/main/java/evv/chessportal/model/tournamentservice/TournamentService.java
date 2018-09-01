@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.tournamentservice;
 
+import evv.chessportal.model.custom.CustomPlayerTournamentStats;
 import evv.chessportal.model.game.Game;
 import evv.chessportal.model.individualround.IndividualRound;
 import evv.chessportal.model.individualtournament.IndividualTournament;
@@ -47,4 +48,6 @@ public interface TournamentService {
     Game findGame(Long gameId) throws InstanceNotFoundException;
 
     Game updateGame(Game game);
+
+    List<CustomPlayerTournamentStats> getClassification(Long tournamentId) throws InstanceNotFoundException;
 }
