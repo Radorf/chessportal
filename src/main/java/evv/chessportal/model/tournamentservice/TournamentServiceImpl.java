@@ -157,13 +157,13 @@ public class TournamentServiceImpl implements TournamentService {
     public IndividualTournament generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException {
         IndividualTournament individualTournament = individualTournamentDao.find(id);
         ArrayList<Player> players = new ArrayList<> (individualTournament.getPlayerList());
-        int nPlayers = players.size();
-        int nRounds= nPlayers - 1; 
-        int nGamesR = nPlayers/2;
+        int nPlayers = players.size();        
         if(nPlayers % 2 == 1) { //We force having and even number of teams
             players.add(new Player ("-"));
             nPlayers++;
         }
+        int nRounds= nPlayers - 1; 
+        int nGamesR = nPlayers/2;
         ArrayList <IndividualRound> rounds = initRounds(nRounds, individualTournament,nGamesR);  
         
         //In the first round players play against the 'next'
