@@ -62,4 +62,5 @@ public class TournamentDetails {
     public String getEndEnrolmentDate(){
         return DateManagerUtil.printCalendarDate(tournament.getEndEnrolmentDate());
     }
+    
 }

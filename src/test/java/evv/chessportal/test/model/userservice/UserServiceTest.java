@@ -1,9 +1,12 @@
 package evv.chessportal.test.model.userservice;
 
+import evv.chessportal.model.game.Game;
+import evv.chessportal.model.individualround.IndividualRound;
+import evv.chessportal.model.individualtournament.IndividualTournament;
+import evv.chessportal.model.player.Player;
+import evv.chessportal.model.tournamentservice.TournamentService;
 import static evv.chessportal.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static evv.chessportal.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
-import evv.chessportal.model.userprofile.UserProfile;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,11 +15,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import evv.chessportal.model.userservice.IncorrectPasswordException;
 import evv.chessportal.model.userservice.PersonDetails;
 import evv.chessportal.model.userservice.UserService;
+import evv.chessportal.model.util.exceptions.DatesInconsistenceException;
 import evv.chessportal.model.util.exceptions.DuplicateInstanceException;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,11 +34,35 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
+     @Autowired
+    private TournamentService tournamentService;
 
     @Test
     public void testCompile(){
         assertEquals(100,100);
     }
+//     @Test
+//    public void generateRRIndividualTournamentRoundstest() throws DatesInconsistenceException, DuplicateInstanceException, InstanceNotFoundException{
+//        int n = 8;
+//        IndividualTournament individualTournament = tournamentService.createRRIndividualTournament("TestTournament", Calendar.getInstance(),
+//                null, null, null);
+//        ArrayList<Long> playerIds=new ArrayList<>(n);
+//        for(int i = 0;i<n;i++){
+//             playerIds.add(i,userService.createUser("jugador"+ (i+1), "admin", null, null, new PersonDetails(null, null, null, null), false).getId());
+//        }
+//        tournamentService.enrolPlayers(individualTournament.getId(), playerIds);
+//        individualTournament=tournamentService.generateRRIndividualTournamentRounds(individualTournament.getId());
+//        
+//        List<IndividualRound> rounds = individualTournament.getRoundList() ;
+//        for(IndividualRound r: rounds){
+//            System.out.println("Round " + r.getNumber_());
+//            List<Game> games = r.getGameList();
+//            for (Game g: games){
+//                System.out.println(g.getWhitePiecesPlayer().getLoginName()+" - " + g.getBlackPiecesPlayer().getLoginName());
+//            }
+//        }
+//        assertEquals(100,100);
+//    }
 //    @Test
 //    public void testRegisterUserAndFindUserProfile()
 //            throws DuplicateInstanceException, InstanceNotFoundException {

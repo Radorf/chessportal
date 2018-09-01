@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.tournament;
 
+import evv.chessportal.model.individualtournament.IndividualTournament;
 import evv.chessportal.model.player.Player;
 import evv.chessportal.model.util.dao.GenericDaoHibernate;
 import java.util.ArrayList;
@@ -46,5 +47,6 @@ public class TournamentDaoHibernate extends GenericDaoHibernate<Tournament,Long>
 
         return list;
     }
+
     
 }

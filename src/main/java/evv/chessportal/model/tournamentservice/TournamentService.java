@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.tournamentservice;
 
+import evv.chessportal.model.individualround.IndividualRound;
 import evv.chessportal.model.individualtournament.IndividualTournament;
 import evv.chessportal.model.player.Player;
 import evv.chessportal.model.tournament.Tournament;
@@ -36,7 +37,7 @@ public interface TournamentService {
     
     ArrayList<Player> searchPlayerByKeyword(String keyword);
 
-    public void generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;
+    public IndividualTournament generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;
     
     List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey);
     

@@ -9,6 +9,7 @@ import evv.chessportal.model.player.Player;
 import evv.chessportal.model.individualround.IndividualRound;
 import evv.chessportal.model.tournament.Tournament;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -36,7 +37,7 @@ public class IndividualTournament extends Tournament {
     public IndividualTournament() {
     }
     private Set<Player> playerList;
-    private Collection<IndividualRound> roundList;
+    private List<IndividualRound> roundList;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "individualTournament_player", joinColumns = @JoinColumn(name = "idTournament"), inverseJoinColumns = @JoinColumn(name = "idPlayer"))
@@ -50,11 +51,11 @@ public class IndividualTournament extends Tournament {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "individualTournament_individualRound", joinColumns = @JoinColumn(name = "idTournament"), inverseJoinColumns = @JoinColumn(name = "idRound"))
-    public Collection<IndividualRound> getRoundList() {
+    public List<IndividualRound> getRoundList() {
         return roundList;
     }
 
-    public void setRoundList(Collection<IndividualRound> roundList) {
+    public void setRoundList(List<IndividualRound> roundList) {
         this.roundList = roundList;
     }
 

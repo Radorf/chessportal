@@ -36,6 +36,15 @@ public class Player extends UserProfile {
     private Integer elo;
     private String licenseNumber;
 
+    /**
+     *  This constructor purpose is to create a fake player in order to make the pairings in 
+     * TournamentService.generateRRIndividualTournamentRounds()
+     * @param jugadorFake
+     */
+    public Player(String jugadorFake) {
+       super.setLoginName(jugadorFake);
+    }
+
     public Integer getElo() {
         return elo;
     }

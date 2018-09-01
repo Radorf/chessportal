@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     public UserProfile createUser(String loginName, String clearPassword, Integer elo,
             String licenseNumber, PersonDetails personDetails, boolean isAdmin)
             throws DuplicateInstanceException {
-
+        
         try {
             userProfileDao.findByLoginName(loginName);
             throw new DuplicateInstanceException(loginName,

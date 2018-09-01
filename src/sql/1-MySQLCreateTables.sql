@@ -60,7 +60,7 @@ CREATE TABLE TeamMatch (
 		CONSTRAINT TeamMatchAwayTeamFK FOREIGN KEY (idAwayTeam) REFERENCES Team(id)) ENGINE = InnoDB;
 
 CREATE TABLE Game (
-		id					BIGINT,
+		id					BIGINT NOT NULL AUTO_INCREMENT,
 		score				VARCHAR(255),
 		idWhitePiecesPlayer	BIGINT,
 		idBlackPiecesPlayer BIGINT,
@@ -82,7 +82,9 @@ CREATE TABLE IndividualRound (
 		number_				INTEGER,
 		date_				DATE,
 		idTournament		BIGINT,
+                idGame                  BIGINT,
 		CONSTRAINT IndividualRoundPK PRIMARY KEY(id),
+                CONSTRAINT IndividualRoundIdGameFK FOREIGN KEY (idGame) REFERENCES Game(id),
 		CONSTRAINT IndividualRoundIdTournamentFK FOREIGN KEY (idTournament) REFERENCES Tournament(id)) ENGINE = InnoDB;
 		
 CREATE TABLE individualTournament_individualRound (

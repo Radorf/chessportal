@@ -53,6 +53,12 @@
     
     <bean id="administratorDao"
           class="evv.chessportal.model.administrator.AdministratorDaoHibernate"/>
+    
+    <bean id="individualRoundDao"
+          class="evv.chessportal.model.individualround.IndividualRoundDaoHibernate"/>
+    
+    <bean id="gameDao" 
+          class="evv.chessportal.model.game.GameDaoHibernate"/>
    
     <bean id="userService"
           class="evv.chessportal.model.userservice.UserServiceImpl"
@@ -71,10 +77,12 @@
           class="evv.chessportal.model.tournamentservice.TournamentServiceImpl"  
           p:individualTournamentDao-ref="individualTournamentDao"
           p:tournamentDao-ref="tournamentDao"
-          p:playerDao-ref="playerDao"/>
+          p:playerDao-ref="playerDao"
+          p:individualRoundDao-ref="individualRoundDao"
+          p:gameDao-ref="gameDao"/>
 
-<!-- Enable the configuration of transactional behavior based on
-annotations. -->
-<tx:annotation-driven transaction-manager="transactionManager" />
+    <!-- Enable the configuration of transactional behavior based on
+    annotations. -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
