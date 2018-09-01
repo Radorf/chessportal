@@ -1,53 +1,43 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      t:type="Layout" t:activeTournaments="true">
-   
-    <div>           
-        <div class="w3-padding w3-white notranslate">
-            <h1>
-                ${message:Tournament}: <small>${tournament.name_}</small>     
-            </h1>
-            
-            <t:Searcher t:searchKey="searchKey"/>
-            
-            <form t:type="Form" class="form-horizontal" t:id="selectForm">
-                <t:errors/>         
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Select</th>
-                            <th>Login</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t:loop source="userList" value="user" encoder="encoder">
-                            <tr>
-                                <td>
-                                    <t:checkbox selected="selected" value="selected"/>
-                                </td>
-                                <td>
-                                    ${user.loginName}
-                                </td>
-                                <td>
-                                    ${user.person.firstName} ${user.person.surname}
-                                </td>
-                                <td>
-                                    ${user.person.email}
-                                </td>                            
-                            </tr>
-                        </t:loop>
-                   </tbody>
-                </table>
-                <div class="form-group">
-                    <div class="col-md-offset-5 col-md-1">
-                        <button type="submit" class="btn btn-default">${message:selectPlayers}</button>
-                    </div>
-                </div> 
-            </form>
-        </div>
-    </div>
+	t:type="Layout" t:activeTournaments="true">
+
+<div>
+	<h3>${tournament.name_}</h3>
+
+	<div class="searcher-separator">
+		<t:Searcher t:searchKey="searchKey" />
+	</div>
+
+	<form t:type="Form" class="form-horizontal" t:id="selectForm">
+		<t:errors />
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>${message:loginName}</th>
+					<th>${message:firstName-label}</th>
+					<th>${message:email}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<t:loop source="userList" value="user" encoder="encoder">
+					<tr>
+						<td><t:checkbox selected="selected" value="selected" /></td>
+						<td>${user.loginName}</td>
+						<td>${user.person.firstName} ${user.person.surname}</td>
+						<td>${user.person.email}</td>
+					</tr>
+				</t:loop>
+			</tbody>
+		</table>
+		<div class="form-group">
+			<div class="col-md-offset-5 col-md-1">
+				<button type="submit" class="btn btn-default">${message:selectPlayers}</button>
+			</div>
+		</div>
+	</form>
+</div>
 
 </html>
 

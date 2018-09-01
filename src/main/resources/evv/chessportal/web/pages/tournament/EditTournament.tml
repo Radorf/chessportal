@@ -10,28 +10,36 @@
 				maxlength="30" />
 		</div>
 	</div>
-
 	<div class="form-group">
 		<t:label for="startDate" class="col-sm-2 control-label">${message:startDate}</t:label>
-		<t:datefield t:id="startDate" t:validate="required" />
+		<div class="col-md-3">
+			<t:datefield t:id="startDate" t:validate="required" />
+		</div>
 	</div>
 	<div class="form-group">
 		<t:label for="endDate" class="col-sm-2 control-label">${message:endDate}</t:label>
-		<t:datefield t:id="endDate" />
+		<div class="col-md-3">
+			<t:datefield t:id="endDate" />
+		</div>
 	</div>
 	<div class="form-group">
 		<t:label for="startEnrolmentDate" class="col-sm-2 control-label">${message:startEnrolmentDate}</t:label>
-		<t:datefield t:id="startEnrolmentDate" />
+		<div class="col-md-3">
+			<t:datefield t:id="startEnrolmentDate" />
+		</div>
 	</div>
 	<div class="form-group">
 		<t:label for="endEnrolmentDate" class="col-sm-2 control-label">${message:endEnrolmentDate}</t:label>
-		<t:datefield t:id="endEnrolmentDate" />
+		<div class="col-md-3">
+			<t:datefield t:id="endEnrolmentDate" />
+		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default"><span
-			class="glyphicon glyphicon-ok-sign icon-padding"/>${message:save}</button>
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-ok-sign icon-padding" />${message:save}
+			</button>
 		</div>
 	</div>
 

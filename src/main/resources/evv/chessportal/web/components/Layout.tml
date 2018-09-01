@@ -86,6 +86,13 @@ body {
 .icon-padding {
 	padding-right: 10px;
 }
+
+.searcher-separator {
+	margin-top: 15px;
+    margin-bottom: 20px;
+    width: 600px;
+    float: left;
+}
 </style>
 
 </head>
