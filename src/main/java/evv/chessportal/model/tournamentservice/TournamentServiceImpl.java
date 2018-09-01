@@ -122,8 +122,8 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     @Override
-    public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException {
-        return tournamentDao.find(tournamentId);
+    public IndividualTournament findIndividualTournament(Long tournamentId) throws InstanceNotFoundException {
+        return individualTournamentDao.find(tournamentId);
     }
 
     @Transactional
@@ -246,5 +246,17 @@ public class TournamentServiceImpl implements TournamentService {
     @Override
     public List<Tournament> findOpenTournamentsOfPlayer(Long playerId, String searchKey) {
         return individualTournamentDao.findOpenTournamentsOfPlayer(playerId, searchKey);
-    }    
+    }
+
+    @Override
+    public Game findGame(Long gameId) throws InstanceNotFoundException {
+        return gameDao.find(gameId);
+    }  
+
+    @Transactional
+    @Override
+    public Game updateGame(Game game) {
+        gameDao.save(game);
+        return game;
+    }      
 }

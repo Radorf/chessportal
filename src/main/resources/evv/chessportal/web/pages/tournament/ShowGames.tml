@@ -1,0 +1,34 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    t:type="Layout" t:activeTournaments="true">
+
+<div>
+
+    <t:loop source="tournament.roundList" value="individualRound">
+        <h1>${message:round} ${individualRound.number_}</h1>
+        <div class="w3-padding w3-white notranslate">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>White</th>
+                        <th>Black</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t:loop source="individualRound.gameList" value="game">
+                        <tr>
+                            <td>${game.whitePiecesPlayer.loginName}</td>
+                            <td>${game.blackPiecesPlayer.loginName}</td>
+                            <td>${game.score}</td>
+                            <td><a href="#" t:type="PageLink" t:page="tournament/editGame" context="game.id">
+                                ${message:editGame}</a>
+                            </td>
+                        </tr>
+                    </t:loop>
+                </tbody>
+            </table>
+        </div>
+    </t:loop>
+</div>
+
+</html>

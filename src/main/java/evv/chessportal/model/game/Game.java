@@ -33,7 +33,7 @@ public class Game {
     }
 
     public enum ScoreResult {
-        WIN, LOSE, DRAW
+        WHITE, BLACK, DRAW
     };
     private Long id;
     private ScoreResult score;

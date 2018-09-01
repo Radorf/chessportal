@@ -49,7 +49,7 @@ public class TournamentDetails {
     
     void setupRender() {
         try {
-            tournament = tournamentService.findTournament(tournamentId);
+            tournament = tournamentService.findIndividualTournament(tournamentId);
         } catch (InstanceNotFoundException ex) {
             //TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);

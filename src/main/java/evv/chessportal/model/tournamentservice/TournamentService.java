@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.tournamentservice;
 
+import evv.chessportal.model.game.Game;
 import evv.chessportal.model.individualround.IndividualRound;
 import evv.chessportal.model.individualtournament.IndividualTournament;
 import evv.chessportal.model.player.Player;
@@ -31,7 +32,7 @@ public interface TournamentService {
     
     public ArrayList<Tournament> searchAll();
 
-    public Tournament findTournament(Long tournamentId) throws InstanceNotFoundException;
+    public IndividualTournament findIndividualTournament(Long tournamentId) throws InstanceNotFoundException;
     
     void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException;
     
@@ -42,4 +43,8 @@ public interface TournamentService {
     List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey);
     
     List<Tournament> findOpenTournamentsOfPlayer(Long playerId, String searchKey);
+
+    Game findGame(Long gameId) throws InstanceNotFoundException;
+
+    Game updateGame(Game game);
 }

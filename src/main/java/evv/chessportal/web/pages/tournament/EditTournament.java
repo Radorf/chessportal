@@ -67,7 +67,7 @@ public class EditTournament {
     }
     void setupRender(){
         try {
-            tournament = tournamentService.findTournament(tournamentId);
+            tournament = tournamentService.findIndividualTournament(tournamentId);
             name_ = tournament.getName_();
             startDate = calendarToDate(tournament.getStartDate());
             endDate = calendarToDate(tournament.getEndDate());

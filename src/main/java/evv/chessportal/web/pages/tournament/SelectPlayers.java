@@ -89,7 +89,7 @@ public class SelectPlayers {
             idList = new ArrayList<Long>();
         }
         try {
-            tournament = tournamentService.findTournament(tournamentId);
+            tournament = tournamentService.findIndividualTournament(tournamentId);
             if (tournament instanceof IndividualTournament) {
                 Set<Player> playerList = ((IndividualTournament) tournament).getPlayerList();
                 // Lambda to get playerIds
@@ -119,7 +119,7 @@ public class SelectPlayers {
             idList = new ArrayList<Long>();
         }
         try {
-            tournament = tournamentService.findTournament(tournamentId);
+            tournament = tournamentService.findIndividualTournament(tournamentId);
         } catch (InstanceNotFoundException ex) {
             // TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
