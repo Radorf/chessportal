@@ -84,7 +84,7 @@ public class IndividualRound {
     }
 
     @OneToMany (cascade = CascadeType.ALL)
-    @JoinColumn(name = "idGame")
+    @JoinColumn(name = "individualRound_id")
     public List<Game> getGameList() {
         return gameList;
     }

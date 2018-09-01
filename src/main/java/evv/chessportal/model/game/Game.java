@@ -5,6 +5,7 @@
  */
 package evv.chessportal.model.game;
 
+import evv.chessportal.model.individualround.IndividualRound;
 import evv.chessportal.model.player.Player;
 import evv.chessportal.model.teammatch.TeamMatch;
 import javax.persistence.CascadeType;
@@ -41,6 +42,8 @@ public class Game {
     private Player blackPiecesPlayer;
 
     private TeamMatch teamMatch;
+    
+    private IndividualRound individualRound;
 
     @Enumerated(EnumType.STRING)
     public ScoreResult getScore() {
@@ -92,6 +95,15 @@ public class Game {
 
     public void setTeamMatch(TeamMatch teamMatch) {
         this.teamMatch = teamMatch;
+    }
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    public IndividualRound getIndividualRound() {
+        return individualRound;
+    }
+
+    public void setIndividualRound(IndividualRound individualRound) {
+        this.individualRound = individualRound;
     }
 
 }
