@@ -102,12 +102,16 @@ public class AuthenticationValidator {
 			}
 			break;
 		case ADMIN_USERS:
-            if (!userAuthenticated || !Role.ADMIN.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
+		    if (!userAuthenticated) {
+                redirectPage = LOGIN_PAGE;
+            } else if (!Role.ADMIN.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
                 redirectPage = FORBIDDEN_PAGE;
-            }
+            } 
             break;
 		case PLAYER_USERS:
-		    if (!userAuthenticated || !Role.PLAYER.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
+		    if (!userAuthenticated) {
+                redirectPage = LOGIN_PAGE;
+            } else if (!Role.PLAYER.equals(applicationStateManager.getIfExists(UserSession.class).getRole())) {
                 redirectPage = FORBIDDEN_PAGE;
             }
             break;
