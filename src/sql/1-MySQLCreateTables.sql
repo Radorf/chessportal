@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS teamTournament_teamRound;
 DROP TABLE IF EXISTS TeamRound; 
 DROP TABLE IF EXISTS teamTournament_team;
 DROP TABLE IF EXISTS individualTournament_individualRound;
+DROP TABLE IF EXISTS Game;
 DROP TABLE IF EXISTS IndividualRound;
 DROP TABLE IF EXISTS individualTournament_player;
-DROP TABLE IF EXISTS Game;
 DROP TABLE IF EXISTS TeamMatch;
 DROP TABLE IF EXISTS Team;
 DROP TABLE IF EXISTS Tournament;
@@ -59,18 +59,6 @@ CREATE TABLE TeamMatch (
 		CONSTRAINT TeamMatchHomeTeamFK FOREIGN KEY (idHomeTeam) REFERENCES Team(id),
 		CONSTRAINT TeamMatchAwayTeamFK FOREIGN KEY (idAwayTeam) REFERENCES Team(id)) ENGINE = InnoDB;
 
-CREATE TABLE Game (
-		id					BIGINT NOT NULL AUTO_INCREMENT,
-		score				VARCHAR(255),
-		idWhitePiecesPlayer	BIGINT,
-		idBlackPiecesPlayer BIGINT,
-		idMatch				BIGINT,
-        individualRound_id             BIGINT,
-		CONSTRAINT	GamePK PRIMARY KEY(id),
-		CONSTRAINT GameWhitePiecesPlayerFK FOREIGN KEY(idWhitePiecesPlayer) REFERENCES UserProfile(id),
-		CONSTRAINT GameBlackPiecesPlayerFK FOREIGN KEY(idBlackPiecesPlayer) REFERENCES UserProfile(id),
-		CONSTRAINT IndividualRound_IdGameFK FOREIGN KEY (individualRound_id) REFERENCES IndividualRound(id),
-		CONSTRAINT GameMatchFK FOREIGN KEY(idMatch) REFERENCES TeamMatch(id)) ENGINE = InnoDB;
 
 CREATE TABLE individualTournament_player (
 		idTournament	BIGINT,
@@ -85,6 +73,19 @@ CREATE TABLE IndividualRound (
 		idTournament		BIGINT,
 		CONSTRAINT IndividualRoundPK PRIMARY KEY(id),
 		CONSTRAINT IndividualRoundIdTournamentFK FOREIGN KEY (idTournament) REFERENCES Tournament(id)) ENGINE = InnoDB;
+
+CREATE TABLE Game (
+		id					BIGINT NOT NULL AUTO_INCREMENT,
+		score				VARCHAR(255),
+		idWhitePiecesPlayer	BIGINT,
+		idBlackPiecesPlayer BIGINT,
+		idMatch				BIGINT,
+        individualRound_id             BIGINT,
+		CONSTRAINT	GamePK PRIMARY KEY(id),
+		CONSTRAINT GameWhitePiecesPlayerFK FOREIGN KEY(idWhitePiecesPlayer) REFERENCES UserProfile(id),
+		CONSTRAINT GameBlackPiecesPlayerFK FOREIGN KEY(idBlackPiecesPlayer) REFERENCES UserProfile(id),
+		CONSTRAINT IndividualRound_IdGameFK FOREIGN KEY (individualRound_id) REFERENCES IndividualRound(id),
+		CONSTRAINT GameMatchFK FOREIGN KEY(idMatch) REFERENCES TeamMatch(id)) ENGINE = InnoDB;
 		
 CREATE TABLE individualTournament_individualRound (
 		idTournament BIGINT,
