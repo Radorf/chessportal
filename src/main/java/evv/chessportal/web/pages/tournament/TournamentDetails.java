@@ -9,8 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import evv.chessportal.model.individualtournament.IndividualTournament;
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
@@ -33,6 +35,9 @@ public class TournamentDetails {
     
     @Inject
     private TournamentService tournamentService;
+    
+    @Inject
+    private Messages messages;
     
     void onActivate(Long tournamentId){
         this.tournamentId=tournamentId;
@@ -74,4 +79,7 @@ public class TournamentDetails {
         return DateManagerUtil.printCalendarDate(tournament.getEndEnrolmentDate());
     }
     
+    public String getTypeLabel() {
+    	return ((tournament instanceof IndividualTournament) ? messages.get("label.individual") : messages.get("label.team"));
+    }
 }

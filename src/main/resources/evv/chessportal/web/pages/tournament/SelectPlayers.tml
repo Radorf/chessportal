@@ -42,7 +42,7 @@
                 </table>
                 <div class="form-group">
                     <div class="col-md-offset-5 col-md-1">
-                        <button type="submit" class="btn btn-primary">${message:selectPlayers}</button>
+                        <button type="submit" class="btn btn-default">${message:selectPlayers}</button>
                     </div>
                 </div> 
             </form>

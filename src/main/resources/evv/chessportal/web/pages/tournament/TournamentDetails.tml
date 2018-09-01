@@ -22,6 +22,15 @@
 			<p>${tournament.name_}</p>
 		</div>
 	</div>
+	
+	<div class="row line">
+		<div class="col-sm-4">
+			<h5>${message:label.type}</h5>
+		</div>
+		<div class="col-sm-8">
+			<p>${getTypeLabel()}</p>
+		</div>
+	</div>
 
 	<div class="row line">
 		<div class="col-sm-4">

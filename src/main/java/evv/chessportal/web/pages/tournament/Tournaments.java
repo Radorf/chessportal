@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import evv.chessportal.model.tournament.Tournament;
@@ -36,6 +37,9 @@ public class Tournaments {
     
     @Property
     private Tournament tournament;
+    
+    @Inject
+    private Messages messages;
     
     void setupRender() {
         tournamentList = tournamentService.searchTournamentByKeyword(searchKey);
