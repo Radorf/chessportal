@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public interface TournamentDao extends GenericDao<Tournament, Long> {
 
-    public ArrayList<Tournament> searchAll();
+    public ArrayList<Tournament> searchAllOrderByStartDate();
 
     ArrayList<Tournament> searchTournamentByKeyword(String keyword);
 

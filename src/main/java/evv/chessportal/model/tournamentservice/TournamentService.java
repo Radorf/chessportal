@@ -29,6 +29,8 @@ public interface TournamentService {
     public Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
             Calendar endEnrolmentDate) throws DatesInconsistenceException, InstanceNotFoundException;
     
+    public void deleteTournament(Long id)throws InstanceNotFoundException;
+    
     ArrayList<Tournament> searchTournamentByKeyword(String keyword);
     
     public ArrayList<Tournament> searchAll();

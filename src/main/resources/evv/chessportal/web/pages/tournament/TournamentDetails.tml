@@ -12,6 +12,9 @@
 		<a class="btn btn-default" href="#" t:type="ActionLink"
 			t:id="startTournament" context="tournament.id"><span
 			class="glyphicon glyphicon-play icon-padding"></span>${message:startTournament}</a>
+                <a class="btn btn-default" href="#" t:type="ActionLink"
+			t:id="deleteTournament" context="tournament.id"><span
+			class="glyphicon glyphicon-remove icon-padding"></span>${message:deleteTournament}</a>
         <a class="btn btn-default" href="#" t:type="PageLink"
             t:id="showGames" t:page="tournament/showGames" context="tournament.id"><span
             class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
