@@ -302,5 +302,18 @@ public class TournamentServiceImpl implements TournamentService {
             }
         });
         return values;
+    }
+
+    @Override
+    public boolean hasAllGamesScored(Long tournamentId) {
+        return individualTournamentDao.hasAllGamesScored(tournamentId);
+    }
+
+    @Transactional
+    @Override
+    public void changeTournamentStatus(Tournament context, TournamentState state) throws InstanceNotFoundException {
+        IndividualTournament tournament = individualTournamentDao.find(context.getId());
+        tournament.setState(state);
+        individualTournamentDao.save(tournament);
     }      
 }

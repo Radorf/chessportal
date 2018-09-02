@@ -19,6 +19,12 @@ import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import evv.chessportal.model.tournamentservice.DraftState;
+import evv.chessportal.model.tournamentservice.FinishedState;
+import evv.chessportal.model.tournamentservice.StartedState;
+import evv.chessportal.model.tournamentservice.TournamentState;
 
 /**
  *
@@ -35,8 +41,13 @@ public class Tournament {
     public enum TournamentPairingsType {
         ROUND_ROBIN, SWISS
     }
-
+    
+    public enum Status {
+        DRAFT, STARTED, FINISHED
+    }
+    
     public Tournament() {
+        status=Status.DRAFT;
     }
 
     private Long id;
@@ -46,6 +57,7 @@ public class Tournament {
     private Calendar startEnrolmentDate;
     private Calendar endEnrolmentDate;
     private TournamentPairingsType pairingsType;
+    private Status status;
 
     @Enumerated(EnumType.STRING)
     public TournamentPairingsType getPairingsType() {
@@ -54,6 +66,15 @@ public class Tournament {
 
     public void setPairingsType(TournamentPairingsType pairingsType) {
         this.pairingsType = pairingsType;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getName_() {
@@ -112,4 +133,29 @@ public class Tournament {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Transient
+    public TournamentState getState() {
+        switch (status) {
+        case DRAFT:
+            return new DraftState();
+        case STARTED:
+            return new StartedState();
+        case FINISHED:
+            return new FinishedState();
+        }
+        return null;
+    }
+
+    public void setState(TournamentState state) {
+        if (state instanceof DraftState) {
+            this.status = Status.DRAFT;
+        } else if (state instanceof StartedState) {
+            this.status = Status.STARTED;
+        } else if (state instanceof FinishedState) {
+            this.status = Status.FINISHED;
+        }
+    }
+    
+    
 }

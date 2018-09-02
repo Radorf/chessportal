@@ -40,7 +40,8 @@ CREATE TABLE Tournament (
 		startEnrolmentDate  DATE,
 		endEnrolmentDate 	DATE,
 		tournamentType 		VARCHAR(255),
-                pairingsType            VARCHAR(255),
+        pairingsType            VARCHAR(255),
+        status            VARCHAR(255),
 		CONSTRAINT	TournamentPK PRIMARY KEY(id)) ENGINE = InnoDB;
 
 CREATE TABLE Team (

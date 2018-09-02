@@ -3,9 +3,12 @@
 
 <div class="container">
     <div class="btn-group btn-container">
-        <a class="btn btn-default" href="#" t:type="PageLink"
-            t:id="showGames" t:page="personal/showGames" context="tournament.id"><span
-            class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
+    
+        <t:if test="canShowGames">
+            <a class="btn btn-default" href="#" t:type="PageLink"
+                t:id="showGames" t:page="personal/showGames" context="tournament.id"><span
+                class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
+        </t:if>
     </div>
 
     <t:TournamentDetails t:tournament="tournament"/>

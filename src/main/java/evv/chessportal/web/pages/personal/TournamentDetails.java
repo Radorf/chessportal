@@ -9,6 +9,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournamentservice.TournamentService;
+import evv.chessportal.model.tournamentservice.TournamentState;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
@@ -26,6 +27,9 @@ public class TournamentDetails {
     
     @Inject
     private Messages messages;
+
+    @Property
+    private boolean canShowGames;
     
     void onActivate(Long tournamentId){
         this.tournamentId=tournamentId;
@@ -38,6 +42,8 @@ public class TournamentDetails {
     void setupRender() {
         try {
             tournament = tournamentService.findIndividualTournament(tournamentId);
+            TournamentState state = tournament.getState();
+            canShowGames = state.canShowGames(tournament, tournamentService);
         } catch (InstanceNotFoundException ex) {
             //TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);

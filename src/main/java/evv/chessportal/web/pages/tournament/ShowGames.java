@@ -5,7 +5,7 @@ import org.apache.tapestry5.annotations.Property;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 
-@AuthenticationPolicy(AuthenticationPolicyType.PLAYER_USERS)
+@AuthenticationPolicy(AuthenticationPolicyType.ADMIN_USERS)
 public class ShowGames {
 
     @Property

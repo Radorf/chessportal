@@ -19,5 +19,7 @@ public interface IndividualTournamentDao extends GenericDao<IndividualTournament
     List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey);
 
     List<Tournament> findOpenTournamentsOfPlayer(Long playerId, String searchKey);
+
+    boolean hasAllGamesScored(Long tournamentId);
     
 }

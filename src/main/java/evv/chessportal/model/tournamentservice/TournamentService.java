@@ -50,4 +50,8 @@ public interface TournamentService {
     Game updateGame(Game game);
 
     List<CustomPlayerTournamentStats> getClassification(Long tournamentId) throws InstanceNotFoundException;
+
+    boolean hasAllGamesScored(Long tournamentId);
+
+    void changeTournamentStatus(Tournament context, TournamentState state) throws InstanceNotFoundException;
 }

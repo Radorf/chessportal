@@ -15,7 +15,7 @@
                     <th>${message:Tournament}</th>
                     <th>${message:startDate}</th>
                     <th>${message:endDate}</th>
-                    <th></th>
+                    <th>${message:status}</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +26,7 @@
                         </td>
                         <td>${startDate}</td>
                         <td>${endDate}</td>
+                        <td>${tournament.status}</td>
                     </tr>
                 </t:loop>
             </tbody>
