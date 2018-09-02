@@ -1,4 +1,4 @@
-package evv.chessportal.web.pages.tournament;
+package evv.chessportal.web.pages.personal;
 
 import org.apache.tapestry5.annotations.Property;
 
