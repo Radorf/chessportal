@@ -23,6 +23,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
 /**
@@ -50,8 +51,8 @@ public class IndividualTournament extends Tournament {
         this.playerList = playerList;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "individualTournament_individualRound", joinColumns = @JoinColumn(name = "idTournament"), inverseJoinColumns = @JoinColumn(name = "idRound"))
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "individualTournament_id")
     @OrderBy("number_")
     public List<IndividualRound> getRoundList() {
         return roundList;

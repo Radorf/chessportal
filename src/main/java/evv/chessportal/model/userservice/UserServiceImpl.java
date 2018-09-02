@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
                 administratorDao.save(userProfile);
                 return userProfile;
             } else {
-                Player userProfile = new Player(loginName, clearPassword, person, elo, licenseNumber);
+                Player userProfile = new Player(loginName, encryptedPassword, person, elo, licenseNumber);
                 playerDao.save(userProfile);
                 return userProfile;
             }
@@ -160,8 +160,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long userProfileId) throws InstanceNotFoundException {
-        userProfileDao.find(userProfileId);
-        userProfileDao.remove(userProfileId);
+        UserProfile userProfile = userProfileDao.find(userProfileId);
+        userProfile.setDeleted(true);
+        userProfileDao.save(userProfile);
     }
 
     @Override

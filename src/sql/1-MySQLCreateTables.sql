@@ -29,6 +29,7 @@ CREATE TABLE UserProfile (
 		licenseNumber			VARCHAR(255),
 		idPerson				BIGINT NOT NULL,					
 		userType				VARCHAR(255),
+        deleted     BIT,
 		CONSTRAINT	UserPK PRIMARY KEY(id),
 		CONSTRAINT UserPersonFK FOREIGN KEY(idPerson) REFERENCES Person(id)) ENGINE = InnoDB;
 		
@@ -42,6 +43,7 @@ CREATE TABLE Tournament (
 		tournamentType 		VARCHAR(255),
         pairingsType            VARCHAR(255),
         status            VARCHAR(255),
+        deleted     BIT,
 		CONSTRAINT	TournamentPK PRIMARY KEY(id)) ENGINE = InnoDB;
 
 CREATE TABLE Team (
@@ -72,7 +74,9 @@ CREATE TABLE IndividualRound (
 		number_				INTEGER,
 		date_				DATE,
 		idTournament		BIGINT,
+		individualTournament_id   BIGINT,
 		CONSTRAINT IndividualRoundPK PRIMARY KEY(id),
+        CONSTRAINT individualTournament_idIndividualTournamentFK FOREIGN KEY (individualTournament_id) REFERENCES Tournament(id),
 		CONSTRAINT IndividualRoundIdTournamentFK FOREIGN KEY (idTournament) REFERENCES Tournament(id)) ENGINE = InnoDB;
 
 CREATE TABLE Game (
@@ -87,13 +91,6 @@ CREATE TABLE Game (
 		CONSTRAINT GameBlackPiecesPlayerFK FOREIGN KEY(idBlackPiecesPlayer) REFERENCES UserProfile(id),
 		CONSTRAINT IndividualRound_IdGameFK FOREIGN KEY (individualRound_id) REFERENCES IndividualRound(id),
 		CONSTRAINT GameMatchFK FOREIGN KEY(idMatch) REFERENCES TeamMatch(id)) ENGINE = InnoDB;
-		
-CREATE TABLE individualTournament_individualRound (
-		idTournament BIGINT,
-		idRound		 BIGINT,
-		CONSTRAINT IndividualTournament_individualRoundIdTournamentFK FOREIGN KEY (idTournament) REFERENCES Tournament(id),
-		CONSTRAINT IndividualTournament_individualRoundIdRound  FOREIGN KEY (idRound) REFERENCES IndividualRound(id)) ENGINE = InnoDB;
-
 
 CREATE TABLE teamTournament_team (
 		idTournament BIGINT,

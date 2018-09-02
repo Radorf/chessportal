@@ -115,10 +115,13 @@ public class TournamentServiceImpl implements TournamentService {
         tournamentDao.save(tournament);
         return tournament;
     }
+
+    @Transactional
     @Override
     public void deleteTournament(Long id) throws InstanceNotFoundException{
-        tournamentDao.find(id);
-        individualTournamentDao.remove(id);
+        IndividualTournament tournament = individualTournamentDao.find(id);
+        tournament.setDeleted(true);
+        individualTournamentDao.save(tournament);
     }
 
     @Override

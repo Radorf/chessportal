@@ -20,6 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Where;
 
 /**
  *
@@ -28,6 +29,7 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "userType", discriminatorType = DiscriminatorType.STRING)
+@Where(clause = "deleted = 0")
 public class UserProfile {
 
     public final static String ADMIN_TYPE_STRING = "admin";
@@ -46,6 +48,7 @@ public UserProfile() {
     private String loginName;
 
     private Person person;   
+    private boolean deleted;
 
     public UserProfile(String loginName, String password, Person person) {
         this.loginName = loginName;
@@ -92,6 +95,13 @@ public UserProfile() {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
 }

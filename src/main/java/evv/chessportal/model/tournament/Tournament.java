@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Where;
+
 import evv.chessportal.model.tournamentservice.DraftState;
 import evv.chessportal.model.tournamentservice.FinishedState;
 import evv.chessportal.model.tournamentservice.StartedState;
@@ -33,6 +35,7 @@ import evv.chessportal.model.tournamentservice.TournamentState;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tournamentType", discriminatorType = DiscriminatorType.STRING)
+@Where(clause = "deleted = 0")
 public class Tournament {
 
     public final static String TEAM_TOURNAMENT_TYPE_STRING = "teamTournament";
@@ -58,6 +61,7 @@ public class Tournament {
     private Calendar endEnrolmentDate;
     private TournamentPairingsType pairingsType;
     private Status status;
+    private boolean deleted;
 
     @Enumerated(EnumType.STRING)
     public TournamentPairingsType getPairingsType() {
@@ -155,6 +159,14 @@ public class Tournament {
         } else if (state instanceof FinishedState) {
             this.status = Status.FINISHED;
         }
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
     
     
