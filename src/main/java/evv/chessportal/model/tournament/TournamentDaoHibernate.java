@@ -47,6 +47,20 @@ public class TournamentDaoHibernate extends GenericDaoHibernate<Tournament,Long>
 
         return list;
     }
+    
+    @Override
+    public ArrayList<Tournament> searchHomeTournaments() {
+        StringBuilder sb = new StringBuilder(64);
+        sb.append("SELECT t FROM Tournament t WHERE deleted = :false AND status = :started ");
+        sb.append("ORDER BY t.startDate DESC ");
+        
+        Query query = getSession().createQuery(sb.toString());
+        query.setParameter("false", Boolean.FALSE);
+        query.setParameter("started", Tournament.Status.STARTED);
+        ArrayList<Tournament> list = (ArrayList<Tournament>) query.list();
+
+        return list;
+    }
 
     
 }

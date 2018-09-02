@@ -24,18 +24,20 @@ import java.util.List;
  */
 public interface TournamentService {
 
-    public IndividualTournament createRRIndividualTournament(String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate, Calendar endEnrolmentDate) throws DatesInconsistenceException;
+    IndividualTournament createRRIndividualTournament(String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate, Calendar endEnrolmentDate) throws DatesInconsistenceException;
 
-    public Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
+    Tournament updateTournament(Long tournamentId, String name_, Calendar startDate, Calendar endDate, Calendar startEnrolmentDate,
             Calendar endEnrolmentDate) throws DatesInconsistenceException, InstanceNotFoundException;
     
-    public void deleteTournament(Long id)throws InstanceNotFoundException;
+    void deleteTournament(Long id)throws InstanceNotFoundException;
     
     ArrayList<Tournament> searchTournamentByKeyword(String keyword);
     
-    public ArrayList<Tournament> searchAll();
+    ArrayList<Tournament> searchHomeTournaments();
+    
+    ArrayList<Tournament> searchAll();
 
-    public IndividualTournament findIndividualTournament(Long tournamentId) throws InstanceNotFoundException;
+    IndividualTournament findIndividualTournament(Long tournamentId) throws InstanceNotFoundException;
     
     void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException;
     
@@ -43,7 +45,7 @@ public interface TournamentService {
     
     ArrayList<Player> searchPlayerByKeyword(String keyword);
 
-    public IndividualTournament generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;
+    IndividualTournament generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;
     
     List<Tournament> findTournamentsOfPlayer(Long playerId, String searchKey);
     

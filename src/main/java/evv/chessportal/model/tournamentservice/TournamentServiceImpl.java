@@ -130,6 +130,11 @@ public class TournamentServiceImpl implements TournamentService {
     }
     
     @Override
+    public ArrayList<Tournament> searchHomeTournaments() {
+        return tournamentDao.searchHomeTournaments();
+    }
+    
+    @Override
     public ArrayList<Tournament> searchAll() {
         return tournamentDao.searchAllOrderByStartDate();
     }

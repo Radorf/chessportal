@@ -17,5 +17,7 @@ public interface TournamentDao extends GenericDao<Tournament, Long> {
     public ArrayList<Tournament> searchAllOrderByStartDate();
 
     ArrayList<Tournament> searchTournamentByKeyword(String keyword);
+    
+    ArrayList<Tournament> searchHomeTournaments();
 
 }
