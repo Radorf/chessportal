@@ -8,10 +8,10 @@
     			t:page="tournament/editTournament" context="tournament.id"><span
     			class="glyphicon glyphicon-edit icon-padding"></span>${message:editTournament}</a>
         </t:if>
-        <t:if test="canEnrolPlayers">
+        <t:if test="canShowPlayers">
     		<a class="btn btn-default" href="#" t:type="PageLink"
-    			t:page="tournament/selectPlayers" context="tournament.id"><span
-    			class="glyphicon glyphicon-th-list icon-padding"></span>${message:selectPlayers}</a>
+    			t:page="tournament/showPlayers" context="tournament.id"><span
+    			class="glyphicon glyphicon-th-list icon-padding"></span>${message:showPlayers}</a>
 		</t:if>
 		<t:if test="canStart">
     		<a class="btn btn-default" href="#" t:type="ActionLink"

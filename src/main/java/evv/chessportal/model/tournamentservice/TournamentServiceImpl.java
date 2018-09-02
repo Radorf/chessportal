@@ -156,6 +156,11 @@ public class TournamentServiceImpl implements TournamentService {
     }
     
     @Override
+    public ArrayList<Player> searchPlayerByTournamentAndKeyword(Long tournamentId, String keyword) {
+        return playerDao.searchByTournamentAndKeyword(tournamentId, keyword);
+    }
+    
+    @Override
     public ArrayList<Player> searchPlayerByKeyword(String keyword) {
         return playerDao.searchByKeyword(keyword);
     }

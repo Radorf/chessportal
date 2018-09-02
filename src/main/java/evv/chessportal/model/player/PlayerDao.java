@@ -15,4 +15,5 @@ import evv.chessportal.model.util.dao.GenericDao;
  */
 public interface PlayerDao extends GenericDao<Player,Long>{
     ArrayList<Player> searchByKeyword(String keyword);
+    ArrayList<Player> searchByTournamentAndKeyword(Long tournamentId, String keyword);
 }

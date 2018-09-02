@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -57,6 +58,9 @@ public class SelectPlayers {
 
     @Property
     private Long tournamentId;
+    
+    @InjectPage
+    private ShowPlayers showPlayers;
 
     @Property
     private ValueEncoder<UserProfile> encoder = new ValueEncoder<UserProfile>() {
@@ -138,6 +142,8 @@ public class SelectPlayers {
             // TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return this;
+        
+        showPlayers.setTournamentId(tournamentId);
+        return showPlayers;
     }
 }

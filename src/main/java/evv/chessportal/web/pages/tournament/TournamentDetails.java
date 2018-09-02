@@ -44,6 +44,9 @@ public class TournamentDetails {
     private boolean canStart;
     
     @Property
+    private boolean canShowPlayers;
+    
+    @Property
     private boolean canShowGames;
     
     @Property
@@ -68,8 +71,8 @@ public class TournamentDetails {
             tournament = tournamentService.findIndividualTournament(tournamentId);
             TournamentState state = tournament.getState();
             canStart = state.canStart(tournament, tournamentService);
+            canShowPlayers = state.canShowPlayers(tournament, tournamentService);
             canShowGames = state.canShowGames(tournament, tournamentService);
-            canEnrolPlayers = state.canEnrolPlayers(tournament, tournamentService);
             canEdit = state.canEnrolPlayers(tournament, tournamentService);
             canFinish = state.canFinish(tournament, tournamentService);
         } catch (InstanceNotFoundException ex) {

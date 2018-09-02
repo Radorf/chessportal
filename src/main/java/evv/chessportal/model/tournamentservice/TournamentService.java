@@ -39,6 +39,8 @@ public interface TournamentService {
     
     void enrolPlayers(Long tournamentId, final Collection<Long> playerIds) throws InstanceNotFoundException;
     
+    ArrayList<Player> searchPlayerByTournamentAndKeyword(Long tournamentId, String keyword);
+    
     ArrayList<Player> searchPlayerByKeyword(String keyword);
 
     public IndividualTournament generateRRIndividualTournamentRounds(Long id) throws InstanceNotFoundException;

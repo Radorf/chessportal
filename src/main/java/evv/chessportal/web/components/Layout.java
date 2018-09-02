@@ -5,6 +5,7 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.Cookies;
 
 import evv.chessportal.web.pages.Index;
@@ -43,6 +44,8 @@ public class Layout {
     
     @Inject
     private Cookies cookies;
+    @Inject
+    private AssetSource assetSource;
     
     public boolean getShowTitleInBody() {
     	

@@ -36,4 +36,26 @@ public class PlayerDaoHibernate extends GenericDaoHibernate<Player,Long> impleme
 
         return list;
     }
+    
+    @Override
+    public ArrayList<Player> searchByTournamentAndKeyword(Long tournamentId, String searchKey) {
+        boolean hasKeyword = searchKey!=null && !"".equals(searchKey);
+        StringBuilder sb = new StringBuilder(64);
+        sb.append("SELECT u FROM IndividualTournament it INNER JOIN it.playerList u ");
+        sb.append("WHERE it.id = :tournamentId ");
+        if (hasKeyword) {
+            sb.append("AND (u.loginName LIKE :searchKey ");
+            sb.append("OR  u.person.firstName LIKE :searchKey ");
+            sb.append("OR u.person.surname LIKE :searchKey)");
+        }
+        
+        Query query = getSession().createQuery(sb.toString());
+        query.setParameter("tournamentId", tournamentId);
+        if (hasKeyword) {
+            query.setParameter("searchKey", "%"+searchKey+"%");
+        }
+        ArrayList<Player> list = (ArrayList<Player>) query.list();
+
+        return list;
+    }
 }

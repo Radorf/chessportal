@@ -15,7 +15,7 @@
 				<tr>
 					<th></th>
 					<th>${message:loginName}</th>
-					<th>${message:firstName-label}</th>
+					<th>${message:label.name}</th>
 					<th>${message:email}</th>
 					<th></th>
 				</tr>
