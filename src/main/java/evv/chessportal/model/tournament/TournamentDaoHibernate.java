@@ -19,7 +19,7 @@ import org.hibernate.query.Query;
 public class TournamentDaoHibernate extends GenericDaoHibernate<Tournament,Long> implements TournamentDao{
 
     @Override
-    public ArrayList<Tournament> searchAll() {
+    public ArrayList<Tournament> searchAllOrderByStartDate() {
         ArrayList <Tournament> list;
         list = (ArrayList <Tournament>) getSession().createQuery(
                 "SELECT t FROM Tournament t "

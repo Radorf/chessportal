@@ -115,6 +115,11 @@ public class TournamentServiceImpl implements TournamentService {
         tournamentDao.save(tournament);
         return tournament;
     }
+    @Override
+    public void deleteTournament(Long id) throws InstanceNotFoundException{
+        tournamentDao.find(id);
+        individualTournamentDao.remove(id);
+    }
 
     @Override
     public ArrayList<Tournament> searchTournamentByKeyword(String keyword) {
@@ -123,7 +128,7 @@ public class TournamentServiceImpl implements TournamentService {
     
     @Override
     public ArrayList<Tournament> searchAll() {
-        return tournamentDao.searchAll();
+        return tournamentDao.searchAllOrderByStartDate();
     }
 
     @Override
@@ -316,4 +321,6 @@ public class TournamentServiceImpl implements TournamentService {
         tournament.setState(state);
         individualTournamentDao.save(tournament);
     }      
+
+      
 }
