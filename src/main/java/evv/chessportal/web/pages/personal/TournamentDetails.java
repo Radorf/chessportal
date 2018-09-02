@@ -1,40 +1,31 @@
-package evv.chessportal.web.pages.tournament;
+package evv.chessportal.web.pages.personal;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import evv.chessportal.model.game.Game;
-import evv.chessportal.model.individualround.IndividualRound;
-import evv.chessportal.model.individualtournament.IndividualTournament;
+import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournamentservice.TournamentService;
 import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 
-@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
-public class ShowGames {
-
+@AuthenticationPolicy(AuthenticationPolicyType.PLAYER_USERS)
+public class TournamentDetails {
+    @Property
+    private Tournament tournament;
+    
     @Property
     private Long tournamentId;
-    
-    @Property
-    private List<IndividualRound> roundList;
-    
-    @Property
-    private IndividualRound individualRound;
-
-    @Property
-    private Game game;
     
     @Inject
     private TournamentService tournamentService;
     
-    @Property
-    private IndividualTournament tournament;
+    @Inject
+    private Messages messages;
     
     void onActivate(Long tournamentId){
         this.tournamentId=tournamentId;
@@ -47,12 +38,9 @@ public class ShowGames {
     void setupRender() {
         try {
             tournament = tournamentService.findIndividualTournament(tournamentId);
-            roundList = tournament.getRoundList();
         } catch (InstanceNotFoundException ex) {
             //TODO error page
             Logger.getLogger(TournamentDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 }

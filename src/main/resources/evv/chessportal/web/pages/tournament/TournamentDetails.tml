@@ -17,59 +17,7 @@
             class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
 	</div>
 
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:Tournament}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${tournament.name_}</p>
-		</div>
-	</div>
-	
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:label.type}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${getTypeLabel()}</p>
-		</div>
-	</div>
-
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:startDate}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${startDate}</p>
-		</div>
-	</div>
-
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:endDate}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${endDate}</p>
-		</div>
-	</div>
-
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:startEnrolmentDate}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${startEnrolmentDate}</p>
-		</div>
-	</div>
-
-	<div class="row line">
-		<div class="col-sm-4">
-			<h5>${message:endEnrolmentDate}</h5>
-		</div>
-		<div class="col-sm-8">
-			<p>${endEnrolmentDate}</p>
-		</div>
-	</div>
+	<t:TournamentDetails t:tournament="tournament"/>
 
 </div>
 

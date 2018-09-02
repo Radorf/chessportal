@@ -18,8 +18,11 @@ import evv.chessportal.web.pages.tournament.TournamentDetails;
 
 public class Classification {
     @Property
-    @Parameter
+    @Parameter(required=true)
     private Long tournamentId;
+    @Property
+    @Parameter(required=false)
+    private boolean extended;
     @Inject
     private TournamentService tournamentService;
     

@@ -60,26 +60,4 @@ public class TournamentDetails {
         tournamentService.generateRRIndividualTournamentRounds(id);
         return this;
     }
-    
-    public String getStartDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getStartDate());
-    }
-
- 
-    public String getEndDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getEndDate());
-    }
-
-    public String getStartEnrolmentDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getStartEnrolmentDate());
-    }
-
- 
-    public String getEndEnrolmentDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getEndEnrolmentDate());
-    }
-    
-    public String getTypeLabel() {
-    	return ((tournament instanceof IndividualTournament) ? messages.get("label.individual") : messages.get("label.team"));
-    }
 }

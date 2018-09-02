@@ -7,11 +7,13 @@ public class CustomPlayerTournamentStats {
     private int won;
     private int lost;
     private int draw;
+    private int games;
     private float score;
     private int wonWhite;
     private int lostWhite;
     private int drawWhite;
-    private int games;
+    private int gamesWhite;
+    private float scoreWhite;
 
     public CustomPlayerTournamentStats(Player player) {
         this.player=player;
@@ -80,6 +82,18 @@ public class CustomPlayerTournamentStats {
     public void setDrawWhite(int drawWhite) {
         this.drawWhite = drawWhite;
     }
+    
+    public int getWonBlack() {
+        return won-wonWhite;
+    }
+
+    public int getLostBlack() {
+        return lost-lostWhite;
+    }
+
+    public int getDrawBlack() {
+        return draw-drawWhite;
+    }
 
     public int getGames() {
         return games;
@@ -89,10 +103,36 @@ public class CustomPlayerTournamentStats {
         this.games = games;
     }
     
+    public int getGamesWhite() {
+        return gamesWhite;
+    }
+
+    public void setGamesWhite(int gamesWhite) {
+        this.gamesWhite = gamesWhite;
+    }
+
+    public float getScoreWhite() {
+        return scoreWhite;
+    }
+
+    public void setScoreWhite(float scoreWhite) {
+        this.scoreWhite = scoreWhite;
+    }
+    
+    public int getGamesBlack() {
+        return games-gamesWhite;
+    }
+
+    public float getScoreBlack() {
+        return score-scoreWhite;
+    }
+
     public void addWin(boolean isWhite) {
         won++;
         if (isWhite) {
             wonWhite++;
+            gamesWhite++;
+            scoreWhite++;
         }
         games++;
         score++;
@@ -102,6 +142,7 @@ public class CustomPlayerTournamentStats {
         lost++;
         if (isWhite) {
             lostWhite++;
+            gamesWhite++;
         }
         games++;
     }
@@ -110,6 +151,8 @@ public class CustomPlayerTournamentStats {
         draw++;
         if (isWhite) {
             drawWhite++;
+            gamesWhite++;
+            scoreWhite+=0.5;
         }
         games++;
         score+=0.5;

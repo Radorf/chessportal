@@ -24,7 +24,7 @@
 				<t:loop source="tournamentList" value="tournament">
 					<tr>
 						<td><a href="#" t:type="PageLink"
-							t:page="tournament/tournamentDetails" context="tournament.id">${tournament.name_}</a>
+							t:page="open/tournamentDetails" context="tournament.id">${tournament.name_}</a>
 						</td>
 						<td>${startDate}</td>
 						<td>${endDate}</td>

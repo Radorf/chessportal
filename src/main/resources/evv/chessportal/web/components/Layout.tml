@@ -139,9 +139,9 @@ body {
 							</t:if>
 							<t:if test="player">
 								<li class="${getActiveMyTournamentsClass()}"><a href="#"
-									t:type="PageLink" t:page="tournament/mytournaments">${message:mytournaments}</a></li>
+									t:type="PageLink" t:page="personal/tournaments">${message:mytournaments}</a></li>
 								<li class="${getActiveOpenTournamentsClass()}"><a href="#"
-									t:type="PageLink" t:page="tournament/opentournaments">${message:opentournaments}</a></li>
+									t:type="PageLink" t:page="open/tournaments">${message:opentournaments}</a></li>
 							</t:if>
 						</ul>
 						<ul class="nav navbar-nav pull-right">

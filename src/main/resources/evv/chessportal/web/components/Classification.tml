@@ -10,6 +10,18 @@
                         <th>${message:lost}</th>
                         <th>${message:draw}</th>
                         <th>${message:points}</th>
+                        <t:if test="extended">
+                            <th>${message:white} ${message:games}</th>
+                            <th>${message:white} ${message:win}</th>
+                            <th>${message:white} ${message:lost}</th>
+                            <th>${message:white} ${message:draw}</th>
+                            <th>${message:white} ${message:points}</th>
+                            <th>${message:black} ${message:games}</th>
+                            <th>${message:black} ${message:win}</th>
+                            <th>${message:black} ${message:lost}</th>
+                            <th>${message:black} ${message:draw}</th>
+                            <th>${message:black} ${message:points}</th>
+                        </t:if>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,6 +33,18 @@
                             <td>${stats.lost}</td>
                             <td>${stats.draw}</td>
                             <td>${stats.score}</td>
+                            <t:if test="extended">
+                                <td>${stats.gamesWhite}</td>
+                                <td>${stats.wonWhite}</td>
+                                <td>${stats.lostWhite}</td>
+                                <td>${stats.drawWhite}</td>
+                                <td>${stats.scoreWhite}</td>
+                                <td>${stats.gamesBlack}</td>
+                                <td>${stats.wonBlack}</td>
+                                <td>${stats.lostBlack}</td>
+                                <td>${stats.drawBlack}</td>
+                                <td>${stats.scoreBlack}</td>
+                            </t:if>
                         </tr>
                     </t:loop>
                 </tbody>

@@ -2,7 +2,7 @@
     t:type="Layout" t:activeTournaments="true">
 
 <div>
-    <t:Classification t:tournamentId="tournamentId"/>
+    <t:Classification t:tournamentId="tournamentId" t:extended="true"/>
 
     <t:loop source="tournament.roundList" value="individualRound">
         <h1>${message:round} ${individualRound.number_}</h1>

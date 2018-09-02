@@ -1,9 +1,6 @@
-package evv.chessportal.web.pages.tournament;
+package evv.chessportal.web.pages.personal;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
@@ -13,15 +10,14 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import evv.chessportal.model.tournament.Tournament;
 import evv.chessportal.model.tournamentservice.TournamentService;
-import evv.chessportal.model.util.exceptions.InstanceNotFoundException;
-import evv.chessportal.web.pages.user.Users;
 import evv.chessportal.web.services.AuthenticationPolicy;
 import evv.chessportal.web.services.AuthenticationPolicyType;
 import evv.chessportal.web.util.DateManagerUtil;
 import evv.chessportal.web.util.UserSession;
 
 @AuthenticationPolicy(AuthenticationPolicyType.PLAYER_USERS)
-public class OpenTournaments {
+public class Tournaments {
+
     @Inject
     TournamentService tournamentService;
     
@@ -39,7 +35,7 @@ public class OpenTournaments {
     private UserSession userSession;
     
     void setupRender() {
-        tournamentList = tournamentService.findOpenTournamentsOfPlayer(userSession.getUserProfileId(), searchKey);
+        tournamentList = tournamentService.findTournamentsOfPlayer(userSession.getUserProfileId(), searchKey);
     }
     
     public String getStartDate(){
@@ -49,22 +45,5 @@ public class OpenTournaments {
  
     public String getEndDate(){
         return DateManagerUtil.printCalendarDate(tournament.getEndDate());
-    }
-    
-    public String getStartEnrolmentDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getStartEnrolmentDate());
-    }
-
-    public String getEndEnrolmentDate(){
-        return DateManagerUtil.printCalendarDate(tournament.getEndEnrolmentDate());
-    }
-    
-    Object onActionFromEnrol(Long tournamentId){           
-        try {
-            tournamentService.enrolPlayers(tournamentId, Arrays.asList(userSession.getUserProfileId()));
-        } catch (InstanceNotFoundException ex) {
-            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return this;
     }
 }
