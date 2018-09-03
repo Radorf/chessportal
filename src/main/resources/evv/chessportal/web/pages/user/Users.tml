@@ -19,6 +19,7 @@
 					<th>${message:email}</th>
 					<th>${message:label.role}</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>

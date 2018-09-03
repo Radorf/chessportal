@@ -2,8 +2,6 @@
 	t:type="Layout" t:activeTournaments="true">
 
 <div>
-	<h3>${tournament.name_}</h3>
-
 	<div class="btn-group btn-container col-lg-6">
 		<t:if test="canEnrolPlayers">
 			<a class="btn btn-default" href="#" t:type="PageLink"

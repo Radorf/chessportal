@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Chess Portal</title>
-<!-- <link rel="shortcut icon" href="${asset:context:/styles/images/chess.ico}" /> -->
+<!-- <link rel="shortcut icon" href="${asset:context:/styles/images/chess.ico}" type="image/ico" />  -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style type="text/css">

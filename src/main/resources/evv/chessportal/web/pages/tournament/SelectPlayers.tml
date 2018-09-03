@@ -2,7 +2,7 @@
 	t:type="Layout" t:activeTournaments="true">
 
 <div>
-	<h3>${tournament.name_}</h3>
+<!-- 	<h3>${tournament.name_}</h3> -->
 
 	<div class="searcher-separator">
 		<t:Searcher t:searchKey="searchKey" />

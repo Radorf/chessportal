@@ -22,8 +22,8 @@
 <form t:type="Form" class="form-horizontal" t:id="gameForm">
     <t:errors />
     <div class="form-group">
-        <span class="col-sm-2 control-label">${message:result}</span>
-        <div class="col-md-3">
+        <div class="col-sm-2 control-label"><h5>${message:result}</h5></div>
+        <div class="col-md-3 checkbox">
             <t:RadioGroup value="radioSelectedValue">
                 <t:Radio t:id="white" value="whiteOption" label=" White wins" type="radio" name="group"/>
                 <t:label for="white"/><br/>

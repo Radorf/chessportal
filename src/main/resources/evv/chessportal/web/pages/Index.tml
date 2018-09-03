@@ -2,6 +2,7 @@
 	t:type="Layout" t:activeHome="true">
 
 <t:if test="showTable()">
+	<h2 class="text-center" style="margin-bottom:30px;">Open tournaments</h2>
     <div class="">
 		<table class="table table-hover">
 			<thead>

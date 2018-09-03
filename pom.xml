@@ -272,29 +272,6 @@
 		</pluginManagement>
 		
         <plugins>
-        
-        	<!-- ========================================================== -->
-            <!-- context.xml filtering -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-war-plugin</artifactId>
-		        <version>3.2.2</version>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/webapp</directory>
-                            <filtering>true</filtering>
-                            <includes>
-                                <include>META-INF/context.xml</include>
-                                <include>WEB-INF/web.xml</include>
-                                <include>**/*.css</include>
-                                <include>**/*.ico</include>
-                                <include>WEB-INF/styles/images/chess.ico</include>
-                            </includes>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
 
             <!-- ========================================================== -->
             <!-- Compiler configuration -->
