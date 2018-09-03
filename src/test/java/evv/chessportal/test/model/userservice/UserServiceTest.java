@@ -41,28 +41,28 @@ public class UserServiceTest {
     public void testCompile(){
         assertEquals(100,100);
     }
-//     @Test
-//    public void generateRRIndividualTournamentRoundstest() throws DatesInconsistenceException, DuplicateInstanceException, InstanceNotFoundException{
-//        int n = 8;
-//        IndividualTournament individualTournament = tournamentService.createRRIndividualTournament("TestTournament", Calendar.getInstance(),
-//                null, null, null);
-//        ArrayList<Long> playerIds=new ArrayList<>(n);
-//        for(int i = 0;i<n;i++){
-//             playerIds.add(i,userService.createUser("jugador"+ (i+1), "admin", null, null, new PersonDetails(null, null, null, null), false).getId());
-//        }
-//        tournamentService.enrolPlayers(individualTournament.getId(), playerIds);
-//        individualTournament=tournamentService.generateRRIndividualTournamentRounds(individualTournament.getId());
-//        
-//        List<IndividualRound> rounds = individualTournament.getRoundList() ;
-//        for(IndividualRound r: rounds){
-//            System.out.println("Round " + r.getNumber_());
-//            List<Game> games = r.getGameList();
-//            for (Game g: games){
-//                System.out.println(g.getWhitePiecesPlayer().getLoginName()+" - " + g.getBlackPiecesPlayer().getLoginName());
-//            }
-//        }
-//        assertEquals(100,100);
-//    }
+     @Test
+    public void generateRRIndividualTournamentRoundstest() throws DatesInconsistenceException, DuplicateInstanceException, InstanceNotFoundException{
+        int n = 8;
+        IndividualTournament individualTournament = tournamentService.createRRIndividualTournament("TestTournament", Calendar.getInstance(),
+                null, null, null);
+        ArrayList<Long> playerIds=new ArrayList<>(n);
+        for(int i = 0;i<n;i++){
+             playerIds.add(i,userService.createUser("jugador"+ (i+1), "admin", null, null, new PersonDetails(null, null, null, null), false).getId());
+        }
+        tournamentService.enrolPlayers(individualTournament.getId(), playerIds);
+        individualTournament=tournamentService.generateRRIndividualTournamentRounds(individualTournament.getId());
+        
+        List<IndividualRound> rounds = individualTournament.getRoundList() ;
+        for(IndividualRound r: rounds){
+            System.out.println("Round " + r.getNumber_());
+            List<Game> games = r.getGameList();
+            for (Game g: games){
+                System.out.println(g.getWhitePiecesPlayer().getLoginName()+" - " + g.getBlackPiecesPlayer().getLoginName());
+            }
+        }
+        assertEquals(100,100);
+    }
 //    @Test
 //    public void testRegisterUserAndFindUserProfile()
 //            throws DuplicateInstanceException, InstanceNotFoundException {
