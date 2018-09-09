@@ -1,46 +1,46 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:activeTournaments="true">
+      t:type="Layout" t:activeTournaments="true">
 
-<div>
+    <div>
 
-	<div class="btn-group btn-container col-lg-6">
-		<a class="btn btn-default" href="#" t:type="PageLink"
-			t:page="tournament/createTournament"><span
-			class="glyphicon glyphicon-plus-sign icon-padding"></span>${message:create}</a>
-		<t:Searcher t:searchKey="searchKey" />
-	</div>
+        <div class="btn-group btn-container col-lg-6">
+            <a class="btn btn-default" href="#" t:type="PageLink"
+               t:page="tournament/createTournament"><span
+                    class="glyphicon glyphicon-plus-sign icon-padding"></span>${message:create}</a>
+            <t:Searcher t:searchKey="searchKey" />
+        </div>
 
 
-	<div class="w3-padding w3-white notranslate">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>${message:Tournament}</th>
-					<th>${message:startDate}</th>
-					<th>${message:endDate}</th>
-					<th>${message:startEnrolmentDate}</th>
-                    <th>${message:endEnrolmentDate}</th>
-                    <th>${message:status}</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<t:loop source="tournamentList" value="tournament">
-					<tr>
-						<td><a href="#" t:type="PageLink"
-							t:page="tournament/tournamentDetails" context="tournament.id">${tournament.name_}</a>
-						</td>
-						<td>${startDate}</td>
-						<td>${endDate}</td>
-						<td>${startEnrolmentDate}</td>
-						<td>${endEnrolmentDate}</td>
-                        <td>${tournament.status}</td>
-					</tr>
-				</t:loop>
-			</tbody>
-		</table>
-	</div>
-</div>
+        <div class="w3-padding w3-white notranslate">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>${message:Tournament}</th>
+                        <th>${message:startDate}</th>
+                        <th>${message:endDate}</th>
+                        <th>${message:startEnrolmentDate}</th>
+                        <th>${message:endEnrolmentDate}</th>
+                        <th>${message:status}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t:loop source="tournamentList" value="tournament">
+                        <tr>
+                            <td><a href="#" t:type="PageLink"
+                                   t:page="tournament/tournamentDetails" context="tournament.id">${tournament.name_}</a>
+                            </td>
+                            <td>${startDate}</td>
+                            <td>${endDate}</td>
+                            <td>${startEnrolmentDate}</td>
+                            <td>${endEnrolmentDate}</td>
+                            <td>${tournament.status}</td>
+                        </tr>
+                    </t:loop>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </html>
 

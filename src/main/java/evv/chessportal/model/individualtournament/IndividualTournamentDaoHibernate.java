@@ -56,8 +56,8 @@ public class IndividualTournamentDaoHibernate extends GenericDaoHibernate<Indivi
         sb.append("SELECT t.id FROM IndividualTournament t ");
         sb.append("INNER JOIN t.playerList pl ");
         sb.append("WHERE pl.id =:playerId) ");
-        sb.append(" AND (t.startEnrolmentDate is null or t.startEnrolmentDate < :currentCalendar) ");
-        sb.append(" AND (t.endEnrolmentDate is null or t.endEnrolmentDate > :currentCalendar) ");
+//        sb.append(" AND (t.startEnrolmentDate is null or t.startEnrolmentDate < :currentCalendar) ");
+//        sb.append(" AND (t.endEnrolmentDate is null or t.endEnrolmentDate > :currentCalendar) ");
         if (hasKeyword) {
             sb.append(" AND t.name_ LIKE :searchKey ");
         }
@@ -67,7 +67,7 @@ public class IndividualTournamentDaoHibernate extends GenericDaoHibernate<Indivi
         Calendar currentCalendar = Calendar.getInstance();
         Query query = getSession().createQuery(sb.toString());
         query.setParameter("playerId", playerId);
-        query.setParameter("currentCalendar", currentCalendar);
+//        query.setParameter("currentCalendar", currentCalendar);
         query.setParameter("status", Status.DRAFT);
         if (hasKeyword) {
             query.setParameter("searchKey", "%"+searchKey+"%");

@@ -1,18 +1,18 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-    t:type="Layout" t:activeMyTournaments="true">
+      t:type="Layout" t:activeMyTournaments="true">
 
-<div class="container">
-    <div class="btn-group btn-container">
-    
-        <t:if test="canShowGames">
-            <a class="btn btn-default" href="#" t:type="PageLink"
-                t:id="showGames" t:page="personal/showGames" context="tournament.id"><span
-                class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
-        </t:if>
+    <div class="container">
+        <div class="btn-group btn-container">
+
+            <t:if test="canShowGames">
+                <a class="btn btn-default" href="#" t:type="PageLink"
+                   t:id="showGames" t:page="personal/showGames" context="tournament.id"><span
+                        class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
+            </t:if>
+        </div>
+
+        <t:TournamentDetails t:tournament="tournament"/>
+
     </div>
-
-    <t:TournamentDetails t:tournament="tournament"/>
-
-</div>
 
 </html>

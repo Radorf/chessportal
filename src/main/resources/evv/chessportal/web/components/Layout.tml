@@ -1,186 +1,177 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	xmlns:p="tapestry:parameter">
-<head>
-<meta charset="utf-8" />
-<title>Chess Portal</title>
-<!-- <link rel="shortcut icon" href="${asset:context:/styles/images/chess.ico}" type="image/ico" />  -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <head>
+        <meta charset="utf-8" />
+        <title>Chess Portal</title>
+        <!-- <link rel="shortcut icon" href="${asset:context:/styles/images/chess.ico}" type="image/ico" />  -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style type="text/css">
-body {
-	background: none;
-	margin-top: 80px;
-	padding-bottom: 50px;
-}
+        <style type="text/css">
+            body {
+                background: none;
+                margin-top: 80px;
+                padding-bottom: 50px;
+            }
 
-.navbar, .dropdown-menu {
-	background: #b8e0e0;
-	border: none;
-	height: 70px;
-}
+            .navbar, .dropdown-menu {
+                background: #b8e0e0;
+                border: none;
+                height: 70px;
+            }
 
-.nav>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,
-	.dropdown-menu>li>a, .dropdown-menu>li {
-	border-bottom: 3px solid transparent;
-}
+            .nav>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,
+            .dropdown-menu>li>a, .dropdown-menu>li {
+                border-bottom: 3px solid transparent;
+            }
 
-.nav>li>a:focus, .nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover,
-	.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-	border-bottom: 3px solid transparent;
-	background: none !important;
-}
+            .nav>li>a:focus, .nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover,
+            .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+                border-bottom: 3px solid transparent;
+                background: none !important;
+            }
 
-.dropdown-menu {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
+            .dropdown-menu {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
 
-.navbar-nav li a {
-	height: 64px;
-	color: #1D5A5A !important;
-	padding-top: 24px;
-	background: #b8e0e0 !important;
-	font-size: 17px;
-}
+            .navbar-nav li a {
+                height: 64px;
+                color: #1D5A5A !important;
+                padding-top: 24px;
+                background: #b8e0e0 !important;
+                font-size: 17px;
+            }
 
-.nav li:hover, .nav li.active {
-	border-bottom: #FECF71 6px solid;
-}
+            .nav li:hover, .nav li.active {
+                border-bottom: #FECF71 6px solid;
+            }
 
-.navbar-toggle .icon-bar {
-	color: #fff;
-	background: #fff;
-}
+            .navbar-toggle .icon-bar {
+                color: #fff;
+                background: #fff;
+            }
 
-.footer {
-	height: 35px !important;
-	min-height: 35px !important;
-	font-size: 12px;
-	background: #eef7f7;
-	color: #777;
-	padding-top: 11px;
-}
+            .footer {
+                height: 35px !important;
+                min-height: 35px !important;
+                font-size: 12px;
+                background: #eef7f7;
+                color: #777;
+                padding-top: 11px;
+            }
 
-.body-container {
-	margin-top: 15px;
-	margin-bottom: 30px;
-}
+            .body-container {
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
 
-.line {
-	margin-top: 3px;
-	margin-bottom: 3px;
-	border: 0;
-	border-bottom: 1px solid #eee;
-}
+            .line {
+                margin-top: 3px;
+                margin-bottom: 3px;
+                border: 0;
+                border-bottom: 1px solid #eee;
+            }
 
-.row.line p {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+            .row.line p {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
 
-.btn-container {
-	margin-bottom: 25px;
-}
+            .btn-container {
+                margin-bottom: 25px;
+            }
 
-.icon-padding {
-	padding-right: 10px;
-}
+            .icon-padding {
+                padding-right: 10px;
+            }
 
-.searcher-separator {
-	margin-top: 15px;
-    margin-bottom: 20px;
-    width: 600px;
-    float: left;
-}
+            .searcher-separator {
+                margin-top: 15px;
+                margin-bottom: 20px;
+                width: 600px;
+                float: left;
+            }
 
-.logo-header {
-	color: #1D5A5A !important;
-	font-size: 25px !important;
-	margin-top: 10px;
-}
-</style>
+            .logo-header {
+                color: #1D5A5A !important;
+                font-size: 25px !important;
+                margin-top: 10px;
+            }
+        </style>
 
-</head>
+    </head>
 
-<body>
-
-
-
-	<div class="navbar-wrapper">
-		<div class="container-fluid">
-			<nav class="navbar navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<span class="navbar-brand logo-header">CHESS PORTAL</span>
-					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<t:if test="canShowHome()">
-								<li class="${getActiveHomeClass()}"><a href="#"
-									t:type="PageLink" t:page="index"><span
-										class="glyphicon glyphicon-home" /></a></li>
-							</t:if>
-							<!-- 							<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
-							<!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
-							<!-- 								aria-expanded="false">Departments <span class="caret"></span></a> -->
-							<!-- 								<ul class="dropdown-menu"> -->
-							<!-- 							 		<li class=" dropdown"><a href="#" class="dropdown-toggle " -->
-							<!-- 										data-toggle="dropdown" role="button" aria-haspopup="true" -->
-							<!-- 										aria-expanded="false">View Departments</a></li> -->
-							<!-- 									<li><a href="#">Add New</a></li> -->
-							<!-- 								</ul></li> -->
-							<t:if test="admin">
-								<li class="${getActiveUsersClass()}"><a href="#"
-									t:type="PageLink" t:page="user/users">${message:users}</a></li>
-								<li class="${getActiveTournamentsClass()}"><a href="#"
-									t:type="PageLink" t:page="tournament/tournaments">${message:tournaments}</a></li>
-							</t:if>
-							<t:if test="player">
-								<li class="${getActiveMyTournamentsClass()}"><a href="#"
-									t:type="PageLink" t:page="personal/tournaments">${message:mytournaments}</a></li>
-								<li class="${getActiveOpenTournamentsClass()}"><a href="#"
-									t:type="PageLink" t:page="open/tournaments">${message:opentournaments}</a></li>
-							</t:if>
-						</ul>
-						<ul class="nav navbar-nav pull-right">
-							<t:if test="userSession">
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown"><span
-										class="glyphicon glyphicon-user icon-padding"></span>${userSession.firstName}
-										<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#" t:type="PageLink"
-											t:page="user/showuserprofile" t:context="${getUserId()}">${message:myProfile}</a></li>
-										<li><a href="#" t:type="PageLink"
-											t:page="user/changepassword">${message:changePassword}</a></li>
-										<li><a href="#" t:type="ActionLink" t:id="logout"><span
-												class="glyphicon glyphicon-log-out icon-padding"></span>${message:logout}</a></li>
-									</ul></li>
-								<p:else>
-									<li><a href="#" t:type="PageLink" t:page="user/login"><span
-											class="glyphicon glyphicon-log-out icon-padding"></span>${message:authenticate}</a></li>
-								</p:else>
-							</t:if>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
+    <body>
 
 
-	<div class="container body-container">
-		<t:body />
-	</div>
 
-	<div class="navbar navbar-default navbar-fixed-bottom footer">
-		<div class="container">
-			<p class="pull-left">© 2018 - Site Built By E. Villodas</p>
-		</div>
-	</div>
+        <div class="navbar-wrapper">
+            <div class="container-fluid">
+                <nav class="navbar navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <span class="navbar-brand logo-header">CHESS PORTAL</span>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <t:if test="canShowHome()">
+                                    <li class="${getActiveHomeClass()}"><a href="#"
+                                                                           t:type="PageLink" t:page="index"><span
+                                                class="glyphicon glyphicon-home" /></a></li>
+                                </t:if>                                
+                                <t:if test="admin">
+                                    <li class="${getActiveUsersClass()}"><a href="#"
+                                                                            t:type="PageLink" t:page="user/users">${message:users}</a></li>
+                                    <li class="${getActiveTournamentsClass()}"><a href="#"
+                                                                                  t:type="PageLink" t:page="tournament/tournaments">${message:tournaments}</a></li>
+                                </t:if>
+                                <t:if test="player">
+                                    <li class="${getActiveMyTournamentsClass()}"><a href="#"
+                                                                                    t:type="PageLink" t:page="personal/tournaments">${message:mytournaments}</a></li>
+                                    <li class="${getActiveOpenTournamentsClass()}"><a href="#"
+                                                                                      t:type="PageLink" t:page="open/tournaments">${message:opentournaments}</a></li>
+                                </t:if>
+                            </ul>
+                            <ul class="nav navbar-nav pull-right">
+                                <t:if test="userSession">
+                                    <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                                            data-toggle="dropdown"><span
+                                                class="glyphicon glyphicon-user icon-padding"></span>${userSession.firstName}
+                                            <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#" t:type="PageLink"
+                                                   t:page="user/showuserprofile" t:context="${getUserId()}">${message:myProfile}</a></li>
+                                            <li><a href="#" t:type="PageLink"
+                                                   t:page="user/changepassword">${message:changePassword}</a></li>
+                                            <li><a href="#" t:type="ActionLink" t:id="logout"><span
+                                                        class="glyphicon glyphicon-log-out icon-padding"></span>${message:logout}</a></li>
+                                        </ul></li>
+                                    <p:else>
+                                        <li><a href="#" t:type="PageLink" t:page="user/login"><span
+                                                    class="glyphicon glyphicon-log-out icon-padding"></span>${message:authenticate}</a></li>
+                                    </p:else>
+                                </t:if>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
 
-</body>
+
+        <div class="container body-container">
+            <t:body />
+        </div>
+
+        <div class="navbar navbar-default navbar-fixed-bottom footer">
+            <div class="container">
+                <p class="pull-left">© 2018 - Site Built By E. Villodas</p>
+            </div>
+        </div>
+
+    </body>
 
 </html>

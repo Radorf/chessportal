@@ -1,40 +1,40 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:activeTournaments="true">
+      t:type="Layout" t:activeTournaments="true">
 
-<div class="container">
-	<div class="btn-group btn-container">
-        <t:if test="canEdit">
-    		<a class="btn btn-default" href="#" t:type="PageLink"
-    			t:page="tournament/editTournament" context="tournament.id"><span
-    			class="glyphicon glyphicon-edit icon-padding"></span>${message:editTournament}</a>
-        </t:if>
-        <t:if test="canShowPlayers">
-    		<a class="btn btn-default" href="#" t:type="PageLink"
-    			t:page="tournament/showPlayers" context="tournament.id"><span
-    			class="glyphicon glyphicon-th-list icon-padding"></span>${message:showPlayers}</a>
-		</t:if>
-		<t:if test="canStart">
-    		<a class="btn btn-default" href="#" t:type="ActionLink"
-    			t:id="startTournament" context="tournament.id"><span
-    			class="glyphicon glyphicon-play icon-padding"></span>${message:startTournament}</a>
-		</t:if>
-		<a class="btn btn-default" href="#" t:type="ActionLink"
-			t:id="deleteTournament" context="tournament.id"><span
-			class="glyphicon glyphicon-remove icon-padding"></span>${message:deleteTournament}</a>
-        <t:if test="canShowGames">
-            <a class="btn btn-default" href="#" t:type="PageLink"
-                t:id="showGames" t:page="tournament/showGames" context="tournament.id"><span
-                class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
-        </t:if>
-        <t:if test="canFinish">
+    <div class="container">
+        <div class="btn-group btn-container">
+            <t:if test="canEdit">
+                <a class="btn btn-default" href="#" t:type="PageLink"
+                   t:page="tournament/editTournament" context="tournament.id"><span
+                        class="glyphicon glyphicon-edit icon-padding"></span>${message:editTournament}</a>
+            </t:if>
+            <t:if test="canShowPlayers">
+                <a class="btn btn-default" href="#" t:type="PageLink"
+                   t:page="tournament/showPlayers" context="tournament.id"><span
+                        class="glyphicon glyphicon-th-list icon-padding"></span>${message:showPlayers}</a>
+            </t:if>
+            <t:if test="canStart">
+                <a class="btn btn-default" href="#" t:type="ActionLink"
+                   t:id="startTournament" context="tournament.id"><span
+                        class="glyphicon glyphicon-play icon-padding"></span>${message:startTournament}</a>
+            </t:if>
             <a class="btn btn-default" href="#" t:type="ActionLink"
-                t:id="finishTournament" context="tournament.id"><span
-                class="glyphicon glyphicon-play icon-padding"></span>${message:finishTournament}</a>
-        </t:if>
-	</div>
+               t:id="deleteTournament" context="tournament.id"><span
+                    class="glyphicon glyphicon-remove icon-padding"></span>${message:deleteTournament}</a>
+            <t:if test="canShowGames">
+                <a class="btn btn-default" href="#" t:type="PageLink"
+                   t:id="showGames" t:page="tournament/showGames" context="tournament.id"><span
+                        class="glyphicon glyphicon-play icon-padding"></span>${message:showGames}</a>
+            </t:if>
+            <t:if test="canFinish">
+                <a class="btn btn-default" href="#" t:type="ActionLink"
+                   t:id="finishTournament" context="tournament.id"><span
+                        class="glyphicon glyphicon-play icon-padding"></span>${message:finishTournament}</a>
+            </t:if>
+        </div>
 
-	<t:TournamentDetails t:tournament="tournament"/>
+        <t:TournamentDetails t:tournament="tournament"/>
 
-</div>
+    </div>
 
 </html>

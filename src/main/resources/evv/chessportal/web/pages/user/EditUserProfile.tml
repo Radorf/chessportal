@@ -1,65 +1,65 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:activeUsers="true">
+      t:type="Layout" t:activeUsers="true">
 
-<form t:type="Form" class="form-horizontal" t:id="updateProfileForm">
+    <form t:type="Form" class="form-horizontal" t:id="updateProfileForm">
 
-	<t:errors />
+        <t:errors />
 
-	<div class="form-group">
-		<t:label for="firstName" class="col-sm-2 control-label" >${message:firstName-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="firstName" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
+        <div class="form-group">
+            <t:label for="firstName" class="col-sm-2 control-label" >${message:firstName-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="firstName" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
 
-	<div class="form-group">
-		<t:label for="surname" class="col-sm-2 control-label" >${message:surname-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="surname" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
+        <div class="form-group">
+            <t:label for="surname" class="col-sm-2 control-label" >${message:surname-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="surname" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
 
-	<div class="form-group">
-		<t:label for="email" class="col-sm-2 control-label" >${message:email}</t:label>
-		<div class="col-md-3">
-			<input t:id="email" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
+        <div class="form-group">
+            <t:label for="email" class="col-sm-2 control-label" >${message:email}</t:label>
+            <div class="col-md-3">
+                <input t:id="email" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
 
-	<div class="form-group">
-		<t:label for="phoneNumber" class="col-sm-2 control-label" >${message:label.phoneNumber}</t:label>
-		<div class="col-md-3">
-			<input t:id="phoneNumber" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
+        <div class="form-group">
+            <t:label for="phoneNumber" class="col-sm-2 control-label" >${message:label.phoneNumber}</t:label>
+            <div class="col-md-3">
+                <input t:id="phoneNumber" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
 
-	<t:if test="isPlayer">
-		<div class="form-group">
-			<t:label for="Elo" class="col-sm-2 control-label" >${message:elo}</t:label>
-			<div class="col-md-3">
-				<input t:id="elo" t:type="TextField" maxlength="30" />
-			</div>
-		</div>
+        <t:if test="isPlayer">
+            <div class="form-group">
+                <t:label for="Elo" class="col-sm-2 control-label" >${message:elo}</t:label>
+                <div class="col-md-3">
+                    <input t:id="elo" t:type="TextField" maxlength="30" />
+                </div>
+            </div>
 
-		<div class="form-group">
-			<t:label for="licenseNumber" class="col-sm-2 control-label" >${message:licenseNumber}</t:label>
-			<div class="col-md-3">
-				<input t:id="licenseNumber" t:type="TextField" maxlength="30" />
-			</div>
-		</div>
-	</t:if>
+            <div class="form-group">
+                <t:label for="licenseNumber" class="col-sm-2 control-label" >${message:licenseNumber}</t:label>
+                <div class="col-md-3">
+                    <input t:id="licenseNumber" t:type="TextField" maxlength="30" />
+                </div>
+            </div>
+        </t:if>
 
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default"><span
-			class="glyphicon glyphicon-ok-sign icon-padding"/>${message:save}</button>
-		</div>
-	</div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default"><span
+                        class="glyphicon glyphicon-ok-sign icon-padding"/>${message:save}</button>
+            </div>
+        </div>
 
-</form>
+    </form>
 
 </html>

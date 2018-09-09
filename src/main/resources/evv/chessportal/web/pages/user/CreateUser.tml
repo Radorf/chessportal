@@ -1,85 +1,85 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:activeUsers="true">
+      t:type="Layout" t:activeUsers="true">
 
-<form t:type="Form" class="form-horizontal" t:id="registrationForm">
+    <form t:type="Form" class="form-horizontal" t:id="registrationForm">
 
-	<t:errors />
+        <t:errors />
 
-	<div class="form-group">
-		<t:label for="loginName" class="col-sm-2 control-label" >${message:loginName}</t:label>
-		<div class="col-md-3">
-			<input t:id="loginName" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="password" class="col-sm-2 control-label" >${message:password-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="password" t:type="PasswordField" t:validate="required"
-				maxlength="8" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="retypePassword" class="col-sm-2 control-label" >${message:retypePassword-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="retypePassword" t:type="PasswordField"
-				t:validate="required" maxlength="8" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="firstName" class="col-sm-2 control-label" >${message:firstName-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="firstName" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="surName" class="col-sm-2 control-label" >${message:surname-label}</t:label>
-		<div class="col-md-3">
-			<input t:id="surName" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="email" class="col-sm-2 control-label" >${message:email}</t:label>
-		<div class="col-md-3">
-			<input t:id="email" t:type="TextField" t:validate="required,regexp"
-				maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="phoneNumber" class="col-sm-2 control-label" >${message:label.phoneNumber}</t:label>
-		<div class="col-md-3">
-			<input t:id="phoneNumber" t:type="TextField" t:validate="required"
-				maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="type" class="col-sm-2 control-label" >${message:label.type}</t:label>
-		<div class="col-md-3">
-			<t:select t:id="type" t:validate="required" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="Elo" class="col-sm-2 control-label" >${message:elo}</t:label>
-		<div class="col-md-3">
-			<input t:id="elo" t:type="TextField" maxlength="30" />
-		</div>
-	</div>
-	<div class="form-group">
-		<t:label for="licenseNumber" class="col-sm-2 control-label" >${message:licenseNumber}</t:label>
-		<div class="col-md-3">
-			<input t:id="licenseNumber" t:type="TextField" maxlength="30" />
-		</div>
-	</div>
+        <div class="form-group">
+            <t:label for="loginName" class="col-sm-2 control-label" >${message:loginName}</t:label>
+            <div class="col-md-3">
+                <input t:id="loginName" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="password" class="col-sm-2 control-label" >${message:password-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="password" t:type="PasswordField" t:validate="required"
+                       maxlength="8" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="retypePassword" class="col-sm-2 control-label" >${message:retypePassword-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="retypePassword" t:type="PasswordField"
+                       t:validate="required" maxlength="8" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="firstName" class="col-sm-2 control-label" >${message:firstName-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="firstName" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="surName" class="col-sm-2 control-label" >${message:surname-label}</t:label>
+            <div class="col-md-3">
+                <input t:id="surName" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="email" class="col-sm-2 control-label" >${message:email}</t:label>
+            <div class="col-md-3">
+                <input t:id="email" t:type="TextField" t:validate="required,regexp"
+                       maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="phoneNumber" class="col-sm-2 control-label" >${message:label.phoneNumber}</t:label>
+            <div class="col-md-3">
+                <input t:id="phoneNumber" t:type="TextField" t:validate="required"
+                       maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="type" class="col-sm-2 control-label" >${message:label.type}</t:label>
+            <div class="col-md-3">
+                <t:select t:id="type" t:validate="required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="Elo" class="col-sm-2 control-label" >${message:elo}</t:label>
+            <div class="col-md-3">
+                <input t:id="elo" t:type="TextField" maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group">
+            <t:label for="licenseNumber" class="col-sm-2 control-label" >${message:licenseNumber}</t:label>
+            <div class="col-md-3">
+                <input t:id="licenseNumber" t:type="TextField" maxlength="30" />
+            </div>
+        </div>
 
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default"><span
-			class="glyphicon glyphicon-ok-sign icon-padding"/>${message:submit-create}</button>
-		</div>
-	</div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default"><span
+                        class="glyphicon glyphicon-ok-sign icon-padding"/>${message:submit-create}</button>
+            </div>
+        </div>
 
-</form>
+    </form>
 
 </html>

@@ -1,36 +1,37 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:activeTournaments="true">
+      t:type="Layout" t:activeTournaments="true">
 
-<div>
-	<div class="btn-group btn-container col-lg-6">
-		<t:if test="canEnrolPlayers">
-			<a class="btn btn-default" href="#" t:type="PageLink"
-				t:page="tournament/selectPlayers" context="tournament.id"><span
-				class="glyphicon glyphicon-th-list icon-padding"></span>${message:selectPlayers}</a>
-		</t:if>
-		<t:Searcher t:searchKey="searchKey" />
-	</div>
-
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>${message:loginName}</th>
-				<th>${message:label.name}</th>
-				<th>${message:email}</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<t:loop source="userList" value="user">
-				<tr>
-					<td>${user.loginName}</td>
-					<td>${user.person.firstName} ${user.person.surname}</td>
-					<td>${user.person.email}</td>
-				</tr>
-			</t:loop>
-		</tbody>
-	</table>
-</div>
+    <div>
+        <div class="btn-group btn-container col-lg-6">
+            <t:if test="canEnrolPlayers">
+                <a class="btn btn-default" href="#" t:type="PageLink"
+                   t:page="tournament/selectPlayers" context="tournament.id"><span
+                        class="glyphicon glyphicon-th-list icon-padding"></span>${message:selectPlayers}</a>
+            </t:if>
+            <t:Searcher t:searchKey="searchKey" />
+        </div>
+        <a href="#" t:type="PageLink"
+           t:page="tournament/tournamentDetails" context="tournament.id">${tournament.name_}</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>${message:loginName}</th>
+                    <th>${message:label.name}</th>
+                    <th>${message:email}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <t:loop source="userList" value="user">
+                    <tr>
+                        <td>${user.loginName}</td>
+                        <td>${user.person.firstName} ${user.person.surname}</td>
+                        <td>${user.person.email}</td>
+                    </tr>
+                </t:loop>
+            </tbody>
+        </table>
+    </div>
 
 </html>
 

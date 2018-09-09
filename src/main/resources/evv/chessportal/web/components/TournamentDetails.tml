@@ -7,7 +7,7 @@
             <p>${tournament.name_}</p>
         </div>
     </div>
-    
+
     <div class="row line">
         <div class="col-sm-4">
             <h5>${message:label.type}</h5>
